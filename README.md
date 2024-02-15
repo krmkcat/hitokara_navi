@@ -103,3 +103,6 @@
   - 「あと○件投稿でXXランクになります」という文が表示される
 - お気にいり一覧に"レビュー済"欄を設ける
   - レビューしていないと空欄、レビュー済だとチェックが自動で入る
+
+## ■画面遷移図
+[画面遷移図](https://www.figma.com/file/9mpkbZfwNfXZhgjp0fEKzK/hitokara_navi%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&mode=design&t=pDeXow1WNhDTFOXo-1)
