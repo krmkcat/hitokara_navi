@@ -108,4 +108,4 @@
 [画面遷移図](https://www.figma.com/file/9mpkbZfwNfXZhgjp0fEKzK/hitokara_navi%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&mode=design&t=pDeXow1WNhDTFOXo-1)
 
 ## ■ER図
-[ER図](https://gyazo.com/e362aa33cb8cfc7654e094226ace55f7)
+[ER図](https://gyazo.com/5449c9f4113920494236eb63cafead69)
