@@ -10,10 +10,13 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <div class="w-5/6 mx-auto max-w-screen-xl">
-      <%= render 'shared/flash_messages' %>
-      <%= yield %>
+  <body class="flex flex-col min-h-screen">
+    <%= render 'shared/flash_messages' %>
+    <div class="flex-grow">
+      <div class="container w-5/6 mx-auto max-w-screen-xl my-10">
+        <%= yield %>
+      </div>
     </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
