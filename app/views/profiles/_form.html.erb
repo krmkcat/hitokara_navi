@@ -18,29 +18,16 @@
 
   <div class="my-5">
     <%= form.label :gender %>
-    <%= form.radio_button :gender, 0, class: "radio radio-primary" %>
-    <%= form.label :gender_not_specified, '無回答' %>
-    <%= form.radio_button :gender, 1, class: "radio radio-primary" %>
-    <%= form.label :gender_man, '男性' %>
-    <%= form.radio_button :gender, 2, class: "radio radio-primary" %>
-    <%= form.label :gender_woman, '女性' %>
-    <%= form.radio_button :gender, 3, class: "radio radio-primary" %>
-    <%= form.label :gender_other, 'その他' %>
+    <% Profile.genders.each_key do |key| %>
+      <%= form.radio_button :gender, key, class: "radio radio-primary" %>
+      <%= form.label :gender, key.capitalize, value: key %>
+    <% end %>
   </div>
 
   <div class="my-5">
     <%= form.label :age_group %>
-    <%= form.select :age_group, {
-      '無回答': 0,
-      '10代以下': 1,
-      '20代': 2,
-      '30代': 3,
-      '40代': 4,
-      '50代': 5,
-      '60代': 6,
-      '70代': 7,
-      '80代以上': 8
-      },
+    <%= form.select :age_group,
+      Profile.age_groups,
       {},
       { class: 'select select-bordered w-full max-w-xs' }
     %>
