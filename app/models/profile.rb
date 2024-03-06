@@ -17,4 +17,8 @@ class Profile < ApplicationRecord
     in_70s: 7,
     over_80s: 8
   }
+
+  def self.age_group_select_options
+    age_groups.map {|key, _| [key, key]}
+  end
 end

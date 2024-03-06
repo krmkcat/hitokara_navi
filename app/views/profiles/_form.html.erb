@@ -11,29 +11,31 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :name, class: 'block my-2' %>
     <%= form.text_field :name, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :gender %>
-    <% Profile.genders.each_key do |key| %>
-      <%= form.radio_button :gender, key, class: "radio radio-primary" %>
-      <%= form.label :gender, key.capitalize, value: key %>
-    <% end %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :gender, class: 'block my-2' %>
+    <div class="flex flex-row">
+      <% Profile.genders.each_key do |key| %>
+        <%= form.radio_button :gender, key, class: "radio radio-primary" %>
+        <%= form.label :gender, key.capitalize, value: key %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :age_group %>
+  <div class="my-5 flex flex-col">
+    <%= form.label :age_group, class: 'block my-2' %>
     <%= form.select :age_group,
-      Profile.age_groups,
+      Profile.age_group_select_options,
       {},
       { class: 'select select-bordered w-full max-w-xs' }
     %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="inline-block mt-6">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
