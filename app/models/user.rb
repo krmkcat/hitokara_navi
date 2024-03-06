@@ -9,16 +9,4 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   enum role: { general: 0, admin: 1 }
-
-  def name
-    profile&.name
-  end
-
-  def gender
-    profile&.gender
-  end
-
-  def age_group
-    profile&.age_group
-  end
 end

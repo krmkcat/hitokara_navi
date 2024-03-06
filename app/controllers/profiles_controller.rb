@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user
+  before_action :set_profile
 
   def show; end
 
@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(current_user.id)
+  def set_profile
+    @profile = User.find(current_user.id).profile
   end
 end

@@ -1,0 +1,52 @@
+<%= form_with(model: profile, class: "contents") do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "input input-bordered w-full max-w-xs" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :gender %>
+    <%= form.radio_button :gender, 0, class: "radio radio-primary" %>
+    <%= form.label :gender_not_specified, '無回答' %>
+    <%= form.radio_button :gender, 1, class: "radio radio-primary" %>
+    <%= form.label :gender_man, '男性' %>
+    <%= form.radio_button :gender, 2, class: "radio radio-primary" %>
+    <%= form.label :gender_woman, '女性' %>
+    <%= form.radio_button :gender, 3, class: "radio radio-primary" %>
+    <%= form.label :gender_other, 'その他' %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :age_group %>
+    <%= form.select :age_group, {
+      '無回答': 0,
+      '10代以下': 1,
+      '20代': 2,
+      '30代': 3,
+      '40代': 4,
+      '50代': 5,
+      '60代': 6,
+      '70代': 7,
+      '80代以上': 8
+      },
+      {},
+      { class: 'select select-bordered w-full max-w-xs' }
+    %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
