@@ -1,0 +1,20 @@
+<div class="card w-96 bg-neutral text-primary-content mx-auto">
+  <div class="card-body">
+    <h2 class="card-title">
+      <%= @user.name %>
+    </h2>
+    <p>
+      性別：<%= @user.gender %>
+    </p>
+    <p>
+      年代：<%= @user.age_group %>
+    </p>
+    <div class="card-actions justify-end">
+      <button class="btn">編集</button>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-center mx-auto my-6">
+  <%= link_to '投稿したレビュー一覧を見る', '#', class: 'btn btn-wide btn-primary' %>
+</div>

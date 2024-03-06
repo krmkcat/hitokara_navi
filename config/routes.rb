@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'mypage', to: 'profiles#show'
+  resource :profile, only: %i[edit update]
+
   resources :users, only: :create
   get 'signup', to: 'users#new'
 
