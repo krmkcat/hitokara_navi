@@ -1,0 +1,43 @@
+<%= form_with(model: profile, class: "contents") do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label :name, class: 'block my-2' %>
+    <%= form.text_field :name, class: "input input-bordered w-full max-w-xs" %>
+  </div>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label :gender, class: 'block my-2' %>
+    <div class="flex flex-row space-x-5">
+      <% Profile.genders.each_key do |key| %>
+        <div class="flex flex-row content-center space-x-2">
+          <%= form.radio_button :gender, key, class: "radio radio-primary" %>
+          <%= form.label :gender, key.capitalize, value: key %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label :age_group, class: 'block my-2' %>
+    <%= form.select :age_group,
+      Profile.age_group_select_options,
+      {},
+      { class: 'select select-bordered w-full max-w-xs' }
+    %>
+  </div>
+
+  <div class="inline-block mt-6 mx-auto">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

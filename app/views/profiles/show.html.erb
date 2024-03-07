@@ -1,16 +1,16 @@
 <div class="card w-96 bg-neutral text-primary-content mx-auto">
   <div class="card-body">
     <h2 class="card-title">
-      <%= @user.name %>
+      <%= @profile.name %>
     </h2>
     <p>
-      性別：<%= @user.gender %>
+      性別：<%= @profile.gender %>
     </p>
     <p>
-      年代：<%= @user.age_group %>
+      年代：<%= @profile.age_group %>
     </p>
     <div class="card-actions justify-end">
-      <button class="btn">編集</button>
+      <%= link_to '編集', edit_profile_path, class: 'btn btn-outline btn-success btn-sm' %>
     </div>
   </div>
 </div>
