@@ -2,22 +2,16 @@ ja:
   helpers:
     submit:
       create: 登録
-      submit: 保存
+      submit: 送信
       update: 更新
     label:
       email: メールアドレス
       password: パスワード
-  header:
-    login: ログイン
-    logout: ログアウト
-    search_shops: 店舗検索
-    mypage: マイページ
-    contact: お問い合わせ
   user_sessions:
     new:
       title: ログイン
       login: ログイン
-      to_register_page: 登録ページへ
+      to_signup_page: 会員登録ページへ
       password_forget: パスワードをお忘れの方はこちら
     create:
       success: ログインしました
@@ -26,14 +20,14 @@ ja:
       success: ログアウトしました
   users:
     new:
-      title: ユーザー登録
+      title: 会員登録
       to_login_page: ログインページへ
     create:
-      success: ユーザー登録が完了しました
-      failure: ユーザー登録に失敗しました
+      success: 会員登録が完了しました
+      failure: 会員登録に失敗しました
   shops:
     index:
-      title: 店舗検索
+      title: カラオケを探す
       no_shops: 店舗がありません
     show:
       title: 店舗詳細
@@ -42,12 +36,11 @@ ja:
       no_shops: ブックマーク中の掲示板がありません
   profiles:
     show:
-      title: プロフィール
-      name: ユーザーネーム
-      gender: 性別
-      age_group: 年代
+      title: マイページ
+      to_my_reviews: 投稿したレビュー一覧を見る
     edit:
       title: プロフィール編集
+      back_to_mypage: マイページへ戻る
   password_resets:
     new:
       title: パスワードリセット申請
@@ -94,6 +87,11 @@ ja:
     delete: 削除
     search_word: 検索ワード
     unspecified: 指定なし
+    login: ログイン
+    logout: ログアウト
+    terms: 利用規約
+    privacy_policy: プライバシーポリシー
+    contact: お問い合わせ
     flash_message:
       not_authorized: 権限がありません
       not_authenticated: ログインしてください
@@ -114,11 +112,12 @@ ja:
         woman: 女性
         other: その他
       age_group:
+        age_not_specified: 非公開
         under_10s: 10代以下
         in_20s: 20代
-        in_20s: 30代
-        in_20s: 40代
-        in_20s: 50代
-        in_20s: 60代
-        in_20s: 70代
+        in_30s: 30代
+        in_40s: 40代
+        in_50s: 50代
+        in_60s: 60代
+        in_70s: 70代
         over_80s: 80代以上

@@ -22,7 +22,7 @@
       <% Profile.genders.each_key do |key| %>
         <div class="flex flex-row content-center space-x-2">
           <%= form.radio_button :gender, key, class: "radio radio-primary" %>
-          <%= form.label :gender, key.capitalize, value: key %>
+          <%= form.label :gender, Profile.genders_i18n[key], value: key %>
         </div>
       <% end %>
     </div>
