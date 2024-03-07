@@ -18,10 +18,12 @@
 
   <div class="my-5 flex flex-col">
     <%= form.label :gender, class: 'block my-2' %>
-    <div class="flex flex-row">
+    <div class="flex flex-row space-x-5">
       <% Profile.genders.each_key do |key| %>
-        <%= form.radio_button :gender, key, class: "radio radio-primary" %>
-        <%= form.label :gender, key.capitalize, value: key %>
+        <div class="flex flex-row content-center space-x-2">
+          <%= form.radio_button :gender, key, class: "radio radio-primary" %>
+          <%= form.label :gender, key.capitalize, value: key %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -35,7 +37,7 @@
     %>
   </div>
 
-  <div class="inline-block mt-6">
+  <div class="inline-block mt-6 mx-auto">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
