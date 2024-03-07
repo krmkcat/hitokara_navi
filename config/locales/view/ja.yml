@@ -1,0 +1,124 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  header:
+    login: ログイン
+    logout: ログアウト
+    search_shops: 店舗検索
+    mypage: マイページ
+    contact: お問い合わせ
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
+  shops:
+    index:
+      title: 店舗検索
+      no_shops: 店舗がありません
+    show:
+      title: 店舗詳細
+    bookmarks:
+      title: ブックマーク一覧
+      no_shops: ブックマーク中の掲示板がありません
+  profiles:
+    show:
+      title: プロフィール
+      name: ユーザーネーム
+      gender: 性別
+      age_group: 年代
+    edit:
+      title: プロフィール編集
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    create:
+      success: パスワードリセット手順を送信しました
+    edit:
+      title: パスワードリセット
+    update:
+      success: パスワードを変更しました
+      failure: パスワードを変更できませんでした
+  admin:
+    dashboards:
+      index:
+        title: ダッシュボード
+    user_sessions:
+      new:
+        title: ログイン
+        login: ログイン
+      create:
+        success: ログインしました
+        failure: ログインに失敗しました
+      destroy:
+        success: ログアウトしました
+    users:
+      index: 
+        title: ユーザー一覧
+      show:
+        title: ユーザー詳細
+      edit:
+        title: ユーザー編集
+    shops:
+      index:
+        title: 店舗一覧
+      show:
+        title: 店舗詳細
+      edit:
+        title: 店舗編集
+  defaults:
+    post: 投稿
+    delete_confirm: 削除しますか？
+    show: 詳細
+    edit: 編集
+    delete: 削除
+    search_word: 検索ワード
+    unspecified: 指定なし
+    flash_message:
+      not_authorized: 権限がありません
+      not_authenticated: ログインしてください
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
+  enums:
+    user:
+      role:
+        general: 一般
+        admin: 管理者
+    profile:
+      gender:
+        gender_not_specified: 非公開
+        man: 男性
+        woman: 女性
+        other: その他
+      age_group:
+        under_10s: 10代以下
+        in_20s: 20代
+        in_20s: 30代
+        in_20s: 40代
+        in_20s: 50代
+        in_20s: 60代
+        in_20s: 70代
+        over_80s: 80代以上
