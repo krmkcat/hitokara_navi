@@ -13,16 +13,16 @@
         </summary>
         <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
           <li>
-            <%= link_to '店舗検索', '#' %>
+            <%= link_to t('shops.index.title'), '#' %>
           </li>
           <li>
-            <%= link_to 'マイページ', mypage_path %>
+            <%= link_to t('profiles.show.title'), mypage_path %>
           </li>
           <li>
-            <%= link_to 'お問い合わせ', '#' %>
+            <%= link_to t('defaults.contact'), '#' %>
           </li>
           <li>
-            <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete} %>
+            <%= link_to t('defaults.logout'), logout_path, data: {turbo_method: :delete} %>
           </li>
         </ul>
       </details>

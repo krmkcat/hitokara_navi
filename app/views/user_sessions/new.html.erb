@@ -1,5 +1,7 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Login</h1>
+  <h1 class="font-bold text-4xl">
+    <%= t '.title' %>
+  </h1>
 
   <%= form_with url: login_url, class: 'contents' do |f| %>
     <div class="my-5">
@@ -13,13 +15,13 @@
     </div>
 
     <div class="inline">
-      <%= f.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      <%= f.submit t('defaults.login'), class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
 
-<div class='text-center'>
-  <%= link_to t('.to_register_page'), signup_path %>
+<div class='text-center my-6'>
+  <%= link_to t('.to_signup_page'), signup_path, class: 'btn btn-link' %>
   <!-- パスワードリセット申請ページができるまでコメントアウト
   <%= link_to t('.password_forget'), '#' %>
   -->

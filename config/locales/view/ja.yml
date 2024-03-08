@@ -1,0 +1,120 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 送信
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_signup_page: ユーザー登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      failure: ログインできませんでした
+    destroy:
+      success: ログアウトしました
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
+  shops:
+    index:
+      title: カラオケを探す
+      no_shops: 店舗がありません
+    show:
+      title: 店舗詳細
+  profiles:
+    show:
+      title: マイページ
+      to_my_reviews: 投稿したレビュー一覧を見る
+    edit:
+      title: プロフィール編集
+      back_to_mypage: マイページへ戻る
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    create:
+      success: パスワードリセット手順を送信しました
+    edit:
+      title: パスワードリセット
+    update:
+      success: パスワードを変更しました
+      failure: パスワードを変更できませんでした
+  admin:
+    dashboards:
+      index:
+        title: ダッシュボード
+    user_sessions:
+      new:
+        title: ログイン
+        login: ログイン
+      create:
+        success: ログインしました
+        failure: ログインに失敗しました
+      destroy:
+        success: ログアウトしました
+    users:
+      index: 
+        title: ユーザー一覧
+      show:
+        title: ユーザー詳細
+      edit:
+        title: ユーザー編集
+    shops:
+      index:
+        title: 店舗一覧
+      show:
+        title: 店舗詳細
+      edit:
+        title: 店舗編集
+  defaults:
+    post: 投稿
+    delete_confirm: 削除しますか？
+    show: 詳細
+    edit: 編集
+    delete: 削除
+    search_word: 検索ワード
+    unspecified: 指定なし
+    login: ログイン
+    logout: ログアウト
+    terms: 利用規約
+    privacy_policy: プライバシーポリシー
+    contact: お問い合わせ
+    flash_message:
+      not_authorized: 権限がありません
+      not_authenticated: ログインしてください
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+  enums:
+    user:
+      role:
+        general: 一般
+        admin: 管理者
+    profile:
+      gender:
+        gender_not_specified: 非公開
+        man: 男性
+        woman: 女性
+        other: その他
+      age_group:
+        age_not_specified: 非公開
+        under_10s: 10代以下
+        in_20s: 20代
+        in_30s: 30代
+        in_40s: 40代
+        in_50s: 50代
+        in_60s: 60代
+        in_70s: 70代
+        over_80s: 80代以上

@@ -1,7 +1,9 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New user</h1>
+  <h1 class="font-bold text-4xl">
+    <%= t('.title') %>
+  </h1>
 
   <%= render "form", user: @user %>
 
-  <%= link_to "Back to users", users_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to t('.to_login_page'), users_path, class: 'btn btn-neutral' %>
 </div>

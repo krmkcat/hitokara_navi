@@ -4,17 +4,17 @@
       <%= @profile.name %>
     </h2>
     <p>
-      性別：<%= @profile.gender %>
+      <%= Profile.human_attribute_name(:gender) + ': ' + @profile.gender_i18n %>
     </p>
     <p>
-      年代：<%= @profile.age_group %>
+      <%= Profile.human_attribute_name(:age_group) + ': ' + @profile.age_group_i18n %>
     </p>
     <div class="card-actions justify-end">
-      <%= link_to '編集', edit_profile_path, class: 'btn btn-outline btn-success btn-sm' %>
+      <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-outline btn-success btn-sm' %>
     </div>
   </div>
 </div>
 
 <div class="flex justify-center mx-auto my-6">
-  <%= link_to '投稿したレビュー一覧を見る', '#', class: 'btn btn-wide btn-primary' %>
+  <%= link_to t('.to_my_reviews'), '#', class: 'btn btn-wide btn-primary' %>
 </div>
