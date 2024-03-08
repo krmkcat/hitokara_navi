@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_024621) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_08_132407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.bigint "prefecture_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_areas_on_prefecture_id"
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_prefectures_on_name", unique: true
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -22,6 +37,21 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_024621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.bigint "area_id", null: false
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "phone_number"
+    t.string "url"
+    t.string "opening_hours"
+    t.decimal "latitude", precision: 9, scale: 6, null: false
+    t.decimal "longitude", precision: 9, scale: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_shops_on_area_id"
+    t.index ["name", "address"], name: "index_shops_on_name_and_address", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,5 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_024621) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "areas", "prefectures"
   add_foreign_key "profiles", "users"
+  add_foreign_key "shops", "areas"
 end
