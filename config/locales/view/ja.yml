@@ -104,12 +104,12 @@ ja:
         admin: 管理者
     profile:
       gender:
-        gender_not_specified: 非公開
+        gender_unspecified: 非公開
         man: 男性
         woman: 女性
         other: その他
       age_group:
-        age_not_specified: 非公開
+        age_unspecified: 非公開
         under_10s: 10代以下
         in_20s: 20代
         in_30s: 30代

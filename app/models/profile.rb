@@ -5,9 +5,9 @@ class Profile < ApplicationRecord
   validates :gender, presence: true
   validates :age_group, presence: true
 
-  enum gender: { gender_not_specified: 0, man: 1, woman: 2, other: 3 }
+  enum gender: { gender_unspecified: 0, man: 1, woman: 2, other: 3 }
   enum age_group: {
-    age_not_specified: 0,
+    age_unspecified: 0,
     under_10s: 1,
     in_20s: 2,
     in_30s: 3,
