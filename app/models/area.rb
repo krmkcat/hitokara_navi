@@ -1,4 +1,7 @@
 class Area < ApplicationRecord
   belongs_to :prefecture
-  validates :name, presence: true
+  has_many :shops, dependent: :destroy
+
+  validates :prefecture_id, presence: true
+  validates :name, presence: true, uniqueness: true
 end
