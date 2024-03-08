@@ -10,9 +10,9 @@ class UsersController < ApplicationController
     ActiveRecord::Base.transaction do
       if @user.save
         @user.create_profile!
-        redirect_to root_path, success: '会員登録に成功しました'
+        redirect_to root_path, success: t('.success')
       else
-        flash.now[:error] = '会員登録に失敗しました'
+        flash.now[:error] = t('.failure')
         render :new, status: :unprocessable_entity
         raise ActiveRecord::Rollback
       end

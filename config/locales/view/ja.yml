@@ -11,29 +11,26 @@ ja:
     new:
       title: ログイン
       login: ログイン
-      to_signup_page: 会員登録ページへ
+      to_signup_page: ユーザー登録ページへ
       password_forget: パスワードをお忘れの方はこちら
     create:
       success: ログインしました
-      failure: ログインに失敗しました
+      failure: ログインできませんでした
     destroy:
       success: ログアウトしました
   users:
     new:
-      title: 会員登録
+      title: ユーザー登録
       to_login_page: ログインページへ
     create:
-      success: 会員登録が完了しました
-      failure: 会員登録に失敗しました
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
   shops:
     index:
       title: カラオケを探す
       no_shops: 店舗がありません
     show:
       title: 店舗詳細
-    bookmarks:
-      title: ブックマーク一覧
-      no_shops: ブックマーク中の掲示板がありません
   profiles:
     show:
       title: マイページ
@@ -96,9 +93,9 @@ ja:
       not_authorized: 権限がありません
       not_authenticated: ログインしてください
       created: "%{item}を作成しました"
-      not_created: "%{item}を作成出来ませんでした"
+      not_created: "%{item}を作成できませんでした"
       updated: "%{item}を更新しました"
-      not_updated: "%{item}を更新出来ませんでした"
+      not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
   enums:
     user:
