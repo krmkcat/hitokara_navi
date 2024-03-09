@@ -10,8 +10,8 @@
       <% if current_page?(login_path) == false %>
         <%= link_to t('defaults.login'), login_path, class: 'btn btn-primary' %>
       <% end %>
-      <% if current_page?('#') == false %>
-        <%= link_to t('shops.index.title'), '#', class: 'btn btn-primary' %>
+      <% if current_page?(shops_path) == false %>
+        <%= link_to t('shops.index.title'), shops_path, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
