@@ -1,0 +1,41 @@
+<div class="card w-96 bg-primary text-primary-content mx-auto w-full my-6">
+  <div class="card-body">
+    <h2 class="card-title">
+      <%= shop.name %>
+    </h2>
+    <div class="attributes space-y-4 mt-4">
+      <div class="attribute">
+        <p>
+          <%= Shop.human_attribute_name(:address) + ':' %>
+          <br>
+          <%= shop.address %>
+        </p>
+      </div>
+      <div class="attribute">
+        <p>
+          <%= Shop.human_attribute_name(:phone_number) + ':' %>
+          <br>
+          <%= shop.phone_number %>
+        </p>
+      </div>
+      <div class="attribute">
+        <p>
+          <%= Shop.human_attribute_name(:url) + ':' %>
+          <br>
+          <%= shop.url %>
+        </p>
+      </div>
+      <div class="attribute">
+        <p>
+          <%= Shop.human_attribute_name(:opening_hours) + ':' %>
+          <br>
+          <%= shop.opening_hours %>
+        </p>
+      </div>
+    </div>
+    <div class="card-actions justify-end">
+      <%= link_to t('.defaults.show'), shop_path(shop), class: 'btn' %>
+      <%= link_to t('.defaults.post_review'), '#', class: 'btn btn-accent' %>
+    </div>
+  </div>
+</div>

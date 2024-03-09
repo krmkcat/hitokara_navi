@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :shops, only: %i[index show]
+
   get 'mypage', to: 'profiles#show'
   resource :profile, only: %i[edit update]
 
