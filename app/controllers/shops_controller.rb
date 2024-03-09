@@ -1,16 +1,11 @@
 class ShopsController < ApplicationController
   skip_before_action :require_login
-  before_action :set_shops
 
   def index
+    @shops = Shop.all
   end
 
   def show
-  end
-
-  private
-
-  def set_shops
-    @shops = Shop.all
+    @shop = Shop.find(params[:id])
   end
 end

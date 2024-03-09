@@ -34,8 +34,10 @@
       </div>
     </div>
     <div class="card-actions justify-end">
-      <%= link_to t('.defaults.show'), shop_path(shop), class: 'btn' %>
-      <%= link_to t('.defaults.post_review'), '#', class: 'btn btn-accent' %>
+      <% if current_page?(shops_path) %>
+        <%= link_to t('defaults.show'), shop_path(shop), class: 'btn' %>
+      <% end %>
+      <%= link_to t('defaults.post_review'), '#', class: 'btn btn-accent' %>
     </div>
   </div>
 </div>

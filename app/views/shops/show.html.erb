@@ -1,2 +1,4 @@
-<h1>Shops#show</h1>
-<p>Find me in app/views/shops/show.html.erb</p>
+<%= render @shop %>
+<div class="mx-auto flex justify-center">
+  <%= link_to t('defaults.back'), 'javascript:history.back()', class: 'btn' %>
+</div>
