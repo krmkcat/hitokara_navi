@@ -6,8 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      # redirect_back_or_to shops_path, success: t('.success')
-      redirect_to root_path, success: t('.success') # 仮の処理。ショップ一覧ページができたら↑に替える
+      redirect_back_or_to shops_path, success: t('.success')
     else
       flash.now[:error] = t('.failure')
       render :new, status: :unprocessable_entity

@@ -3,6 +3,9 @@ ja:
     models:
       user: ユーザー
       profile: プロフィール
+      prefecture: 都道府県
+      area: エリア
+      shop: 店舗
     attributes:
       user:
         email: メールアドレス
@@ -12,3 +15,13 @@ ja:
         name: ユーザーネーム
         gender: 性別
         age_group: 年代
+      prefecture:
+        name: 都道府県
+      area:
+        name: エリア
+      shop:
+        name: 店舗名
+        address: 住所
+        phone_number: 電話番号
+        url: 公式サイト
+        opening_hours: 営業時間
