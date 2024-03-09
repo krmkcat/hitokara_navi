@@ -82,6 +82,8 @@ ja:
     show: 詳細
     edit: 編集
     delete: 削除
+    post_review: レビューする
+    back: 戻る
     search_word: 検索ワード
     unspecified: 指定なし
     login: ログイン
