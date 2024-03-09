@@ -19,6 +19,6 @@ class Profile < ApplicationRecord
   }
 
   def self.age_group_select_options
-    age_groups.map {|key, _| [Profile.age_groups_i18n[key], key]}
+    age_groups.map { |key, _| [Profile.age_groups_i18n[key], key] }
   end
 end
