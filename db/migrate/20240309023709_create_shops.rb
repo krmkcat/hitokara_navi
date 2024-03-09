@@ -12,6 +12,6 @@ class CreateShops < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :shops, [:name, :address], unique: true
+    add_index :shops, %i[name address], unique: true
   end
 end
