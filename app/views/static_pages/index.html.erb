@@ -10,10 +10,12 @@
       </p>
 
       <div>
-        <%= link_to t('shops.index.title'), '#', class: 'btn btn-accent mt-6 mb-4 w-[140px]' %>
+        <%= link_to t('shops.index.title'), shops_path, class: 'btn btn-accent mt-6 mb-4 w-[140px]' %>
       </div>
       <div>
-        <%= link_to t('users.new.title'), signup_path, class: 'btn btn-primary w-[140px]' %>
+        <% if logged_in? == false %>
+          <%= link_to t('users.new.title'), signup_path, class: 'btn btn-secondary w-[140px]' %>
+        <% end %>
       </div>
     </div>
   </div>
