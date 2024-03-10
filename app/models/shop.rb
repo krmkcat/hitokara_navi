@@ -1,5 +1,6 @@
 class Shop < ApplicationRecord
   belongs_to :area
+  has_many :reviews, dependent: :destroy
 
   validates :area_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :address }

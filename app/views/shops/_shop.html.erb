@@ -37,7 +37,7 @@
       <% if current_page?(shops_path) %>
         <%= link_to t('defaults.show'), shop_path(shop), class: 'btn' %>
       <% end %>
-      <%= link_to t('defaults.post_review'), '#', class: 'btn btn-accent' %>
+      <%= link_to t('defaults.post_review'), new_shop_review_path(shop), class: 'btn btn-accent' %>
     </div>
   </div>
 </div>

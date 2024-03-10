@@ -6,6 +6,7 @@ ja:
       prefecture: 都道府県
       area: エリア
       shop: 店舗
+      review: レビュー
     attributes:
       user:
         email: メールアドレス
@@ -25,3 +26,8 @@ ja:
         phone_number: 電話番号
         url: 公式サイト
         opening_hours: 営業時間
+      review:
+        minimal_interaction: 接客の少なさ
+        equipment_customization: 機器設定の自由度
+        solo_friendly: ヒトカラーウェルカム度
+        comment: コメント
