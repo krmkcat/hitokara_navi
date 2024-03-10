@@ -35,4 +35,22 @@ class Review < ApplicationRecord
     sofr_4stars: 4,
     sofr_5stars: 5
   }
+
+  def self.int_stars
+    int_stars = minimal_interactions.map{ |key, _| key }
+    int_stars.shift
+    int_stars
+  end
+
+  def self.eqcust_stars
+    int_stars = equipment_customizations.map{ |key, _| key }
+    int_stars.shift
+    int_stars
+  end
+
+  def self.sofr_stars
+    int_stars = solo_friendlies.map{ |key, _| key }
+    int_stars.shift
+    int_stars
+  end
 end

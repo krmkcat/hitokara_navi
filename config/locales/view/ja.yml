@@ -38,6 +38,9 @@ ja:
     edit:
       title: プロフィール編集
       back_to_mypage: マイページへ戻る
+  reviews:
+    new:
+      title: "%{shop}のレビュー"
   password_resets:
     new:
       title: パスワードリセット申請
@@ -63,7 +66,7 @@ ja:
       destroy:
         success: ログアウトしました
     users:
-      index: 
+      index:
         title: ユーザー一覧
       show:
         title: ユーザー詳細
@@ -91,6 +94,7 @@ ja:
     terms: 利用規約
     privacy_policy: プライバシーポリシー
     contact: お問い合わせ
+    review_comment_placeholder: 上記項目に関する補足やそれ以外の情報等、なんでもどうぞ！
     flash_message:
       not_authorized: 権限がありません
       not_authenticated: ログインしてください
