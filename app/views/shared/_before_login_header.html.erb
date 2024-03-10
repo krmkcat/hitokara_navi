@@ -1,17 +1,17 @@
-<div class="navbar bg-base-100">
+<div class="navbar bg-neutral sticky top-0 z-10 rounded-box shadow-xl">
   <div class="flex-1">
     <%= link_to 'ヒトカラナビ', root_path, class: 'btn btn-ghost text-xl' %>
   </div>
   <div class="flex justify-end flex-1 px-2">
     <div class="flex items-stretch gap-4">
       <% if current_page?(signup_path) == false %>
-        <%= link_to t('users.new.title'), signup_path, class: 'btn btn-accent' %>
+        <%= link_to t('users.new.title'), signup_path, class: 'btn btn-secondary' %>
       <% end %>
       <% if current_page?(login_path) == false %>
         <%= link_to t('defaults.login'), login_path, class: 'btn btn-primary' %>
       <% end %>
       <% if current_page?(shops_path) == false %>
-        <%= link_to t('shops.index.title'), shops_path, class: 'btn btn-primary' %>
+        <%= link_to t('shops.index.title'), shops_path, class: 'btn btn-accent' %>
       <% end %>
     </div>
   </div>
