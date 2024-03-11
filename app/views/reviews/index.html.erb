@@ -1,2 +1,12 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<div>
+  <h1 class="font-bold text-4xl">
+    <%= t('.title', shop: @shop.name) %>
+  </h1>
+  <%= link_to t('defaults.post_review'), new_shop_review_path(@shop), class: 'btn btn-accent float-right' %>
+</div>
+
+<% if @reviews.present? %>
+  <%= render @reviews, shop: @shop %>
+<% else %>
+  <p><%= t '.no_reviews' %></p>
+<% end %>

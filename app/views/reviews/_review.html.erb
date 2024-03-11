@@ -1,0 +1,51 @@
+<div class="card w-96 bg-neutral mx-auto w-full my-6">
+  <div class="card-body">
+    <h2 class="card-title">
+      <%= review.user.name + 'によるレビュー' %>
+    </h2>
+    <div class="attributes space-y-4 mt-4">
+      <div class="attribute">
+        <p>
+          <%= Review.human_attribute_name(:minimal_interaction) + ':' %>
+        </p>
+        <div class="rating">
+          <% Review.int_rates.each do |rate| %>
+            <%= radio_button_tag 'review[minimal_interaction]', rate, rate == review.minimal_interaction, { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="attribute">
+        <p>
+          <%= Review.human_attribute_name(:equipment_customization) + ':' %>
+        </p>
+        <div class="rating">
+          <% Review.eqcust_rates.each do |rate| %>
+            <%= radio_button_tag 'review[equipment_customization]', rate, rate == review.equipment_customization, { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="attribute">
+        <p>
+          <%= Review.human_attribute_name(:solo_friendly) + ':' %>
+        </p>
+        <div class="rating">
+          <% Review.sofr_rates.each do |rate| %>
+            <%= radio_button_tag 'review[solo_friendly]', rate, rate == review.solo_friendly, { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="attribute">
+        <p>
+          <%= Review.human_attribute_name(:comment) + ':' %>
+          <br>
+          <%= simple_format(review.comment) %>
+        </p>
+      </div>
+    </div>
+    <div class="card-actions justify-end">
+      <% if current_page?(shop_reviews_path(shop)) %>
+        <%= link_to t('defaults.show'), review_path(review), class: 'btn' %>
+      <% end %>
+    </div>
+  </div>
+</div>

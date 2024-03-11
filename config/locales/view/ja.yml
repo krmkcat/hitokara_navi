@@ -40,7 +40,12 @@ ja:
       back_to_mypage: マイページへ戻る
   reviews:
     new:
-      title: "%{shop}のレビュー"
+      title: "%{shop}のレビューを投稿"
+    create:
+      success: レビューを投稿しました
+      failure: レビューを投稿できませんでした
+    index:
+      title: "%{shop}のレビュー一覧"
   password_resets:
     new:
       title: パスワードリセット申請
@@ -85,6 +90,7 @@ ja:
     show: 詳細
     edit: 編集
     delete: 削除
+    reviews: レビュー一覧
     post_review: レビューする
     back: 戻る
     search_word: 検索ワード
