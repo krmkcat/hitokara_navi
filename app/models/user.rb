@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def age_group
     profile.age_group
   end
+
+  def reviewed?(shop)
+    reviews.exists?(shop_id: shop.id)
+  end
 end
