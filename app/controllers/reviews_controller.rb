@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_shop, only: %i[index new]
 
   def index
-    @reviews = @shop.reviews.includes(%i[user profile])
+    @reviews = @shop.reviews.includes(%i[user profile]).order(updated_at: :desc)
   end
 
   def show
