@@ -54,8 +54,4 @@ class Review < ApplicationRecord
     sofr_rates.shift
     sofr_rates
   end
-
-  def to_be_checked?(star)
-    minimal_interaction == star
-  end
 end

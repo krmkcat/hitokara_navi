@@ -5,8 +5,8 @@
     <%= form.label :minimal_interaction, class: 'block my-2' %>
     <div class="rating">
       <%= form.radio_button :minimal_interaction, :int_unspecified, class: 'rating-hidden' %>
-      <% Review.int_stars.each do |star| %>
-          <%= form.radio_button :minimal_interaction, star, class: "mask mask-star-2 bg-orange-400" %>
+      <% Review.int_rates.each do |rate| %>
+          <%= form.radio_button :minimal_interaction, rate, class: "mask mask-star-2 bg-orange-400" %>
       <% end %>
     </div>
   </div>
@@ -15,8 +15,8 @@
     <%= form.label :equipment_customization, class: 'block my-2' %>
     <div class="rating">
       <%= form.radio_button :equipment_customization, :eqcust_unspecified, class: 'rating-hidden' %>
-      <% Review.eqcust_stars.each do |star| %>
-          <%= form.radio_button :equipment_customization, star, class: "mask mask-star-2 bg-orange-400" %>
+      <% Review.eqcust_rates.each do |rate| %>
+          <%= form.radio_button :equipment_customization, rate, class: "mask mask-star-2 bg-orange-400" %>
       <% end %>
     </div>
   </div>
@@ -25,8 +25,8 @@
     <%= form.label :solo_friendly, class: 'block my-2' %>
     <div class="rating">
     <%= form.radio_button :solo_friendly, :sofr_unspecified, class: 'rating-hidden' %>
-      <% Review.sofr_stars.each do |star| %>
-          <%= form.radio_button :solo_friendly, star, class: "mask mask-star-2 bg-orange-400" %>
+      <% Review.sofr_rates.each do |rate| %>
+          <%= form.radio_button :solo_friendly, rate, class: "mask mask-star-2 bg-orange-400" %>
       <% end %>
     </div>
   </div>
