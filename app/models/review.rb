@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :shop
+  has_one :profile, through: :user
 
   validates :user_id, presence: true
   validates :shop_id, presence: true
@@ -36,21 +37,21 @@ class Review < ApplicationRecord
     sofr_5stars: 5
   }
 
-  def self.int_stars
-    int_stars = minimal_interactions.map{ |key, _| key }
-    int_stars.shift
-    int_stars
+  def self.int_rates
+    int_rates = minimal_interactions.map{ |key, _| key }
+    int_rates.shift
+    int_rates
   end
 
-  def self.eqcust_stars
-    int_stars = equipment_customizations.map{ |key, _| key }
-    int_stars.shift
-    int_stars
+  def self.eqcust_rates
+    eqcust_rates = equipment_customizations.map{ |key, _| key }
+    eqcust_rates.shift
+    eqcust_rates
   end
 
-  def self.sofr_stars
-    int_stars = solo_friendlies.map{ |key, _| key }
-    int_stars.shift
-    int_stars
+  def self.sofr_rates
+    sofr_rates = solo_friendlies.map{ |key, _| key }
+    sofr_rates.shift
+    sofr_rates
   end
 end
