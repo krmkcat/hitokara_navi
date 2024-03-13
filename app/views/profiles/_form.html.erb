@@ -8,9 +8,9 @@
 
   <div class="my-5 flex flex-col">
     <%= form.label :gender, class: 'block my-2' %>
-    <div class="flex flex-row space-x-5">
+    <div class="flex flex-row gap-4">
       <% Profile.genders.each_key do |key| %>
-        <div class="flex flex-row content-center space-x-2">
+        <div class="flex flex-row content-center gap-2">
           <%= form.radio_button :gender, key, class: "radio radio-primary" %>
           <%= form.label :gender, Profile.genders_i18n[key], value: key %>
         </div>

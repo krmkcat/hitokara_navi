@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_shop, only: %i[index new]
+  before_action :set_review, only: %i[show edit update destroy]
 
   def index
     @reviews = @shop.reviews.includes(%i[user profile]).order(updated_at: :desc)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @review = Review.new
@@ -33,6 +33,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
   def set_shop
     @shop = Shop.find(params[:shop_id])

@@ -23,6 +23,14 @@ class User < ApplicationRecord
     profile.age_group
   end
 
+  def gender_i18n
+    profile.gender_i18n
+  end
+
+  def age_group_i18n
+    profile.age_group_i18n
+  end
+
   def reviewed?(shop)
     reviews.exists?(shop_id: shop.id)
   end
