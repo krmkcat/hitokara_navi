@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def reviewed?(shop)
     reviews.exists?(shop_id: shop.id)
   end
+
+  def own?(object)
+    id == object&.user_id
+  end
 end

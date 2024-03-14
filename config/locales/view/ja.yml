@@ -46,6 +46,8 @@ ja:
       failure: レビューを投稿できませんでした
     index:
       title: "%{shop}のレビュー一覧"
+    edit:
+      title: レビューを編集
   password_resets:
     new:
       title: パスワードリセット申請
@@ -86,6 +88,7 @@ ja:
         title: 店舗編集
   defaults:
     post: 投稿
+    update: 更新
     delete_confirm: 削除しますか？
     show: 詳細
     edit: 編集

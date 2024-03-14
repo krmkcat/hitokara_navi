@@ -88,6 +88,10 @@
     </div>
 
     <div class="card-actions justify-end mt-4">
+      <% if current_user.own?(@review) %>
+        <%= link_to t('defaults.edit'), edit_review_path(@review), class: 'btn btn-outline btn-success' %>
+        <%= link_to t('defaults.delete'), review_path(@review), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: 'btn btn-outline btn-error' %>
+      <% end %>
       <%= link_to t('defaults.back'), 'javascript:history.back()', class: 'btn' %>
     </div>
   </div>
