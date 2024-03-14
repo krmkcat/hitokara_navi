@@ -37,6 +37,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    shop = @review.shop
+    @review.destroy!
+    redirect_to shop_reviews_path(shop), success: t('defaults.flash_message.deleted', item: Review.model_name.human)
   end
 
   private
