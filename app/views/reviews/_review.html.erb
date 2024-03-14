@@ -46,15 +46,15 @@
       </div>
     </div>
 
-    <div class="card-actions justify-end">
-      <% if current_user.own?(review) %>
-        <%= link_to t('defaults.edit'), edit_review_path(review), class: 'btn btn-outline btn-success' %>
-        <%= link_to t('defaults.delete'), review_path(review), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: 'btn btn-outline btn-error' %>
-      <% end %>
-      <% if current_page?(shop_reviews_path(shop)) %>
-        <%= link_to t('defaults.show'), review_path(review), class: 'btn' %>
-      <% end %>
-      <%= link_to t('defaults.back'), 'javascript:history.back()', class: 'btn' %>
+    <div class="card-actions flex flex-col mt-4">
+      <%= render 'shared/edit_and_delete_buttons', review: review %>
+      <div class="w-full flex justify-center gap-1 mt-2">
+        <% if current_page?(shop_reviews_path(shop)) %>
+          <%= link_to t('defaults.show'), review_path(review), class: 'btn btn-wide' %>
+        <% else %>
+          <%= link_to t('defaults.back'), 'javascript:history.back()', class: 'btn btn-wide' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
