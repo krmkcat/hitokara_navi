@@ -1,13 +1,15 @@
 class ReviewsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_shop, only: %i[index new]
-  before_action :set_review, only: %i[show edit update destroy]
+  before_action :set_review, only: %i[edit update destroy]
 
   def index
     @reviews = @shop.reviews.includes(%i[user profile]).order(updated_at: :desc)
   end
 
-  def show; end
+  def show
+    @review = Review.find(params[:id])
+  end
 
   def new
     @review = Review.new
@@ -23,19 +25,27 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    if @review.update(review_params)
+      redirect_to review_path(@review), success: t('defaults.flash_message.updated', item: Review.model_name.human)
+    else
+      flash.now[:error] = t('defaults.flash_message.not_updated', item: Review.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    shop = @review.shop
+    @review.destroy!
+    redirect_to shop_reviews_path(shop), success: t('defaults.flash_message.deleted', item: Review.model_name.human)
   end
 
   private
 
   def set_review
-    @review = Review.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
   end
 
   def set_shop
@@ -43,13 +53,16 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(
-      :shop_id,
+    review_params = params.require(:review).permit(
       :minimal_interaction,
       :equipment_customization,
       :solo_friendly,
       :comment
     )
-    .merge(shop_id: params[:shop_id])
+    if params[:shop_id].present?
+      review_params.merge(shop_id: params[:shop_id])
+    else
+      review_params
+    end
   end
 end

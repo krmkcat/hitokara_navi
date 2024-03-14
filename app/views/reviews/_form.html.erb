@@ -1,35 +1,9 @@
-<%= form_with(model: [shop, review], class: "contents") do |form| %>
+<%= form_with(model: review.persisted? ? review : [shop, review], class: "contents") do |form| %>
   <%= render 'shared/error_messages', object: form.object %>
 
-  <div class="my-5 flex flex-col">
-    <%= form.label :minimal_interaction, class: 'block my-2' %>
-    <div class="rating">
-      <%= form.radio_button :minimal_interaction, :int_unspecified, class: 'rating-hidden' %>
-      <% Review.int_rates.each do |rate| %>
-          <%= form.radio_button :minimal_interaction, rate, class: "mask mask-star-2 bg-orange-400" %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="my-5 flex flex-col">
-    <%= form.label :equipment_customization, class: 'block my-2' %>
-    <div class="rating">
-      <%= form.radio_button :equipment_customization, :eqcust_unspecified, class: 'rating-hidden' %>
-      <% Review.eqcust_rates.each do |rate| %>
-          <%= form.radio_button :equipment_customization, rate, class: "mask mask-star-2 bg-orange-400" %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="my-5 flex flex-col">
-    <%= form.label :solo_friendly, class: 'block my-2' %>
-    <div class="rating">
-    <%= form.radio_button :solo_friendly, :sofr_unspecified, class: 'rating-hidden' %>
-      <% Review.sofr_rates.each do |rate| %>
-          <%= form.radio_button :solo_friendly, rate, class: "mask mask-star-2 bg-orange-400" %>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'rating_field_for_form', form: form, field: :minimal_interaction, field_short: 'int' %>
+  <%= render 'rating_field_for_form', form: form, field: :equipment_customization, field_short: 'eqcust' %>
+  <%= render 'rating_field_for_form', form: form, field: :solo_friendly, field_short: 'sofr' %>
 
   <div class="my-5 flex flex-col">
     <%= form.label :comment, class: 'block my-2' %>
@@ -37,6 +11,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit t('defaults.post'), class: 'btn btn-primary' %>
+    <%= form.submit t(review.persisted? ? 'defaults.update' : 'defaults.post'), class: 'btn btn-primary' %>
   </div>
 <% end %>

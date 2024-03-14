@@ -1,2 +1,9 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">
+    <%= t('.title') %>
+  </h1>
+
+  <%= render "form", { review: @review } %>
+
+  <%= link_to t('defaults.back'), 'javascript:history.back()', class: 'btn btn-neutral' %>
+</div>

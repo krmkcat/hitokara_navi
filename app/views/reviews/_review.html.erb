@@ -1,70 +1,60 @@
 <div class="card w-96 bg-neutral mx-auto w-full my-6">
-  <div class="card-body">
-    <h2 class="card-title">
-      <%= review.user.name + 'によるレビュー' %>
-    </h2>
-
-    <div class="review_body space-y-4 mt-4">
-      <div class="minimal_interaction">
-        <p>
-          <%= Review.human_attribute_name(:minimal_interaction) + ': ' %>
-        </p>
-        <% if review.int_unspecified? %>
-          評価なし
-        <% else %>
-          <div class="rating">
-            <% Review.int_rates.each do |rate| %>
-              <%= radio_button_tag "review_#{review.id}[minimal_interaction]", rate, rate == review.minimal_interaction, { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
-            <% end %>
-          </div>
-        <% end %>
+  <div class="card-body flex flex-col">
+    <div class="review-header flex flex-col">
+      <div class="user-name">
+        <span class="font-bold"><%= review.user.name %></span>
+        <span> さん</span>
       </div>
-
-      <div class="equipment_customization">
-        <p>
-          <%= Review.human_attribute_name(:equipment_customization) + ': ' %>
-        </p>
-        <% if review.eqcust_unspecified? %>
-          評価なし
-        <% else %>
-          <div class="rating">
-            <% Review.eqcust_rates.each do |rate| %>
-              <%= radio_button_tag "review_#{review.id}[equipment_customization]", rate, rate == review.equipment_customization, { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="solo_friendly">
-        <p>
-          <%= Review.human_attribute_name(:solo_friendly) + ': ' %>
-        </p>
-        <% if review.sofr_unspecified? %>
-          評価なし
-        <% else %>
-          <div class="rating">
-            <% Review.sofr_rates.each do |rate| %>
-              <%= radio_button_tag "review_#{review.id}[solo_friendly]", rate, rate == review.solo_friendly, { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="comment">
-        <p>
-          <%= Review.human_attribute_name(:comment) + ':' %>
-          <br>
-          <%= truncate(simple_format(review.comment), length: 100, omission: '…', escape: false, separator: '<') do %>
-            <%= link_to '（続きを読む）', review_path(review), class: 'link' %>
+      <div class="user-profile">
+        <ul class="flex flex-row gap-2 text-xs justify-end">
+          <% if review.user.gender != 'gender_unspecified' %>
+            <li><%= review.user.gender_i18n %></li>
           <% end %>
+          <% if review.user.age_group != 'age_unspecified' %>
+            <li><%= review.user.age_group_i18n %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider mt-0"></div>
+
+    <div class="review_body space-y-4">
+      <%= render 'rating_field_for_review', field: :minimal_interaction, review: review, field_short: 'int' %>
+      <%= render 'rating_field_for_review', field: :equipment_customization, review: review, field_short: 'eqcust' %>
+      <%= render 'rating_field_for_review', field: :solo_friendly, review: review, field_short: 'sofr' %>
+
+      <div class="comment space-y-1">
+        <div class="attribure_name">
+          <%= Review.human_attribute_name(:comment) + ':' %>
+        </div>
+        <div class="attribute-body p-2 rounded-lg bg-white/50 text-sm">
+          <% if current_page?(shop_reviews_path(shop)) %>
+            <%= truncate(simple_format(review.comment), length: 100, omission: '…', escape: false, separator: '<') do %>
+              <%= link_to '（続きを読む）', review_path(review), class: 'link' %>
+            <% end %>
+          <% else %>
+            <%= safe_join(review.comment.split("\n"), tag(:br)) %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="last_update text-xs">
+        <p class="text-right">
+          <%= '最終更新: ' + l(review.updated_at, format: :long) %>
         </p>
       </div>
     </div>
 
-    <div class="card-actions justify-end">
-      <% if current_page?(shop_reviews_path(shop)) %>
-        <%= link_to t('defaults.show'), review_path(review), class: 'btn' %>
-      <% end %>
+    <div class="card-actions flex flex-col mt-4">
+      <%= render 'shared/edit_and_delete_buttons', review: review %>
+      <div class="w-full flex justify-center gap-1 mt-2">
+        <% if current_page?(shop_reviews_path(shop)) %>
+          <%= link_to t('defaults.show'), review_path(review), class: 'btn btn-wide' %>
+        <% else %>
+          <%= link_to t('defaults.back'), 'javascript:history.back()', class: 'btn btn-wide' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
