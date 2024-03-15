@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :shop
   has_one :profile, through: :user
+  has_many :tags, through: :review_tags, dependent: :destroy
 
   validates :user_id, presence: true
   validates :shop_id, presence: true
