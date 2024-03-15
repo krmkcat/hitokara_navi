@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  get 'my_review', to: 'my_reviews#index'
+
   get 'mypage', to: 'profiles#show'
   resource :profile, only: %i[edit update]
 

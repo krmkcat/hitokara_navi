@@ -34,7 +34,7 @@ ja:
   profiles:
     show:
       title: マイページ
-      to_my_reviews: 投稿したレビュー一覧を見る
+      to_my_reviews: マイレビュー一覧を見る
     edit:
       title: プロフィール編集
       back_to_mypage: マイページへ戻る
@@ -48,6 +48,10 @@ ja:
       title: "%{shop}のレビュー一覧"
     edit:
       title: レビューを編集
+  my_reviews:
+    index:
+      title: マイレビュー一覧
+      back_to_mypage: マイページへ戻る
   password_resets:
     new:
       title: パスワードリセット申請
