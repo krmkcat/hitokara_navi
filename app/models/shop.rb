@@ -17,4 +17,16 @@ class Shop < ApplicationRecord
   def reviewed?
     reviews.exists?(user_id: current_user.id)
   end
+
+  def add_tag(tag)
+    tags << tag
+  end
+
+  def remove_tag(tag)
+    tags.delete(tag)
+  end
+
+  def tagged?(tag)
+    tags.exists?(id: tag.id)
+  end
 end
