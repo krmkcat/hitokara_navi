@@ -5,8 +5,6 @@ class Review < ApplicationRecord
   has_many :review_tags
   has_many :tags, through: :review_tags, dependent: :destroy
 
-  accepts_nested_attributes_for :review_tags
-
   validates :user_id, presence: true
   validates :shop_id, presence: true
   with_options presence: true do
