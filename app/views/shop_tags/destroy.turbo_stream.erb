@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "untag_button_for_tag_#{@tag.id}" do %>
+  <%= render 'tag', shop: @shop, tag: @tag %>
+<% end %>
