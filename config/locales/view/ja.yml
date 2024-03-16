@@ -52,6 +52,10 @@ ja:
     index:
       title: マイレビュー一覧
       back_to_mypage: マイページへ戻る
+  shop_tags:
+    edit:
+      title: "%{shop}のタグを編集"
+      done_and_to_show_shops: 完了して店舗詳細へ
   password_resets:
     new:
       title: パスワードリセット申請
@@ -101,6 +105,7 @@ ja:
     post_review: レビューする
     show_my_review: 投稿したレビューを見る
     back: 戻る
+    edit_tags: タグを編集
     search_word: 検索ワード
     unspecified: 指定なし
     login: ログイン

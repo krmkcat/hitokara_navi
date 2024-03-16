@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_10_052945) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_15_125039) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_10_052945) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "shop_tags", force: :cascade do |t|
+    t.bigint "shop_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id", "tag_id"], name: "index_shop_tags_on_shop_id_and_tag_id", unique: true
+    t.index ["shop_id"], name: "index_shop_tags_on_shop_id"
+    t.index ["tag_id"], name: "index_shop_tags_on_tag_id"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.bigint "area_id", null: false
     t.string "name", null: false
@@ -66,6 +76,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_10_052945) do
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_shops_on_area_id"
     t.index ["name", "address"], name: "index_shops_on_name_and_address", unique: true
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,5 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_10_052945) do
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "shops"
   add_foreign_key "reviews", "users"
+  add_foreign_key "shop_tags", "shops"
+  add_foreign_key "shop_tags", "tags"
   add_foreign_key "shops", "areas"
 end

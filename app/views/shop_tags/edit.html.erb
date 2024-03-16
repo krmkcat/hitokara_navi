@@ -1,0 +1,25 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">
+    <%= t('.title', shop: @shop.name) %>
+  </h1>
+
+  <div class="body mt-4 flex flex-col gap-y-4">
+    <div class="description">
+      <p>タップ/クリックでオンオフを切り替えられます。</p>
+    </div>
+
+    <div class="tags">
+      <% Tag.all.each do |tag| %>
+        <% if @shop.tagged?(tag) %>
+          <%= link_to tag.name, shop_tag_path(@shop.shop_tags.find{|st| st.tag_id == tag.id}), id: "untag_#{tag.id}",class: 'btn btn-xs btn-secondary', data: { turbo_method: :delete } %>
+        <% else %>
+          <%= link_to tag.name, shop_tags_path(shop_id: @shop.id, tag_id: tag.id), id: "tag_#{tag.id}",class: 'btn btn-xs btn-outline btn-secondary', data: { turbo_method: :post } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="buttons mt-4 w-full text-center">
+    <%= link_to t('.done_and_to_show_shops'), shop_path(@shop), class: 'btn btn-primary' %>
+  </div>
+</div>

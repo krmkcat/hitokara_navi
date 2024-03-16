@@ -3,36 +3,27 @@
     <h2 class="card-title">
       <%= shop.name %>
     </h2>
-    <div class="attributes space-y-4 mt-4">
-      <div class="attribute">
-        <p>
-          <%= Shop.human_attribute_name(:address) + ':' %>
-          <br>
-          <%= shop.address %>
-        </p>
-      </div>
-      <div class="attribute">
-        <p>
-          <%= Shop.human_attribute_name(:phone_number) + ':' %>
-          <br>
-          <%= shop.phone_number %>
-        </p>
-      </div>
-      <div class="attribute">
-        <p>
-          <%= Shop.human_attribute_name(:url) + ':' %>
-          <br>
-          <%= shop.url %>
-        </p>
-      </div>
-      <div class="attribute">
-        <p>
-          <%= Shop.human_attribute_name(:opening_hours) + ':' %>
-          <br>
-          <%= shop.opening_hours %>
-        </p>
-      </div>
+    <div class="tags">
+      <% shop.tags.each do |tag| %>
+        <div class="badge badge-secondary badge-sm">
+          <%= tag.name %>
+        </div>
+      <% end %>
+      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-success text-xs' %>
     </div>
+
+    <div class="attributes space-y-4 mt-4">
+      <% %i[address phone_number url opening_hours].each do |key| %>
+        <div class="attribute">
+          <p>
+            <%= Shop.human_attribute_name(key) + ':' %>
+            <br>
+            <%= shop.send("#{key}") %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+
     <div class="card-actions justify-end">
       <% if current_page?(shops_path) %>
         <%= link_to t('defaults.show'), shop_path(shop), class: 'btn' %>
