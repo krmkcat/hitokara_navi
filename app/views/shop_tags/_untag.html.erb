@@ -1,1 +1,1 @@
-<%= link_to tag.name, shop_tag_path(shop.shop_tags.find{|st| st.tag_id == tag.id}), id: "untag_button_for_tag_#{tag.id}",class: 'btn btn-xs btn-secondary', data: { turbo_method: :delete } %>
+<%= link_to tag.name, tag_path(shop.shop_tags.find_by(tag_id: tag.id)), id: "untag_button_for_tag_#{tag.id}",class: 'btn btn-xs btn-secondary', data: { turbo_method: :delete } %>

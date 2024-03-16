@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  resources :shop_tags, only: :destroy
-
-  resources :shops, only: %i[index show] do
-    resources :reviews, shallow: true
-    get 'tags', to: 'shop_tags#edit'
-    post 'tags', to: 'shop_tags#create'
+  resources :shops, only: %i[index show], shallow: true do
+    resources :reviews
+    resources :shop_tags, path: :tags, only: %i[index create destroy], as: :tags
   end
 
   get 'my_review', to: 'my_reviews#index'

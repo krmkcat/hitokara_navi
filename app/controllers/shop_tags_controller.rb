@@ -1,19 +1,18 @@
 class ShopTagsController < ApplicationController
-  before_action :set_shop, only: %i[edit create]
+  before_action :set_shop, only: %i[index create]
 
-  def edit; end
+  def index; end
 
   def create
     @tag = Tag.find(params[:tag_id])
     @shop.add_tag(@tag)
-    redirect_to shop_tags_path(@shop)
   end
 
   def destroy
     shop_tag = ShopTag.find(params[:id])
-    shop = shop_tag.shop
-    shop_tag.destroy!
-    redirect_to shop_tags_path(shop)
+    @tag = shop_tag.tag
+    @shop = shop_tag.shop
+    @shop.remove_tag(@tag)
   end
 
   private

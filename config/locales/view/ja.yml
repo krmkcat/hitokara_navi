@@ -53,7 +53,7 @@ ja:
       title: マイレビュー一覧
       back_to_mypage: マイページへ戻る
   shop_tags:
-    edit:
+    index:
       title: "%{shop}のタグを編集"
       done_and_to_show_shops: 完了して店舗詳細へ
   password_resets:
