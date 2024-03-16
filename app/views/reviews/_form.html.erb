@@ -6,6 +6,13 @@
   <%= render 'rating_field_for_form', form: form, field: :solo_friendly, field_short: 'sofr' %>
 
   <div class="my-5 flex flex-col">
+    <%= form.fields_for :review_tags do |review_tag_form| %>
+      <%= review_tag_form.label :tag_id %>
+      <%= review_tag_form.check_box :tag_id, 'タグ' %>
+    <% end %>
+  </div>
+
+  <div class="my-5 flex flex-col">
     <%= form.label :comment, class: 'block my-2' %>
     <%= form.text_area :comment, rows: 7, placeholder: t('defaults.review_comment_placeholder'), class: "textarea textarea-bordered" %>
   </div>

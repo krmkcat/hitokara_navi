@@ -39,16 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_15_125039) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "review_tags", force: :cascade do |t|
-    t.bigint "review_id", null: false
-    t.bigint "tag_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["review_id", "tag_id"], name: "index_review_tags_on_review_id_and_tag_id", unique: true
-    t.index ["review_id"], name: "index_review_tags_on_review_id"
-    t.index ["tag_id"], name: "index_review_tags_on_tag_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "shop_id", null: false
@@ -106,8 +96,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_15_125039) do
 
   add_foreign_key "areas", "prefectures"
   add_foreign_key "profiles", "users"
-  add_foreign_key "review_tags", "reviews"
-  add_foreign_key "review_tags", "tags"
   add_foreign_key "reviews", "shops"
   add_foreign_key "reviews", "users"
   add_foreign_key "shop_tags", "shops"

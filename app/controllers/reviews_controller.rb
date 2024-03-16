@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @review.review_tags.build
   end
 
   def create
@@ -57,7 +58,8 @@ class ReviewsController < ApplicationController
       :minimal_interaction,
       :equipment_customization,
       :solo_friendly,
-      :comment
+      :comment,
+      revies_tags_attributes: [:tag_id]
     )
     if params[:shop_id].present?
       review_params.merge(shop_id: params[:shop_id])

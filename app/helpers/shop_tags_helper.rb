@@ -1,0 +1,2 @@
+module ShopTagsHelper
+end

@@ -1,6 +1,7 @@
 class Shop < ApplicationRecord
   belongs_to :area
   has_many :reviews, dependent: :destroy
+  has_many :shop_tags
   has_many :tags, through: :shop_tags, dependent: :destroy
 
   validates :area_id, presence: true

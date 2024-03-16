@@ -1,0 +1,2 @@
+class ShopTagsController < ApplicationController
+end
