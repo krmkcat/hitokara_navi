@@ -25,6 +25,8 @@ ja:
     create:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
+    form:
+      type_password_again: 同じパスワードを入力してください
   shops:
     index:
       title: カラオケを探す

@@ -3,20 +3,20 @@
 
   <div class="my-5">
     <%= form.label :email %>
-    <%= form.email_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.email_field :email, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div class="my-5">
     <%= form.label :password %>
-    <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.password_field :password, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div class="my-5">
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.password_field :password_confirmation, placeholder: t('.type_password_again'),class: "input input-bordered w-full max-w-xs" %>
   </div>
 
-  <div class="inline">
+  <div class="text-center">
     <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
