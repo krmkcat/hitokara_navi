@@ -1,0 +1,7 @@
+<div class="card-actions justify-end mt-4">
+  <% if current_page?(shops_path) %>
+    <%= link_to t('defaults.show'), shop_path(shop), class: 'btn' %>
+    <%= link_to t('defaults.reviews'), shop_reviews_path(shop), class: 'btn btn-primary' %>
+  <% end %>
+  <%= render 'shared/review_button', shop: shop %>
+</div>

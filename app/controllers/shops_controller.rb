@@ -7,5 +7,6 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @reviews = @shop.reviews.order(updated_at: :desc).limit(5)
   end
 end
