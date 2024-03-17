@@ -1,0 +1,5 @@
+      <% if current_user.reviewed?(shop) %>
+        <%= link_to t('defaults.show_my_review'), review_path(shop.reviews.find_by(user_id: current_user.id)), class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to t('defaults.post_review'), new_shop_review_path(shop), class: 'btn btn-accent' %>
+      <% end %>

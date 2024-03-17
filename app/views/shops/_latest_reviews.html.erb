@@ -1,0 +1,9 @@
+<div class="card w-full bg-white">
+  <div class="card-body p-4">
+    <h2 class="card-title">レビュー</h2>
+    <%= render partial:'shops/review', collection: reviews %>
+    <div class="card-actions justify-center mt-4">
+      <%= link_to t('.show_all_reviews'), shop_reviews_path(shop), class: 'btn' %>
+    </div>
+  </div>
+</div>

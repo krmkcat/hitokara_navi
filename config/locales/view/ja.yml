@@ -31,6 +31,8 @@ ja:
       no_shops: 店舗がありません
     show:
       title: 店舗詳細
+    latest_reviews:
+      show_all_reviews: すべてのレビューを見る
   profiles:
     show:
       title: マイページ

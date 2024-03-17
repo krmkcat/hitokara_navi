@@ -1,4 +1,4 @@
-<div class="card w-96 bg-neutral mx-auto w-full my-6">
+<div class="card bg-neutral mx-auto w-full my-6">
   <div class="card-body">
     <h2 class="card-title">
       <%= shop.name %>
@@ -24,16 +24,6 @@
       <% end %>
     </div>
 
-    <div class="card-actions justify-end">
-      <% if current_page?(shops_path) %>
-        <%= link_to t('defaults.show'), shop_path(shop), class: 'btn' %>
-      <% end %>
-      <%= link_to t('defaults.reviews'), shop_reviews_path(shop), class: 'btn btn-primary' %>
-      <% if current_user.reviewed?(shop) %>
-        <%= link_to t('defaults.show_my_review'), review_path(shop.reviews.find_by(user_id: current_user.id)), class: 'btn btn-accent' %>
-      <% else %>
-        <%= link_to t('defaults.post_review'), new_shop_review_path(shop), class: 'btn btn-accent' %>
-      <% end %>
-    </div>
+    <%= render 'shop_buttons', shop: shop %>
   </div>
 </div>
