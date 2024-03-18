@@ -4,11 +4,7 @@
   </h1>
 </div>
 <div class="flex justify-end my-4">
-  <% if current_user.reviewed?(@shop) %>
-    <%= link_to t('defaults.show_my_review'), review_path(@shop.reviews.find_by(user_id: current_user.id)), class: 'btn btn-accent' %>
-  <% else %>
-    <%= link_to t('defaults.post_review'), new_shop_review_path(@shop), class: 'btn btn-accent' %>
-  <% end %>
+  <%= render 'shared/review_button', shop: @shop %>
 </div>
 
 <% if @reviews.present? %>
