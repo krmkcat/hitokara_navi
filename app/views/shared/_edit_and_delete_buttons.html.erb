@@ -1,4 +1,4 @@
-<% if current_user.own?(review) %>
+<% if logged_in? && current_user.own?(review) %>
   <div class="w-full flex justify-end gap-1">
     <%= link_to t('defaults.edit'), edit_review_path(review), class: 'btn btn-outline btn-success btn-sm' %>
     <%= link_to t('defaults.delete'), review_path(review), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: 'btn btn-outline btn-error btn-sm' %>
