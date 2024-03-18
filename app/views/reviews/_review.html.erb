@@ -29,12 +29,16 @@
           <%= Review.human_attribute_name(:comment) + ':' %>
         </div>
         <div class="attribute-body p-2 rounded-lg bg-white/50 text-sm">
-          <% if current_page?(shop_reviews_path(shop)) %>
-            <%= truncate(simple_format(review.comment), length: 100, omission: '…', escape: false, separator: '<') do %>
-              <%= link_to '（続きを読む）', review_path(review), class: 'link' %>
-            <% end %>
+          <% if review.comment.blank? %>
+            <p>コメントなし</p>
           <% else %>
-            <%= safe_join(review.comment.split("\n"), tag(:br)) %>
+            <% if current_page?(shop_reviews_path(shop)) %>
+              <%= truncate(simple_format(review.comment), length: 100, omission: '…', escape: false, separator: '<') do %>
+                <%= link_to '（続きを読む）', review_path(review), class: 'link' %>
+              <% end %>
+            <% else %>
+              <%= safe_join(review.comment&.split("\n"), tag(:br)) %>
+            <% end %>
           <% end %>
         </div>
       </div>
