@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
-  before_action :set_shop, only: %i[index new]
+  before_action :set_shop, only: :index
   before_action :set_review, only: %i[edit update destroy]
+  before_action :check_reviewd_or_not, only: :new
 
   def index
     @reviews = @shop.reviews.includes(%i[user profile]).order(updated_at: :desc)
@@ -43,6 +44,13 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def check_reviewd_or_not
+    set_shop
+    if current_user.reviewed?(@shop)
+      redirect_to review_path(current_user.reviews.find_by(shop_id: @shop.id)), warning: t('defaults.already_reviewed')
+    end
+  end
 
   def set_review
     @review = current_user.reviews.find(params[:id])
