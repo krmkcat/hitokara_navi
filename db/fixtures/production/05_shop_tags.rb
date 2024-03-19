@@ -1,8 +1,14 @@
-ShopTag.seed(:shop_id, :tag_id,
-  { shop_id: 1, tag_id: 1 },
-  { shop_id: 1, tag_id: 2 },
-  { shop_id: 1, tag_id: 3 },
-  { shop_id: 2, tag_id: 1 },
-  { shop_id: 2, tag_id: 2 },
-  { shop_id: 2, tag_id: 4 }
-)
+number_of_shops = Shop.count
+number_of_tags = Tag.count
+
+tags = Tag.pluck(:id)
+
+number_of_shops.times do |n_s|
+  random_tags = tags.shuffle
+  rand(number_of_tags).times do |n_t|
+    ShopTag.seed(:shop_id, :tag_id) do |s|
+      s.shop_id = n_s + 1
+      s.tag_id = random_tags.shift
+    end
+  end
+end
