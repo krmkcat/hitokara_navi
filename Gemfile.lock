@@ -103,6 +103,8 @@ GEM
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erubi (1.12.0)
+    faker (3.2.3)
+      i18n (>= 1.8.11, < 2)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
@@ -308,6 +310,7 @@ DEPENDENCIES
   debug
   dotenv
   enum_help
+  faker
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

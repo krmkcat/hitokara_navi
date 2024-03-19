@@ -6,7 +6,7 @@ admin = User.create!(
         )
 
 generals = []
-5.times do |n|
+20.times do |n|
   generals << User.create!(
                 email: "general#{n + 1}@test",
                 password: 'password',
@@ -21,7 +21,7 @@ genders = Profile.genders.keys
 age_groups = Profile.age_groups.keys
 
 generals.size.times do |n|
-  generals[n - 1].create_profile!(
+  generals[n].create_profile!(
                     name: "一般#{n + 1}",
                     gender: genders.sample,
                     age_group: age_groups.sample

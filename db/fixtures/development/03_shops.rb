@@ -1,29 +1,15 @@
-Shop.seed(
-  { id: 1,
-    area_id: 1,
-    name: 'ニャンカラ栄店',
-    address: 'キャットタワー3F',
-    phone_number: '052-111-1111',
-    url: 'https://nyankara.com/sakae',
-    opening_hours: '11:00-24:00',
-    latitude: 1.1,
-    longitude: 1.1 },
-  { id: 2,
-    area_id: 2,
-    name: 'ニャンカラ名古屋駅前店',
-    address: '段ボールの中',
-    phone_number: '052-222-2222',
-    url: 'https://nyankara.com/meieki',
-    opening_hours: '11:00-24:00',
-    latitude: 1.1,
-    longitude: 1.1 },
-  { id: 3,
-    area_id: 1,
-    name: 'カラオケWanWan栄店',
-    address: 'ドッグランの真ん中',
-    phone_number: '052-333-3333',
-    url: 'https://karaoke-wanwan.com/sakae',
-    opening_hours: '9:00-21:00',
-    latitude: 1.1,
-    longitude: 1.1 }
-)
+number_of_areas = Area.count
+
+20.times do |n|
+  Shop.seed do |s|
+    s.id = n + 1
+    s.area_id = rand(1..number_of_areas)
+    s.name = Faker::Restaurant.name.unique
+    s.address = Faker::Address.full_address.unique
+    s.phone_number = Faker::PhoneNumber.phone_number
+    s.url = Faker::Internet.url.unique
+    s.opening_hours = '11:00〜24:00'
+    s.latitude = Faker::Address.latitude
+    s.longitude = Faker::Address.longitude
+  end
+end
