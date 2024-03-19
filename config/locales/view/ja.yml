@@ -102,6 +102,7 @@ ja:
     post: 投稿
     update: 更新
     delete_confirm: 削除しますか？
+    already_reviewed: レビューを投稿済みです
     show: 詳細
     edit: 編集
     delete: 削除
