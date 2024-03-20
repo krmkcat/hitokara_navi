@@ -13,6 +13,9 @@ class Shop < ApplicationRecord
     validates :latitude
     validates :longitude
   end
+  validates :int_average, presence: true, numericality: { in: 0..5 }
+  validates :eqcust_average, presence: true, numericality: { in: 0..5 }
+  validates :sofr_average, presence: true, numericality: { in: 0..5 }
 
   def reviewed?
     reviews.exists?(user_id: current_user.id)
@@ -28,5 +31,23 @@ class Shop < ApplicationRecord
 
   def tagged?(tag)
     tags.exists?(id: tag.id)
+  end
+
+  def update_rating_averages
+    update_average(:minimal_interaction, :int_average, :int_unspecified)
+    update_average(:equipment_customization, :eqcust_average, :eqcust_unspecified)
+    update_average(:solo_friendly, :sofr_average, :sofr_unspecified)
+  end
+
+  private
+
+  def update_average(review_attr, shop_attr, exclude_attr)
+    calculatable_reviews = reviews.where.not(review_attr => exclude_attr)
+    new_average = if calculatable_reviews.present?
+                    calculatable_reviews.average(review_attr)
+                  else
+                    0
+                  end
+    update!(shop_attr => new_average)
   end
 end
