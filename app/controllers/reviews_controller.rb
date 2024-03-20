@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to review_path(@review), success: t('defaults.flash_message.updated', item: Review.model_name.human)
+      redirect_to shop_path(@review.shop), success: t('defaults.flash_message.updated', item: Review.model_name.human)
     else
       flash.now[:error] = t('defaults.flash_message.not_updated', item: Review.model_name.human)
       render :edit, status: :unprocessable_entity

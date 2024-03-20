@@ -12,7 +12,13 @@
       <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-success text-xs' %>
     </div>
 
-    <div class="attributes space-y-4 mt-4">
+    <div class="rating_averages gap-y-1">
+      <%= render 'rating_field_for_shop', shop: shop, field: :int_average %>
+      <%= render 'rating_field_for_shop', shop: shop, field: :eqcust_average %>
+      <%= render 'rating_field_for_shop', shop: shop, field: :sofr_average %>
+    </div>
+
+    <div class="static-informations space-y-4 mt-4 text-sm">
       <% %i[address phone_number url opening_hours].each do |key| %>
         <div class="attribute">
           <p>
