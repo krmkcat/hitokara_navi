@@ -1,5 +1,6 @@
 class Shop < ApplicationRecord
   belongs_to :area
+  has_one :prefecture, through: :area
   has_many :reviews, dependent: :destroy
   has_many :shop_tags
   has_many :tags, through: :shop_tags, dependent: :destroy
@@ -37,6 +38,18 @@ class Shop < ApplicationRecord
     update_average(:minimal_interaction, :int_average, :int_unspecified)
     update_average(:equipment_customization, :eqcust_average, :eqcust_unspecified)
     update_average(:solo_friendly, :sofr_average, :sofr_unspecified)
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name address int_average eqcust_average sofr_average]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[prefecture area reviews tags]
+  end
+
+  def self.rating_average_attributes
+    %i[int_average eqcust_average sofr_average]
   end
 
   private

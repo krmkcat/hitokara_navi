@@ -2,7 +2,8 @@ class ShopsController < ApplicationController
   skip_before_action :require_login
 
   def index
-    @shops = Shop.all
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result(distinct: true)
   end
 
   def show

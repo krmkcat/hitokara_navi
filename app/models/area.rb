@@ -4,4 +4,8 @@ class Area < ApplicationRecord
 
   validates :prefecture_id, presence: true
   validates :name, presence: true, uniqueness: true
+
+  def self.ransackable_attributes(auth_object = nil)
+    ['name']
+  end
 end
