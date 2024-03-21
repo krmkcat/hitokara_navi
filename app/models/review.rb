@@ -59,4 +59,8 @@ class Review < ApplicationRecord
     sofr_rates.shift
     sofr_rates
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ['comment']
+  end
 end
