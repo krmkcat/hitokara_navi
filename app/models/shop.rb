@@ -18,9 +18,9 @@ class Shop < ApplicationRecord
   validates :eqcust_average, presence: true, numericality: { in: 0..5 }
   validates :sofr_average, presence: true, numericality: { in: 0..5 }
 
-  scope :by_int_average, ->(int_av) { where('int_average => ?', int_av) }
-  scope :by_eqcust_average, ->(eqcust_av) { where('eqcust_average => ?', eqcust_av) }
-  scope :by_sofr_average, ->(sofr_av) { where('sofr_average => ?', sofr_av) }
+  scope :by_int_average, ->(int_av) { where('int_average >= ?', int_av) }
+  scope :by_eqcust_average, ->(eqcust_av) { where('eqcust_average >= ?', eqcust_av) }
+  scope :by_sofr_average, ->(sofr_av) { where('sofr_average >= ?', sofr_av) }
   scope :name_or_address_contain, ->(word) { where('name LIKE ?', "%#{word}%").or(where('address LIKE ?', "%#{word}%")) }
 
   def reviewed?
@@ -43,6 +43,18 @@ class Shop < ApplicationRecord
     update_average(:minimal_interaction, :int_average, :int_unspecified)
     update_average(:equipment_customization, :eqcust_average, :eqcust_unspecified)
     update_average(:solo_friendly, :sofr_average, :sofr_unspecified)
+  end
+
+  def self.average_attributes
+    %i[int_average eqcust_average sofr_average]
+  end
+
+  def self.averages_select_options
+    [['★☆☆☆☆ 以上', 1],
+     ['★★☆☆☆ 以上', 2],
+     ['★★★☆☆ 以上', 3],
+     ['★★★★☆ 以上', 4],
+     ['★★★★★', 5]]
   end
 
   private
