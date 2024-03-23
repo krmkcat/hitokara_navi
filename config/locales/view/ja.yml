@@ -101,23 +101,24 @@ ja:
   defaults:
     post: 投稿
     update: 更新
-    delete_confirm: 削除しますか？
-    already_reviewed: レビューを投稿済みです
     show: 詳細
     edit: 編集
     delete: 削除
+    search: 検索
+    login: ログイン
+    logout: ログアウト
     reviews: レビュー一覧
+    search_words: 検索ワード
+    unspecified: 指定なし
+    terms: 利用規約
+    privacy_policy: プライバシーポリシー
+    contact: お問い合わせ
     post_review: レビューする
     show_my_review: 投稿したレビューを見る
     back: 戻る
     edit_tags: タグを編集
-    search_words: 検索ワード
-    unspecified: 指定なし
-    login: ログイン
-    logout: ログアウト
-    terms: 利用規約
-    privacy_policy: プライバシーポリシー
-    contact: お問い合わせ
+    delete_confirm: 削除しますか？
+    already_reviewed: レビューを投稿済みです
     review_comment_placeholder: 上記項目に関する補足やそれ以外の情報等、なんでもどうぞ！
     flash_message:
       not_authorized: 権限がありません
