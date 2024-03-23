@@ -1,8 +1,8 @@
 <div class="rounded bg-white mx-auto w-full my-6 text-sm">
   <div class="card-body">
     <div class="form">
-      <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get do |f| %>
-        <div class="fields flex flex-col gap-y-3">
+      <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } } do |f| %>
+        <div class="fields flex flex-col gap-y-6">
           <div class="search_field">
             <%= f.search_field :words, placeholder: t('defaults.search_words'), class: 'input input-bordered w-full max-w-xs' %>
           </div>
@@ -10,14 +10,23 @@
           <div class="rating_averages flex flex-col gap-y-2">
             <% Shop.average_attributes.each do |attr| %>
               <div class="average_items">
-                <%= f.label attr, Shop.human_attribute_name(attr) %>
+                <%= f.label attr, Shop.human_attribute_name(attr), class: 'text-xs' %>
                 <%= f.select attr, Shop.averages_select_options, { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm w-full max-w-xs' %>
               </div>
             <% end %>
           </div>
 
+          <div class="tags flex flex-col gap-y-2">
+            <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { include_hidden: false } do |b| %>
+              <div class="tag">
+                <%= b.check_box class: 'checkbox checkbox-sm checkbox-secondary align-middle' %>
+                <%= b.label class: 'align-middle' %>
+              </div>
+            <% end %>
+          </div>
+
         </div>
-        <div class="buttons text-center mt-6">
+        <div class="buttons text-center mt-8">
           <%= f.submit t('defaults.search'), class: 'btn btn-accent btn-sm' %>
         </div>
       <% end %>

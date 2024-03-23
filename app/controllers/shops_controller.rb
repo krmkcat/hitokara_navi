@@ -14,6 +14,6 @@ class ShopsController < ApplicationController
   private
 
   def search_params
-    params[:q]&.permit(%i[words int_average eqcust_average sofr_average])
+    params[:q]&.permit(:words, :int_average, :eqcust_average, :sofr_average, tag_ids: [])
   end
 end
