@@ -1,21 +1,13 @@
 <div class="rounded bg-white mx-auto w-full my-6">
   <div class="card-body">
     <div class="form">
-      <%= search_form_for q do |f| %>
-        <div class="form-fields flex flex-col gap-y-2">
-          <div class="form-field">
-            <%= f.search_field :name_or_address_or_reviews_comment_cont, placeholder: t('defaults.search_word'), class: 'input input-bordered w-full max-w-xs' %>
+      <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get do |f| %>
+        <div class="fields">
+          <div class="field">
+            <%= f.search_field :words, placeholder: t('defaults.search_words'), class: 'input input-bordered w-full max-w-xs' %>
           </div>
-
-          <% Shop.rating_average_attributes.each do |attr| %>
-            <div class="form-field">
-              <%= f.label attr, class: 'text-sm' %>
-              <%= f.select "#{attr}_gteq".to_sym, [['★☆☆☆☆ 以上', 1], ['★★☆☆☆ 以上', 2], ['★★★☆☆ 以上', 3], ['★★★★☆ 以上', 4], ['★★★★★ 以上', 5]], { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm w-full max-w-xs' %>
-            </div>
-          <% end %>
         </div>
-
-        <div class="form-button mt-6 text-center">
+        <div class="buttons text-center mt-4">
           <%= f.submit class: 'btn btn-accent btn-sm' %>
         </div>
       <% end %>
