@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :password_resets, only: %i[create edit update]
+  resource :password_resets, only: :new
+
   get 'prefectures/:prefecture_id/areas', to: 'areas#index', as: :prefecture_areas
 
   resources :shops, only: %i[index show], shallow: true do
