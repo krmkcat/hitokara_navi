@@ -6,6 +6,7 @@ class SearchShopsForm
   attribute :int_average, :integer
   attribute :eqcust_average, :integer
   attribute :sofr_average, :integer
+  attribute :area_id, :integer
 
   attr_reader :tag_ids
 
@@ -20,6 +21,7 @@ class SearchShopsForm
     relation = relation.by_eqcust_average(eqcust_average) if eqcust_average.present?
     relation = relation.by_sofr_average(sofr_average) if sofr_average.present?
     relation = relation.by_tag_ids(tag_ids) if tag_ids.present?
+    relation = relation.by_area_id(area_id) if area_id.present?
     search_with_name_or_address(relation)
   end
 
@@ -32,12 +34,6 @@ class SearchShopsForm
   def search_with_name_or_address(relation)
     search_words.inject(relation) do |rel, word|
       rel.name_or_address_contain(word)
-    end
-  end
-
-  def search_with_tag_ids(relation)
-    tag_ids.inject(relation) do |rel, id|
-      rel.by_tag_id(id)
     end
   end
 end

@@ -1,0 +1,3 @@
+<%= turbo_stream.update 'areas_select_box' do %>
+  <%= select :q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm w-full max-w-xs' %>
+<% end %>

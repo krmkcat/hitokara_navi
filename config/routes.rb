@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'prefectures/:prefecture_id/areas', to: 'areas#index', as: :prefecture_areas
+
   resources :shops, only: %i[index show], shallow: true do
     resources :reviews
     resources :shop_tags, path: :tags, only: %i[index create destroy], as: :tags
