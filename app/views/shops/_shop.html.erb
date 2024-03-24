@@ -14,7 +14,7 @@
           <%= tag.name %>
         </div>
       <% end %>
-      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-success text-xs' %>
+      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-success text-xs', data: { turbo: false } %>
     </div>
 
     <div class="rating_averages gap-y-1">
