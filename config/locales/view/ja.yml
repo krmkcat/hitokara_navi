@@ -30,7 +30,7 @@ ja:
   shops:
     index:
       title: カラオケを探す
-      no_shops: 店舗がありません
+      no_shops: 該当する店舗がありません
     show:
       title: 店舗詳細
     latest_reviews:

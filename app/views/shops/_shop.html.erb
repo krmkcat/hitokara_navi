@@ -3,6 +3,11 @@
     <h2 class="card-title">
       <%= shop.name %>
     </h2>
+
+    <div class="area">
+      <%= shop.area.name %> 
+    </div>
+
     <div class="tags">
       <% shop.tags.each do |tag| %>
         <div class="badge badge-secondary badge-sm">

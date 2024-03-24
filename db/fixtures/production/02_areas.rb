@@ -4,5 +4,6 @@ Area.seed(:prefecture_id, :name,
   { prefecture_id: 22, name: '尾張北東部エリア' },
   { prefecture_id: 22, name: '知多エリア' },
   { prefecture_id: 22, name: '西三河エリア' },
-  { prefecture_id: 22, name: '東三河エリア' }
+  { prefecture_id: 22, name: '東三河エリア' },
+  { prefecture_id: 13, name: '渋谷区エリア' }
 )
