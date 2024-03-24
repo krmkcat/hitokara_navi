@@ -21,7 +21,11 @@ class Shop < ApplicationRecord
   scope :by_int_average, ->(int_av) { where('int_average >= ?', int_av) }
   scope :by_eqcust_average, ->(eqcust_av) { where('eqcust_average >= ?', eqcust_av) }
   scope :by_sofr_average, ->(sofr_av) { where('sofr_average >= ?', sofr_av) }
-  scope :name_or_address_contain, ->(word) { where('name LIKE ?', "%#{word}%").or(where('address LIKE ?', "%#{word}%")) }
+  scope :name_or_address_contain, ->(word) { where('shops.name LIKE ?', "%#{word}%").or(where('address LIKE ?', "%#{word}%")) }
+  scope :by_prefecture_id, ->(prefecture_id) {
+    joins(:area)
+      .where(area: { prefecture_id: prefecture_id })
+  }
   scope :by_area_id, ->(area_id) { where(area_id: area_id) }
   scope :by_tag_ids, ->(tag_ids) {
     joins(:shop_tags)
