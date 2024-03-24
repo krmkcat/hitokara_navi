@@ -4,10 +4,10 @@
       <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } } do |f| %>
         <div class="fields flex flex-col gap-y-6">
           <div class="area">
-            <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: 'Turbo.visit(value)', class: 'select select-bordered select-sm w-full max-w-xs' } %>
-            <div id="areas_select_box">
+            <%= turbo_frame_tag 'location_select_boxes' do %>
+              <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location_select_boxes'})", class: 'select select-bordered select-sm w-full max-w-xs' } %>
               <%= f.select :area_id, [[t('defaults.unspecified'), nil]], {}, { disabled: true, class: 'select select-bordered select-sm w-full max-w-xs' } %>
-            </div>
+            <% end %>
           </div>
 
           <div class="search_field">
