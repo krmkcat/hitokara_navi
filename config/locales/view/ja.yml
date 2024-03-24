@@ -117,6 +117,8 @@ ja:
     show_my_review: 投稿したレビューを見る
     back: 戻る
     edit_tags: タグを編集
+    select_prefecture: 都道府県を選択
+    select_area: エリアを選択
     delete_confirm: 削除しますか？
     already_reviewed: レビューを投稿済みです
     review_comment_placeholder: 上記項目に関する補足やそれ以外の情報等、なんでもどうぞ！

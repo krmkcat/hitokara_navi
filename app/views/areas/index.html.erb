@@ -1,4 +1,13 @@
-<%= turbo_frame_tag 'location_select_boxes' do %>
-  <%= select :q, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }.unshift([t('defaults.unspecified'), shops_path]), { selected: prefecture_areas_path(@prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location_select_boxes'})", class: 'select select-bordered select-sm w-full max-w-xs' } %>
-  <%= select :q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.unspecified') }, { class: 'select select-bordered select-sm w-full max-w-xs' } %>
+<%= turbo_frame_tag 'location-select-boxes' do %>
+  <div class="location">
+    <div class="select-boxes flex flex-col gap-y-1">
+      <%= select :q, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }.unshift([t('defaults.select_prefecture'), shops_path]), { selected: prefecture_areas_path(@prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location_select_boxes'})", class: 'select select-bordered select-xs w-1/2 max-w-xs' } %>
+      <%= select :q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.select_area') }, { class: 'select select-bordered select-sm w-full max-w-xs' } %>
+    </div>
+    <div class="warning p-1 text-xs text-error mt-0.5">
+      <p class="text-xs text-error">
+        都道府県のみでの絞り込みはできません。
+      </p>
+    </div>
+  </div>
 <% end %>
