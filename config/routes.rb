@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
+  resources :password_resets, only: %i[create edit update]
+  resource :password_resets, only: :new
+
   get 'prefectures/:prefecture_id/areas', to: 'areas#index', as: :prefecture_areas
 
   resources :shops, only: %i[index show], shallow: true do
@@ -19,8 +24,4 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   root 'static_pages#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

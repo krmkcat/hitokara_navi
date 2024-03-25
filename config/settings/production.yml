@@ -1,0 +1,3 @@
+default_url_options:
+  host: hitokara-navi.onrender.com
+  protocol: https

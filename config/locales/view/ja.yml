@@ -66,6 +66,7 @@ ja:
       submit: 送信
     create:
       success: パスワードリセット手順を送信しました
+      require_email: メールアドレスを入力してください
     edit:
       title: パスワードリセット
     update:

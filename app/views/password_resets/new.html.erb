@@ -1,0 +1,18 @@
+<div class="mx-auto md:w-2/3 w-full max-w-xs">
+  <div class="title mb-4 text-center">
+    <h1 class="font-bold text-xl">
+      <%= t '.title' %>
+    </h1>
+  </div>
+  <div class="form">
+    <%= form_with url: password_resets_path, data: {turbo_method: :post} do |f| %>
+      <div class="email">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'input input-bordered w-full max-w-xs' %>
+      </div>
+      <div class="button text-center mt-6">
+        <%= f.submit t('.submit'), class: 'btn btn-accent' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -22,7 +22,5 @@
 
 <div class='text-center mt-2'>
   <%= link_to t('.to_signup_page'), signup_path, class: 'btn btn-link btn-xs' %>
-  <!-- パスワードリセット申請ページができるまでコメントアウト
-  <%= link_to t('.password_forget'), '#' %>
-  -->
+  <%= link_to t('.password_forget'), new_password_resets_path, class: 'btn btn-link btn-xs' %>
 </div>
