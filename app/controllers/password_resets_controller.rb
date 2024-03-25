@@ -4,9 +4,14 @@ class PasswordResetsController < ApplicationController
   def new; end
 
   def create
-    @user = User.find_by_email(params[:email])
-    @user&.deliver_reset_password_instructions!
-    redirect_to login_path, success: t('.success')
+    if params[:email].present?
+      @user = User.find_by_email(params[:email])
+      @user&.deliver_reset_password_instructions!
+      redirect_to login_path, success: t('.success')
+    else
+      flash.now[:error] = t('.require_email')
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
