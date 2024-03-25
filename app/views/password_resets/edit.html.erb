@@ -1,23 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 col-lg-8 mx-auto">
-      <h1><%= t '.title' %></h1>
-      <%= form_with model: @user, url: password_reset_url(@token), data: {turbo_method: :put} do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="mb-3">
-          <%= f.label :email, class: 'form-label' %><br>
-          <%= @user.email %>
+<div class="mx-auto md:w-2/3 w-full max-w-xs">
+  <div class="title mb-4 text-center">
+    <h1 class="font-bold text-xl">
+      <%= t '.title' %>
+    </h1>
+  </div>
+  <div class="form">
+    <%= form_with model: @user, url: password_reset_url(@token), data: {turbo_method: :put} do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="fields flex flex-col gap-y-3">
+        <div class="email">
+          <%= f.label :email %>
+          <span class="underline">
+            <%= @user.email %>
+          </span>
         </div>
-        <div class="mb-3">
-          <%= f.label :password, class: 'form-label' %>
-          <%= f.password_field :password, class: 'form-control' %>
+        <div class="password">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'input input-bordered w-full max-w-xs' %>
         </div>
-        <div class="mb-3">
-          <%= f.label :password_confirmation, class: 'form-label' %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <div class="password-confirmaiton">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: 'input input-bordered w-full max-w-xs' %>
         </div>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+      </div>
+      <div class="button text-center mt-6">
+        <%= f.submit class: 'btn btn-accent' %>
+      </div>
+    <% end %>
   </div>
 </div>
