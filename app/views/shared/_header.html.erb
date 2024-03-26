@@ -20,7 +20,7 @@
             <%= link_to t('profiles.show.title'), mypage_path %>
           </li>
           <li>
-            <%= link_to t('defaults.contact'), '#' %>
+            <%= mail_to ENV['GMAIL_USERNAME'], t('defaults.contact') %>
           </li>
           <li>
             <%= link_to t('defaults.logout'), logout_path, data: {turbo_method: :delete} %>
