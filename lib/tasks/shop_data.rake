@@ -48,7 +48,7 @@ namespace :shop_data do
     end
 
     bom = "\xEF\xBB\xBF"
-    csv_index = %w[google_places_id google_places_name name full_address prefecture short_address phone_number url google_maps_url mon_opening_hours tue_opening_hours wed_opening_hours thu_opening_hours fri_opening_hours sat_opening_hours sun_opening_hours latitude longitude]
+    csv_index = %w[google_places_id google_places_name name full_address prefecture short_address phone_number url google_maps_url opening_hours latitude longitude]
 
     shop_list_for_csv = shop_list.map do |shop|
       [shop['id'],
@@ -60,13 +60,20 @@ namespace :shop_data do
        shop['nationalPhoneNumber'],
        shop['websiteUri'],
        shop['googleMapsUri'],
-       shop['regularOpeningHours']['weekdayDescriptions'][0],
+      #  shop['regularOpeningHours']['weekdayDescriptions'][0],
+      #  shop['regularOpeningHours']['weekdayDescriptions'][1],
+      #  shop['regularOpeningHours']['weekdayDescriptions'][2],
+      #  shop['regularOpeningHours']['weekdayDescriptions'][3],
+      #  shop['regularOpeningHours']['weekdayDescriptions'][4],
+      #  shop['regularOpeningHours']['weekdayDescriptions'][5],
+      #  shop['regularOpeningHours']['weekdayDescriptions'][6],
+       [shop['regularOpeningHours']['weekdayDescriptions'][0],
        shop['regularOpeningHours']['weekdayDescriptions'][1],
        shop['regularOpeningHours']['weekdayDescriptions'][2],
        shop['regularOpeningHours']['weekdayDescriptions'][3],
        shop['regularOpeningHours']['weekdayDescriptions'][4],
        shop['regularOpeningHours']['weekdayDescriptions'][5],
-       shop['regularOpeningHours']['weekdayDescriptions'][6],
+       shop['regularOpeningHours']['weekdayDescriptions'][6]].join('\n'),
        shop['location']['latitude'].to_f.round(6),
        shop['location']['longitude'].to_f.round(6)]
     end
