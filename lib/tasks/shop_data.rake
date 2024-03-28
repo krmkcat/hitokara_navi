@@ -1,6 +1,7 @@
 require 'net/http'
 require 'uri'
 require 'json'
+require 'csv'
 
 namespace :shop_data do
   desc '店舗情報を取得'
@@ -46,12 +47,36 @@ namespace :shop_data do
       shop_list << detail_result
     end
 
-    shop_data = { shops: shop_list }
+    bom = "\xEF\xBB\xBF"
+    csv_index = %w[google_places_id google_places_name name full_address prefecture short_address phone_number url google_maps_url mon_opening_hours tue_opening_hours wed_opening_hours thu_opening_hours fri_opening_hours sat_opening_hours sun_opening_hours latitude longitude]
 
-    # JSONをファイルに保存
-    # ハッシュに変換せず直接出力する場合はpretty_generateは不要
-    File.open("#{Rails.root.join('csv_files')}/shop_details.json", 'w') do |f|
-      f.write(JSON.pretty_generate(shop_data))
+    shop_list_for_csv = shop_list.map do |shop|
+      [shop['id'],
+       shop['name'],
+       shop['displayName']['text'],
+       shop['formattedAddress'],
+       shop['addressComponents'].find { |i| i['types'].include?('administrative_area_level_1') }['longText'],
+       shop['shortFormattedAddress'],
+       shop['nationalPhoneNumber'],
+       shop['websiteUri'],
+       shop['googleMapsUri'],
+       shop['regularOpeningHours']['weekdayDescriptions'][0],
+       shop['regularOpeningHours']['weekdayDescriptions'][1],
+       shop['regularOpeningHours']['weekdayDescriptions'][2],
+       shop['regularOpeningHours']['weekdayDescriptions'][3],
+       shop['regularOpeningHours']['weekdayDescriptions'][4],
+       shop['regularOpeningHours']['weekdayDescriptions'][5],
+       shop['regularOpeningHours']['weekdayDescriptions'][6],
+       shop['location']['latitude'].to_f.round(6),
+       shop['location']['longitude'].to_f.round(6)]
+    end
+
+    File.open("#{Rails.root.join('csv_files')}/shop_data.csv", 'w') do |file|
+      file.print(bom)
+      file.puts(csv_index.to_csv)
+      shop_list_for_csv.each do |shop|
+        file.puts(shop.to_csv)
+      end
     end
   end
 end
