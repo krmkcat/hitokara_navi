@@ -11,7 +11,7 @@ namespace :shop_data do
     api_key = ENV['GOOGLE_API_KEY']
 
     # リクエストボディとヘッダー
-    text_query = 'カラオケJOYJOY 新瑞橋店 愛知県'
+    text_query = '愛知県名古屋市天白区 カラオケ'
     request_body = {
       "textQuery" => text_query
     }.to_json
@@ -60,20 +60,15 @@ namespace :shop_data do
        shop['nationalPhoneNumber'],
        shop['websiteUri'],
        shop['googleMapsUri'],
-      #  shop['regularOpeningHours']['weekdayDescriptions'][0],
-      #  shop['regularOpeningHours']['weekdayDescriptions'][1],
-      #  shop['regularOpeningHours']['weekdayDescriptions'][2],
-      #  shop['regularOpeningHours']['weekdayDescriptions'][3],
-      #  shop['regularOpeningHours']['weekdayDescriptions'][4],
-      #  shop['regularOpeningHours']['weekdayDescriptions'][5],
-      #  shop['regularOpeningHours']['weekdayDescriptions'][6],
-       [shop['regularOpeningHours']['weekdayDescriptions'][0],
-       shop['regularOpeningHours']['weekdayDescriptions'][1],
-       shop['regularOpeningHours']['weekdayDescriptions'][2],
-       shop['regularOpeningHours']['weekdayDescriptions'][3],
-       shop['regularOpeningHours']['weekdayDescriptions'][4],
-       shop['regularOpeningHours']['weekdayDescriptions'][5],
-       shop['regularOpeningHours']['weekdayDescriptions'][6]].join('\n'),
+       if shop['regularOpeningHours'].present?
+         [shop['regularOpeningHours']['weekdayDescriptions'][0],
+          shop['regularOpeningHours']['weekdayDescriptions'][1],
+          shop['regularOpeningHours']['weekdayDescriptions'][2],
+          shop['regularOpeningHours']['weekdayDescriptions'][3],
+          shop['regularOpeningHours']['weekdayDescriptions'][4],
+          shop['regularOpeningHours']['weekdayDescriptions'][5],
+          shop['regularOpeningHours']['weekdayDescriptions'][6]].join('\n')
+       end,
        shop['location']['latitude'].to_f.round(6),
        shop['location']['longitude'].to_f.round(6)]
     end
