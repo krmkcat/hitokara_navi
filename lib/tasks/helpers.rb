@@ -38,7 +38,7 @@ module ShopDataHelpers
   end
 
   def self.export_csv(shop_list_for_csv, bom, csv_index)
-    File.open("#{Rails.root.join('csv_files')}/shop_data.csv", 'w') do |f|
+    File.open(Rails.root.join('db', 'fixtures', 'csv_files', 'google_places_data.csv'), 'w') do |f|
       f.print(bom)
       f.puts(csv_index.to_csv)
       shop_list_for_csv.each do |shop|
@@ -53,5 +53,13 @@ module ShopDataHelpers
 
   def self.format_weekday_descriptions(shop)
     shop.dig('regularOpeningHours', 'weekdayDescriptions')&.join('\n')
+  end
+end
+
+module Import
+  def self.import_read(file_name)
+    CSV.open(Rails.root.join('db', 'fixtures', 'csv_files', file_name.to_s), 'rb:BOM|UTF-8', headers: true) do |csv|
+      csv.map { |line| line.to_h.transform_keys!(&:to_sym) }
+    end
   end
 end

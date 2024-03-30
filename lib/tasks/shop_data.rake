@@ -5,7 +5,7 @@ require 'csv'
 require_relative 'helpers'
 
 namespace :shop_data do
-  desc '店舗情報を取得'
+  desc '店舗情報を取得しCSVファイルとしてエクスポート'
   task get_data: :environment do
     uri = URI.parse('https://places.googleapis.com/v1/places:searchText')
     api_key = ENV['GOOGLE_API_KEY']
@@ -28,5 +28,11 @@ namespace :shop_data do
 
     ShopDataHelpers.export_csv(shop_list_for_csv, bom, csv_index)
     puts 'CSVファイルが正常に出力されました'
+  end
+
+  desc 'CSVファイルをインポートしseed_fuファイルを作成'
+  task create_seed: :environment do
+    shops = Import.import_read('shops_development.csv')
+    p shops[0]
   end
 end
