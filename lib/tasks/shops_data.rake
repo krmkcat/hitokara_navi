@@ -4,7 +4,7 @@ require 'json'
 require 'csv'
 require_relative 'helpers'
 
-namespace :shop_data do
+namespace :shops_data do
   desc '店舗情報を取得しCSVファイルとしてエクスポート'
   task get_data: :environment do
     if Rails.env.production?
@@ -22,9 +22,10 @@ namespace :shop_data do
 
     if response.is_a?(Net::HTTPSuccess) == false
       puts "HTTP Request failed (#{response.code})"
+      exit
     end
 
-    id_list = ShopDataHelpers.make_id_list(JSON.parse(response.body))
+    id_list = ShopDataHelpers.make_id_list(JSON.parse(response.body, symbolize_names: true))
     shop_list = ShopDataHelpers.make_shop_list(id_list, api_key)
     shop_list_for_csv = ShopDataHelpers.make_shop_list_for_csv(shop_list)
 

@@ -11,27 +11,27 @@ module ShopDataHelpers
   end
 
   def self.make_id_list(result)
-    result['places'].map { |shop| shop['id'] }
+    result[:places].map { |shop| shop[:id] }
   end
 
   def self.make_shop_list(id_list, api_key)
-    fields = 'id,name,displayName,formattedAddress,shortFormattedAddress,addressComponents,nationalPhoneNumber,websiteUri,googleMapsUri,regularOpeningHours,location'
+    fields = 'id,name,displayName,formattedAddress,nationalPhoneNumber,websiteUri,googleMapsUri,regularOpeningHours,location'
     id_list.map do |id|
       uri = URI.parse("https://places.googleapis.com/v1/places/#{id}?fields=#{fields}&key=#{api_key}&languageCode=ja&regionCode=JP")
-      JSON.parse(Net::HTTP.get(uri))
+      JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
     end
   end
 
   def self.make_shop_list_for_csv(shop_list)
     shop_list.map do |shop|
       [
-        shop['id'],
-        shop['name'],
-        shop.dig('displayName', 'text'),
-        shop['formattedAddress'],
-        shop['nationalPhoneNumber'],
-        shop['websiteUri'],
-        shop['googleMapsUri'],
+        shop[:id],
+        shop[:name],
+        shop.dig(:displayName, :text),
+        shop[:formattedAddress],
+        shop[:nationalPhoneNumber],
+        shop[:websiteUri],
+        shop[:googleMapsUri],
         opening_hours(shop, WeekDays::MONDAY),
         opening_hours(shop, WeekDays::TUESDAY),
         opening_hours(shop, WeekDays::WEDNESDAY),
@@ -39,8 +39,8 @@ module ShopDataHelpers
         opening_hours(shop, WeekDays::FRIDAY),
         opening_hours(shop, WeekDays::SATURDAY),
         opening_hours(shop, WeekDays::SUNDAY),
-        fotmatted_locations(shop.dig('location', 'latitude')),
-        fotmatted_locations(shop.dig('location', 'longitude'))
+        fotmatted_locations(shop.dig(:location, :latitude)),
+        fotmatted_locations(shop.dig(:location, :longitude))
       ]
     end
   end
@@ -60,10 +60,10 @@ module ShopDataHelpers
   end
 
   def self.opening_hours(shop, weekday)
-    shop.dig('regularOpeningHours', 'weekdayDescriptions')&.fetch(weekday, nil)
+    shop.dig(:regularOpeningHours, :weekdayDescriptions)&.fetch(weekday, nil)
   end
 
   def self.format_weekday_descriptions(shop)
-    shop.dig('regularOpeningHours', 'weekdayDescriptions')&.join('\n')
+    shop.dig(:regularOpeningHours, :weekdayDescriptions)&.join('\n')
   end
 end
