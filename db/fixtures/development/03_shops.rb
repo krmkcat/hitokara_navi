@@ -1,15 +1,17 @@
-number_of_areas = Area.count
+require "#{Rails.root}/db/fixtures/import_csv"
 
-20.times do |n|
+shops = Import.import_read('shops_development.csv')
+
+shops.each do |shop|
   Shop.seed do |s|
-    s.id = n + 1
-    s.area_id = rand(1..number_of_areas)
-    s.name = Faker::Restaurant.unique.name
-    s.address = Faker::Address.unique.full_address
-    s.phone_number = Faker::PhoneNumber.phone_number
-    s.url = Faker::Internet.unique.url
-    s.opening_hours = '11:00〜24:00'
-    s.latitude = Faker::Address.unique.latitude
-    s.longitude = Faker::Address.unique.longitude
+    s.id = shop[:id]
+    s.area_id = shop[:area_id]
+    s.name = shop[:name]
+    s.address = shop[:address]
+    s.phone_number = shop[:phone_number]
+    s.url = shop[:url]
+    s.opening_hours = Import.formatted_opening_hours(shop)
+    s.latitude = shop[:latitude]
+    s.longitude = shop[:longitude]
   end
 end
