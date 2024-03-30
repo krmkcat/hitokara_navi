@@ -32,8 +32,6 @@ namespace :shop_data do
         shop['name'],
         shop.dig('displayName', 'text'),
         shop['formattedAddress'],
-        find_address_component(shop, 'administrative_area_level_1'),
-        shop['shortFormattedAddress'],
         shop['nationalPhoneNumber'],
         shop['websiteUri'],
         shop['googleMapsUri'],
@@ -46,10 +44,6 @@ namespace :shop_data do
 
   def format_locations(value)
     value.to_f.round(6) if value.present?
-  end
-
-  def find_address_component(shop, type)
-    shop['addressComponents'].find { |component| component['types'].include?(type) }&.fetch('longText', nil)
   end
 
   def format_weekday_descriptions(shop)
@@ -85,7 +79,7 @@ namespace :shop_data do
     shop_list_for_csv = make_shop_list_for_csv(shop_list)
 
     bom = "\xEF\xBB\xBF"
-    csv_index = %w[google_places_id google_places_name name full_address prefecture short_address phone_number url google_maps_url opening_hours latitude longitude]
+    csv_index = %w[google_places_id google_places_name name address_with_zipcode phone_number url google_maps_url opening_hours latitude longitude]
 
     export_csv(shop_list_for_csv, bom, csv_index)
     puts 'CSVファイルが正常に出力されました'
