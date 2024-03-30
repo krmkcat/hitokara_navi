@@ -22,9 +22,11 @@ module ShopDataHelpers
     end
   end
 
-  def self.make_shop_list_for_csv(shop_list)
+  def self.make_shop_list_for_csv(shop_list, area_id)
     shop_list.map do |shop|
       [
+        nil,
+        area_id,
         shop[:id],
         shop[:name],
         shop.dig(:displayName, :text),

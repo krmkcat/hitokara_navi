@@ -27,10 +27,12 @@ namespace :shops_data do
 
     id_list = ShopDataHelpers.make_id_list(JSON.parse(response.body, symbolize_names: true))
     shop_list = ShopDataHelpers.make_shop_list(id_list, api_key)
-    shop_list_for_csv = ShopDataHelpers.make_shop_list_for_csv(shop_list)
+
+    area_id = nil # 取得したい店舗のエリアがすべて同じならarea_id、そうでなければnilを代入
+    shop_list_for_csv = ShopDataHelpers.make_shop_list_for_csv(shop_list, area_id)
 
     bom = "\xEF\xBB\xBF"
-    csv_index = %w[google_places_id google_places_name name address_with_zipcode phone_number url google_maps_url mon_opening_hours tue_opening_hours wed_opening_hours thu_opening_hours fri_opening_hours sat_opening_hours sun_opening_hours latitude longitude]
+    csv_index = %w[id area_id google_places_id google_places_name name address_with_zipcode phone_number url google_maps_url mon_opening_hours tue_opening_hours wed_opening_hours thu_opening_hours fri_opening_hours sat_opening_hours sun_opening_hours latitude longitude]
 
     ShopDataHelpers.export_csv(shop_list_for_csv, bom, csv_index)
     puts 'CSVファイルが正常に出力されました'
