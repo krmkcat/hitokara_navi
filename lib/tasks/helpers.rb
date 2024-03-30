@@ -30,7 +30,7 @@ module ShopDataHelpers
         shop[:id],
         shop[:name],
         shop.dig(:displayName, :text),
-        shop[:formattedAddress],
+        formatted_address(shop),
         shop[:nationalPhoneNumber],
         shop[:websiteUri],
         shop[:googleMapsUri],
@@ -67,5 +67,9 @@ module ShopDataHelpers
 
   def self.format_weekday_descriptions(shop)
     shop.dig(:regularOpeningHours, :weekdayDescriptions)&.join('\n')
+  end
+
+  def self.formatted_address(shop)
+    shop[:formattedAddress]&.gsub(/^.*〒\d{3}-\d{4}\s/, '')
   end
 end
