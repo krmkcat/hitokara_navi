@@ -38,8 +38,11 @@
 /.env
 /.env.production
 
-config/settings.local.yml
-config/settings/*.local.yml
-config/environments/*.local.yml
+/config/settings.local.yml
+/config/settings/*.local.yml
+/config/environments/*.local.yml
 
-/csv_files
+/db/fixtures/csv_files
+!/db/fixtures/csv_files/shops_production.csv
+
+.DS_Store
