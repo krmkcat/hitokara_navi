@@ -37,7 +37,7 @@ namespace :shops_data do
     shop_list_for_csv = ShopDataHelpers.make_shop_list_for_csv(shop_list, area_id)
 
     bom = "\xEF\xBB\xBF"
-    csv_index = %w[id area_id google_places_id google_places_name name address_with_zipcode phone_number url google_maps_url mon_opening_hours tue_opening_hours wed_opening_hours thu_opening_hours fri_opening_hours sat_opening_hours sun_opening_hours latitude longitude]
+    csv_index = %w[id area_id google_places_id google_places_name name address phone_number url google_maps_url mon_opening_hours tue_opening_hours wed_opening_hours thu_opening_hours fri_opening_hours sat_opening_hours sun_opening_hours latitude longitude]
 
     ShopDataHelpers.export_csv(shop_list_for_csv, bom, csv_index)
     puts 'CSVファイルが正常に出力されました'
