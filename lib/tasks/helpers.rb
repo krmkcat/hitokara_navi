@@ -67,11 +67,3 @@ module ShopDataHelpers
     shop.dig('regularOpeningHours', 'weekdayDescriptions')&.join('\n')
   end
 end
-
-module Import
-  def self.import_read(file_name)
-    CSV.open(Rails.root.join('db', 'fixtures', 'csv_files', file_name.to_s), 'rb:BOM|UTF-8', headers: true) do |csv|
-      csv.map { |line| line.to_h.transform_keys!(&:to_sym) }
-    end
-  end
-end

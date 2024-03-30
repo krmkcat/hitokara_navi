@@ -7,6 +7,11 @@ require_relative 'helpers'
 namespace :shop_data do
   desc '店舗情報を取得しCSVファイルとしてエクスポート'
   task get_data: :environment do
+    if Rails.env.production?
+      puts 'このタスクは本番環境では実行できません'
+      exit
+    end
+
     uri = URI.parse('https://places.googleapis.com/v1/places:searchText')
     api_key = ENV['GOOGLE_API_KEY']
     text_query = 'カラオケ 愛知県名古屋市天白区'
@@ -28,11 +33,5 @@ namespace :shop_data do
 
     ShopDataHelpers.export_csv(shop_list_for_csv, bom, csv_index)
     puts 'CSVファイルが正常に出力されました'
-  end
-
-  desc 'CSVファイルのインポート機能をテスト'
-  task create_seed: :environment do
-    shops = Import.import_read('shops_development.csv')
-    p shops[0]
   end
 end
