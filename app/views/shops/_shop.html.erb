@@ -29,7 +29,7 @@
           <p>
             <%= Shop.human_attribute_name(key) + ':' %>
             <br>
-            <%= shop.send("#{key}") %>
+            <%= simple_format(shop.send("#{key}")) %>
           </p>
         </div>
       <% end %>

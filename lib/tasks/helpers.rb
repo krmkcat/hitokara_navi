@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/constants"
+
 module ShopDataHelpers
   def self.make_request(uri, api_key, text_query)
     request_body = { 'textQuery' => text_query }.to_json
@@ -30,9 +32,15 @@ module ShopDataHelpers
         shop['nationalPhoneNumber'],
         shop['websiteUri'],
         shop['googleMapsUri'],
-        format_weekday_descriptions(shop),
-        format_locations(shop.dig('location', 'latitude')),
-        format_locations(shop.dig('location', 'longitude'))
+        opening_hours(shop, WeekDays::MONDAY),
+        opening_hours(shop, WeekDays::TUESDAY),
+        opening_hours(shop, WeekDays::WEDNESDAY),
+        opening_hours(shop, WeekDays::THURSDAY),
+        opening_hours(shop, WeekDays::FRIDAY),
+        opening_hours(shop, WeekDays::SATURDAY),
+        opening_hours(shop, WeekDays::SUNDAY),
+        fotmatted_locations(shop.dig('location', 'latitude')),
+        fotmatted_locations(shop.dig('location', 'longitude'))
       ]
     end
   end
@@ -47,8 +55,12 @@ module ShopDataHelpers
     end
   end
 
-  def self.format_locations(value)
+  def self.fotmatted_locations(value)
     value.to_f.round(6) if value.present?
+  end
+
+  def self.opening_hours(shop, weekday)
+    shop.dig('regularOpeningHours', 'weekdayDescriptions')&.fetch(weekday, nil)
   end
 
   def self.format_weekday_descriptions(shop)

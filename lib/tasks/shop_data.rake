@@ -24,13 +24,13 @@ namespace :shop_data do
     shop_list_for_csv = ShopDataHelpers.make_shop_list_for_csv(shop_list)
 
     bom = "\xEF\xBB\xBF"
-    csv_index = %w[google_places_id google_places_name name address_with_zipcode phone_number url google_maps_url opening_hours latitude longitude]
+    csv_index = %w[google_places_id google_places_name name address_with_zipcode phone_number url google_maps_url mon_opening_hours tue_opening_hours wed_opening_hours thu_opening_hours fri_opening_hours sat_opening_hours sun_opening_hours latitude longitude]
 
     ShopDataHelpers.export_csv(shop_list_for_csv, bom, csv_index)
     puts 'CSVファイルが正常に出力されました'
   end
 
-  desc 'CSVファイルをインポートしseed_fuファイルを作成'
+  desc 'CSVファイルのインポート機能をテスト'
   task create_seed: :environment do
     shops = Import.import_read('shops_development.csv')
     p shops[0]
