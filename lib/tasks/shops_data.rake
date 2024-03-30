@@ -6,15 +6,20 @@ require_relative 'helpers'
 
 namespace :shops_data do
   desc '店舗情報を取得しCSVファイルとしてエクスポート'
-  task get_data: :environment do
+  task :get_data, %i[text_query area_id] => :environment do |t, args|
     if Rails.env.production?
       puts 'このタスクは本番環境では実行できません'
       exit
     end
 
+    if args[:text_query] == blank?
+      puts '検索クエリを入力してください'
+      exit
+    end
+
     uri = URI.parse('https://places.googleapis.com/v1/places:searchText')
     api_key = ENV['GOOGLE_API_KEY']
-    text_query = 'カラオケ 愛知県名古屋市天白区'
+    text_query = args[:text_query]
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
 
@@ -28,7 +33,7 @@ namespace :shops_data do
     id_list = ShopDataHelpers.make_id_list(JSON.parse(response.body, symbolize_names: true))
     shop_list = ShopDataHelpers.make_shop_list(id_list, api_key)
 
-    area_id = nil # 取得したい店舗のエリアがすべて同じならarea_id、そうでなければnilを代入
+    area_id = args[:area_id]
     shop_list_for_csv = ShopDataHelpers.make_shop_list_for_csv(shop_list, area_id)
 
     bom = "\xEF\xBB\xBF"
