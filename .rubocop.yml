@@ -143,6 +143,8 @@ Lint/UnmodifiedReduceAccumulator: # new in 1.1
   Enabled: false
 Lint/UselessRuby2Keywords: # new in 1.23
   Enabled: false
+Lint/UnusedBlockArgument:
+  Enabled: false
 Naming/BlockForwarding: # new in 1.24
   Enabled: false
 Security/CompoundHash: # new in 1.28
