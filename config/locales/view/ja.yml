@@ -111,11 +111,12 @@ ja:
     reviews: レビュー一覧
     search_words: 検索ワード
     unspecified: 指定なし
+    to_official_site: 公式サイトへ
     terms: 利用規約
     privacy_policy: プライバシーポリシー
     contact: お問い合わせ
     post_review: レビューする
-    show_my_review: 投稿したレビューを見る
+    show_my_review: "投稿した\nレビューを見る"
     back: 戻る
     edit_tags: タグを編集
     delete_confirm: 削除しますか？
