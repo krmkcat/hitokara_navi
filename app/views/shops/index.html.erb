@@ -2,7 +2,7 @@
 
 <%= turbo_frame_tag 'shops-list' do %>
   <% if @shops.present? %>
-    <%= render @shops %>
+    <%= render partial: 'shop_for_index', collection: @shops, as: :shop %>
   <% else %>
     <p class="text-center"><%= t '.no_shops' %></p>
   <% end %>

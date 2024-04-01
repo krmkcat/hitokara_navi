@@ -1,0 +1,54 @@
+<div class="card bg-neutral mx-auto w-full my-6 shadow-xl">
+  <div class="card-body p-6">
+    <div class="area text-xs text-right">
+      <%= shop.area.name %>
+    </div>
+
+    <h2 class="card-title text-base">
+      <%= shop.name %>
+    </h2>
+
+    <div class="tags">
+      <% shop.tags.each do |tag| %>
+        <div class="badge badge-secondary badge-sm">
+          <%= tag.name %>
+        </div>
+      <% end %>
+      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-success text-xs', data: { turbo: false } %>
+    </div>
+
+    <div class="rating_averages gap-y-1 mt-4">
+      <%= render 'rating_field_for_shop', shop: shop, field: :int_average %>
+      <%= render 'rating_field_for_shop', shop: shop, field: :eqcust_average %>
+      <%= render 'rating_field_for_shop', shop: shop, field: :sofr_average %>
+    </div>
+
+    <div class="static-informations space-y-4 mt-4 text-sm">
+      <div class="attribute">
+        <p>
+          <%= Shop.human_attribute_name(:address) + ':' %>
+          <br>
+          <%= simple_format(shop.address) %>
+        </p>
+      </div>
+
+      <div class="attribute">
+        <p>
+          <%= Shop.human_attribute_name(:phone_number) + ':' %>
+          <br>
+          <%= link_to shop.phone_number, "tel:#{shop.phone_number}", class: 'link md:pointer-events-none md:no-underline' %>
+        </p>
+      </div>
+
+      <div class="attribute">
+        <p>
+          <%= Shop.human_attribute_name(:opening_hours) + ':' %>
+          <br>
+          <%= simple_format(shop.opening_hours) %>
+        </p>
+      </div>
+    </div>
+
+    <%= render 'shop_buttons', shop: shop %>
+  </div>
+</div>
