@@ -1,7 +1,4 @@
-<div class="card-actions justify-end mt-4">
-  <% if current_page?(shops_path) %>
-    <%= link_to t('defaults.show'), shop_path(shop), class: 'btn', data: { turbo: false } %>
-    <%= link_to t('defaults.reviews'), shop_reviews_path(shop), class: 'btn btn-primary', data: { turbo: false } %>
-  <% end %>
+<div class="card-actions justify-center mt-4">
+  <%= link_to t('defaults.to_official_site'), shop.url, class: 'btn btn-primary', target: '_blank' %>
   <%= render 'shared/review_button', shop: shop %>
 </div>
