@@ -10,7 +10,7 @@
     <%= form.text_area :comment, rows: 7, placeholder: t('defaults.review_comment_placeholder'), class: "textarea textarea-bordered" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit t(review.persisted? ? 'defaults.update' : 'defaults.post'), class: 'btn btn-primary' %>
+  <div class="text-center">
+    <%= form.submit t(review.persisted? ? 'defaults.update' : 'defaults.post'), class: 'btn btn-accent btn-wide' %>
   </div>
 <% end %>
