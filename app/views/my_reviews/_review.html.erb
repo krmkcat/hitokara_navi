@@ -10,9 +10,9 @@
     <div class="divider mt-0"></div>
 
     <div class="review_body space-y-4">
-      <%= render 'reviews/rating_field_for_show', field: :minimal_interaction, review: review, field_short: 'int' %>
-      <%= render 'reviews/rating_field_for_show', field: :equipment_customization, review: review, field_short: 'eqcust' %>
-      <%= render 'reviews/rating_field_for_show', field: :solo_friendly, review: review, field_short: 'sofr' %>
+      <%= render 'reviews/rating_field_for_show', field: :minimal_interaction, review: review, field_short: 'int', description: t('defaults.desc_of_int') %>
+      <%= render 'reviews/rating_field_for_show', field: :equipment_customization, review: review, field_short: 'eqcust', description: t('defaults.desc_of_eqcust') %>
+      <%= render 'reviews/rating_field_for_show', field: :solo_friendly, review: review, field_short: 'sofr', description: t('defaults.desc_of_sofr') %>
 
       <div class="comment space-y-1">
         <div class="attribure_name">
