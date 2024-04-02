@@ -28,9 +28,9 @@ ja:
         opening_hours: 営業時間
         int_average: 接客の少なさ
         eqcust_average: 機器設定の自由度
-        sofr_average: ヒトカラーウェルカム度
+        sofr_average: ヒトカラーフレンドリー度
       review:
         minimal_interaction: 接客の少なさ
         equipment_customization: 機器設定の自由度
-        solo_friendly: ヒトカラーウェルカム度
+        solo_friendly: ヒトカラーフレンドリー度
         comment: コメント

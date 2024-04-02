@@ -1,7 +1,12 @@
 <div class="space-y-1">
-  <p>
-    <%= Review.human_attribute_name(field) + ': ' %>
-  </p>
+  <div class="label flex justify-start p-0">
+    <div class="inline-block">
+      <%= Review.human_attribute_name(field) %>
+    </div>
+    <div class="tooltip tooltip-info inline-block ml-2" data-tip="<%= description %>">
+      <i class="fa-regular fa-circle-question fa-sm" style="color: #5eead4;"></i>
+    </div>
+  </div>
   <% if review.send("#{field_short}_unspecified?") %>
     評価なし
   <% else %>
