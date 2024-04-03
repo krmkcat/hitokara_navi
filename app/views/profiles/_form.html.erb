@@ -10,9 +10,9 @@
     <%= form.label :gender, class: 'block my-2' %>
     <div class="flex flex-row gap-4">
       <% Profile.genders.each_key do |key| %>
-        <div class="flex flex-row content-center gap-2">
-          <%= form.radio_button :gender, key, class: "radio radio-primary" %>
-          <%= form.label :gender, Profile.genders_i18n[key], value: key %>
+        <div class="flex flex-row content-center gap-1">
+          <%= form.radio_button :gender, key, class: "radio radio-sm" %>
+          <%= form.label :gender, Profile.genders_i18n[key], value: key, class: 'text-sm' %>
         </div>
       <% end %>
     </div>
@@ -28,6 +28,6 @@
   </div>
 
   <div class="mt-6 text-center">
-    <%= form.submit class: "btn btn-accent btn-wide" %>
+    <%= form.submit class: "btn btn-accent" %>
   </div>
 <% end %>
