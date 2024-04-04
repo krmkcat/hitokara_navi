@@ -4,7 +4,7 @@
     <% if shop.reviews.present? %>
       <%= render partial:'shops/review', collection: reviews %>
       <div class="card-actions justify-center mt-4">
-        <%= link_to t('.show_all_reviews'), shop_reviews_path(shop), class: 'btn' %>
+        <%= link_to t('.show_all_reviews'), shop_reviews_path(shop), class: 'btn btn-primary' %>
       </div>
     <% else %>
       <div class="no_reviews text-center">

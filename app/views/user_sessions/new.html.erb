@@ -15,12 +15,12 @@
     </div>
 
     <div class="text-center mt-7">
-      <%= f.submit t('defaults.login'), class: "btn btn-primary" %>
+      <%= f.submit t('defaults.login'), class: "btn btn-accent" %>
     </div>
   <% end %>
 </div>
 
 <div class='text-center mt-2'>
-  <%= link_to t('.to_signup_page'), signup_path, class: 'btn btn-link btn-xs' %>
-  <%= link_to t('.password_forget'), new_password_resets_path, class: 'btn btn-link btn-xs' %>
+  <%= link_to t('.to_signup_page'), signup_path, class: 'btn btn-link btn-xs text-secondary' %>
+  <%= link_to t('.password_forget'), new_password_resets_path, class: 'btn btn-link btn-xs text-accent' %>
 </div>
