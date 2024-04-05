@@ -1,4 +1,4 @@
-<div class="card bg-neutral mx-auto w-full my-6 shadow-xl">
+<div class="card bg-base-100 mx-auto w-full my-6 shadow-xl">
   <div class="card-body p-6">
     <div class="area text-xs text-right">
       <%= shop.area.name %>
@@ -14,7 +14,7 @@
           <%= tag.name %>
         </div>
       <% end %>
-      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-success text-xs', data: { turbo: false } %>
+      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-accent text-xs', data: { turbo: false } %>
     </div>
 
     <div class="rating_averages gap-y-1 mt-4">

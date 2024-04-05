@@ -2,12 +2,12 @@
   <div class="location flex flex-col gap-y-1">
     <div class="prefecture flex flex-col">
       <%= hidden_field :q, :prefecture_id, value: @prefecture.id %>
-      <%= label :q, :prefecture, Prefecture.model_name.human, class: 'text-xs' %>
-      <%= select :q, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }.unshift([t('defaults.unspecified'), shops_path]), { selected: prefecture_areas_path(@prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-xs w-1/2 max-w-xs' } %>
+      <%= label :q, :prefecture, Prefecture.model_name.human, class: 'label text-xs' %>
+      <%= select :q, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }.unshift([t('defaults.unspecified'), shops_path]), { selected: prefecture_areas_path(@prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-xs select-primary w-1/2 max-w-xs' } %>
     </div>
     <div class="area">
-      <%= label :q, :area_id, Area.model_name.human, class: 'text-xs' %>
-      <%= select :q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.unspecified') }, { class: 'select select-bordered select-sm w-full max-w-xs' } %>
+      <%= label :q, :area_id, Area.model_name.human, class: 'label text-xs' %>
+      <%= select :q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.unspecified') }, { class: 'select select-bordered select-sm select-primary w-full max-w-xs' } %>
     </div>
   </div>
 <% end %>

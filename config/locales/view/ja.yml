@@ -11,8 +11,8 @@ ja:
     new:
       title: ログイン
       login: ログイン
-      to_signup_page: ユーザー登録ページへ
-      password_forget: パスワードをお忘れの方はこちら
+      to_signup_page: ユーザー登録がまだの方はこちら
+      forgot_password: パスワードをお忘れの方はこちら
     create:
       success: ログインしました
       failure: ログインできませんでした
@@ -38,13 +38,10 @@ ja:
   profiles:
     show:
       title: マイページ
-      to_my_reviews: マイレビュー一覧を見る
+      to_my_reviews: 投稿したレビュー一覧を見る
     edit:
-      title: プロフィール編集
-      back_to_mypage: マイページへ戻る
+      title: プロフィール
   reviews:
-    new:
-      title: "%{shop}のレビューを投稿"
     create:
       success: レビューを投稿しました
       failure: レビューを投稿できませんでした
@@ -54,7 +51,7 @@ ja:
       title: レビューを編集
   my_reviews:
     index:
-      title: マイレビュー一覧
+      title: 投稿したレビュー
       back_to_mypage: マイページへ戻る
   shop_tags:
     index:

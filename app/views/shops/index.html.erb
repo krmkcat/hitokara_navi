@@ -1,9 +1,15 @@
-<%= render 'search_form_for_shops', search_shops_form: @search_shop_form %>
+<div class="flex flex-col w-full border-opacity-50">
+  <%= render 'search_form_for_shops', search_shops_form: @search_shop_form %>
 
-<%= turbo_frame_tag 'shops-list' do %>
-  <% if @shops.present? %>
-    <%= render partial: 'shop_for_index', collection: @shops, as: :shop %>
-  <% else %>
-    <p class="text-center"><%= t '.no_shops' %></p>
+
+  <%= turbo_frame_tag 'shops-list' do %>
+    <div class="divider mt-8 text-sm">
+      <%= @shops.length %>件
+    </div>
+    <% if @shops.present? %>
+      <%= render partial: 'shop_for_index', collection: @shops, as: :shop %>
+    <% else %>
+      <p class="text-center"><%= t '.no_shops' %></p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
