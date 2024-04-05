@@ -1,48 +1,44 @@
-<div class="rounded bg-white mx-auto w-full my-6 text-sm">
-  <div class="card-body">
-    <div class="form">
-      <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } } do |f| %>
-        <div class="fields flex flex-col gap-y-6">
-          <%= turbo_frame_tag 'location-select-boxes' do %>
-            <div class="location flex flex-col gap-y-1">
-              <div class="prefecture flex flex-col">
-                <%= f.label :prefecture, Prefecture.model_name.human, class: 'text-xs' %>
-                <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-xs w-1/2 max-w-xs' } %>
-              </div>
-              <div class="area">
-                <%= f.label :area_id, Area.model_name.human, class: 'text-xs' %>
-                <%= f.select :area_id, [['---', nil]], {}, { disabled: true, class: 'select select-bordered select-sm w-full max-w-xs' } %>
-              </div>
-            </div>
-          <% end %>
-
-          <div class="search_words">
-            <%= f.search_field :words, placeholder: t('defaults.search_words'), class: 'input input-bordered w-full max-w-xs' %>
+<div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+  <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body' do |f| %>
+    <div class="fields flex flex-col gap-y-6">
+      <%= turbo_frame_tag 'location-select-boxes' do %>
+        <div class="location">
+          <div class="prefecture form-control">
+            <%= f.label :prefecture, Prefecture.model_name.human, class: 'label text-xs' %>
+            <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-xs select-primary w-1/2 max-w-xs' } %>
           </div>
-
-          <div class="rating_averages flex flex-col gap-y-2">
-            <% Shop.average_attributes.each do |attr| %>
-              <div class="average_items">
-                <%= f.label attr, Shop.human_attribute_name(attr), class: 'text-xs' %>
-                <%= f.select attr, Shop.averages_select_options, { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm w-full max-w-xs' %>
-              </div>
-            <% end %>
+          <div class="area form-control">
+            <%= f.label :area_id, Area.model_name.human, class: 'label text-xs' %>
+            <%= f.select :area_id, [['---', nil]], {}, { disabled: true, class: 'select select-bordered select-sm w-full max-w-xs' } %>
           </div>
-
-          <div class="tags flex flex-col gap-y-2">
-            <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { include_hidden: false } do |b| %>
-              <div class="tag">
-                <%= b.check_box class: 'checkbox checkbox-sm checkbox-secondary align-middle' %>
-                <%= b.label class: 'align-middle' %>
-              </div>
-            <% end %>
-          </div>
-
-        </div>
-        <div class="buttons text-center mt-8">
-          <%= f.submit t('defaults.search'), class: 'btn btn-accent btn-sm' %>
         </div>
       <% end %>
+
+      <div class="search_words form-control">
+        <%= f.search_field :words, placeholder: t('defaults.search_words'), class: 'input input-bordered input-primary w-full max-w-xs' %>
+      </div>
+
+      <div class="rating_averages">
+        <% Shop.average_attributes.each do |attr| %>
+          <div class="average_items form-control">
+            <%= f.label attr, Shop.human_attribute_name(attr), class: 'label text-xs' %>
+            <%= f.select attr, Shop.averages_select_options, { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm select-primary w-full max-w-xs' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="tags flex flex-col gap-y-2">
+        <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { include_hidden: false } do |b| %>
+          <div class="tag">
+            <%= b.check_box class: 'checkbox checkbox-sm checkbox-primary align-middle' %>
+            <%= b.label class: 'align-middle' %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
-  </div>
+    <div class="form-control text-center mt-6">
+      <%= f.submit t('defaults.search'), class: 'btn btn-accent btn-sm' %>
+    </div>
+  <% end %>
 </div>

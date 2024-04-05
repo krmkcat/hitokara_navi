@@ -1,10 +1,10 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">
-    <%= t('.title', shop: @shop.name) %>
+  <h1 class="font-bold text-2xl text-neutral">
+    <%= @shop.name %>
   </h1>
 
-  <div class="info mt-4">
-    <p class="text-xs italic text-error">評価対象外にする場合は★0にしてください</p>
+  <div class="info my-4 text-center text-xs italic text-primary">
+    <p>評価対象外にする場合は★0にしてください</p>
   </div>
 
   <%= render "form", { shop: @shop, review: @review } %>

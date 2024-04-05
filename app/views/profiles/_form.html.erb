@@ -1,33 +1,35 @@
-<%= form_with(model: profile, class: "contents") do |form| %>
-  <%=  render 'shared/error_messages', object: form.object %>
+<div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+  <%= form_with(model: profile, class: "card-body") do |form| %>
+    <%=  render 'shared/error_messages', object: form.object %>
 
-  <div class="my-5 flex flex-col">
-    <%= form.label :name, class: 'block my-2' %>
-    <%= form.text_field :name, class: "input input-bordered w-full max-w-xs" %>
-  </div>
-
-  <div class="my-5 flex flex-col">
-    <%= form.label :gender, class: 'block my-2' %>
-    <div class="flex flex-row gap-4">
-      <% Profile.genders.each_key do |key| %>
-        <div class="flex flex-row content-center gap-1">
-          <%= form.radio_button :gender, key, class: "radio radio-sm" %>
-          <%= form.label :gender, Profile.genders_i18n[key], value: key, class: 'text-sm' %>
-        </div>
-      <% end %>
+    <div class="form-control">
+      <%= form.label :name, class: 'label' %>
+      <%= form.text_field :name, class: "input input-bordered input-primary w-full max-w-xs" %>
     </div>
-  </div>
 
-  <div class="my-5 flex flex-col">
-    <%= form.label :age_group, class: 'block my-2' %>
-    <%= form.select :age_group,
-      Profile.age_group_select_options,
-      {},
-      { class: 'select select-bordered w-full max-w-xs' }
-    %>
-  </div>
+    <div class="form-control">
+      <%= form.label :gender, class: 'label' %>
+      <div class="flex flex-row gap-4">
+        <% Profile.genders.each_key do |key| %>
+          <div class="flex flex-row content-center gap-1">
+            <%= form.radio_button :gender, key, class: "radio radio-xs radio-primary" %>
+            <%= form.label :gender, Profile.genders_i18n[key], value: key, class: 'text-xs' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="mt-6 text-center">
-    <%= form.submit class: "btn btn-accent" %>
-  </div>
-<% end %>
+    <div class="form-control">
+      <%= form.label :age_group, class: 'label' %>
+      <%= form.select :age_group,
+        Profile.age_group_select_options,
+        {},
+        { class: 'select select-bordered select-primary w-full max-w-xs' }
+      %>
+    </div>
+
+    <div class="form-control mt-6 text-center">
+      <%= form.submit class: "btn btn-accent" %>
+    </div>
+  <% end %>
+</div>

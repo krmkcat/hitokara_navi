@@ -1,25 +1,28 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">
-    <%= t('.title', shop: @shop.name) %>
+  <h1 class="font-bold text-2xl text-neutral">
+    <%= @shop.name %>
   </h1>
 
   <div class="body mt-4 flex flex-col gap-y-4">
-    <div class="description">
-      <p>タップ/クリックでオンオフを切り替えられます。</p>
+    <div class="description text-sm text-center">
+      <p>タップ/クリックでオンオフを切り替えられます</p>
     </div>
+    <div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+      <div class="card-body">
+        <div class="tags text-center">
+          <% Tag.all.each do |tag| %>
+            <% if @shop.tagged?(tag) %>
+              <%= render 'untag', shop: @shop, tag: tag %>
+            <% else %>
+              <%= render 'tag', shop: @shop, tag: tag %>
+            <% end %>
+          <% end %>
+        </div>
 
-    <div class="tags">
-      <% Tag.all.each do |tag| %>
-        <% if @shop.tagged?(tag) %>
-          <%= render 'untag', shop: @shop, tag: tag %>
-        <% else %>
-          <%= render 'tag', shop: @shop, tag: tag %>
-        <% end %>
-      <% end %>
+        <div class="form-control mt-6 w-full text-center">
+          <%= link_to t('.done_and_to_show_shops'), shop_path(@shop), class: 'btn btn-primary' %>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="buttons mt-4 w-full text-center">
-    <%= link_to t('.done_and_to_show_shops'), shop_path(@shop), class: 'btn btn-primary' %>
   </div>
 </div>

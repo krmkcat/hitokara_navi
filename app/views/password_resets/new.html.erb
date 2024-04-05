@@ -1,18 +1,21 @@
 <div class="mx-auto md:w-2/3 w-full max-w-xs">
   <div class="title mb-4 text-center">
-    <h1 class="font-bold text-xl">
+    <h1 class="font-bold text-2xl text-neutral">
       <%= t '.title' %>
     </h1>
   </div>
+
   <div class="form">
-    <%= form_with url: password_resets_path, data: {turbo_method: :post} do |f| %>
-      <div class="email">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'input input-bordered w-full max-w-xs' %>
-      </div>
-      <div class="button text-center mt-6">
-        <%= f.submit t('.submit'), class: 'btn btn-accent' %>
-      </div>
-    <% end %>
+    <div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+      <%= form_with url: password_resets_path, data: {turbo_method: :post}, class: 'card-body' do |f| %>
+        <div class="form-control">
+          <%= f.label :email, class: 'label' %>
+          <%= f.email_field :email, class: 'input input-bordered input-primary w-full max-w-xs' %>
+        </div>
+        <div class="form-control text-center mt-6">
+          <%= f.submit t('.submit'), class: 'btn btn-accent' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
