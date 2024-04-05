@@ -19,7 +19,7 @@ module.exports = {
           ...require("daisyui/src/theming/themes")["lemonade"],
           "--rounded-btn": "9999px",
         },
-      }
+      },
     ],
   },
 }
