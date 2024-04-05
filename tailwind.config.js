@@ -13,6 +13,13 @@ module.exports = {
   ],
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ['lemonade'],
+    themes: [
+      {
+        lemonade: {
+          ...require("daisyui/src/theming/themes")["lemonade"],
+          "--rounded-btn": "9999px",
+        },
+      }
+    ],
   },
 }
