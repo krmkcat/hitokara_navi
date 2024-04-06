@@ -14,16 +14,16 @@
           <%= tag.name %>
         </div>
       <% end %>
-      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-accent text-xs', data: { turbo: false } %>
+      <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'inline-block link link-accent text-xs', data: { turbo: false } %>
     </div>
 
     <div class="rating_averages flex flex-col gap-y-2 mt-4 p-2">
-      <%= render 'rating_field_for_show', shop: shop, field: :int_average, description: t('defaults.desc_of_int') %>
-      <%= render 'rating_field_for_show', shop: shop, field: :eqcust_average, description: t('defaults.desc_of_eqcust') %>
-      <%= render 'rating_field_for_show', shop: shop, field: :sofr_average, description: t('defaults.desc_of_sofr') %>
+      <%= render 'rating_field_for_show', shop: shop, field: :int_average, description: t("defaults.description.int_average") %>
+      <%= render 'rating_field_for_show', shop: shop, field: :eqcust_average, description: t("defaults.description.eqcust_average") %>
+      <%= render 'rating_field_for_show', shop: shop, field: :sofr_average, description: t("defaults.description.sofr_average") %>
     </div>
 
-    <div class="static-informations space-y-4 mt-4">
+    <div class="static-informations mx-auto space-y-4 px-2 mt-4">
       <div class="attribute grid grid-cols-[1fr_8fr]">
         <div>
           <i class="fa-solid fa-location-dot"></i>

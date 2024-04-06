@@ -111,9 +111,13 @@ ja:
     pref_and_area: 都道府県 / エリア
     name_or_address: 店名・住所
     to_official_site: 公式サイトへ
-    desc_of_int: 店員との接触機会は最小限？
-    desc_of_eqcust: 高度な設定変更や機材持ち込みができる？
-    desc_of_sofr: 一人でも行きやすい？
+    description:
+      int_average: 店員との接触機会は最小限？
+      eqcust_average: 高度な設定変更や機材持ち込みができる？
+      sofr_average: 一人でも行きやすい？
+      minimal_interaction: 店員との接触機会は最小限？
+      equipment_customization: 高度な設定変更や機材持ち込みができる？
+      solo_friendly: 一人でも行きやすい？
     terms: 利用規約
     privacy_policy: プライバシーポリシー
     contact: お問い合わせ

@@ -18,7 +18,10 @@
     <div class="rating_averages">
       <% Shop.average_attributes.each do |attr| %>
         <div class="average_items form-control">
-          <%= f.label attr, Shop.human_attribute_name(attr), class: 'label' %>
+          <div class="flex">
+            <%= f.label attr, Shop.human_attribute_name(attr), class: 'label' %>
+            <%= render 'shared/tooltip_icon', description: t("defaults.description.#{attr}") %>
+          </div>
           <%= f.select attr, Shop.averages_select_options, { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm select-primary' %>
         </div>
       <% end %>
