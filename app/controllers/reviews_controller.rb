@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
   def check_reviewd_or_not
     set_shop
     if current_user.reviewed?(@shop)
-      redirect_to review_path(current_user.reviews.find_by(shop_id: @shop.id)), warning: t('defaults.already_reviewed')
+      redirect_to review_path(current_user.reviews.find_by(shop_id: @shop.id)), error: t('defaults.already_reviewed')
     end
   end
 
