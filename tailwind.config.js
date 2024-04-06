@@ -5,12 +5,6 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
   ],
-  safelist: [
-    'alert-error',
-    'alert-success',
-    'alert-warning',
-    // 他の動的に生成されるクラス名もここに追加
-  ],
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
