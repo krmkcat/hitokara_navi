@@ -4,7 +4,7 @@
       <%= shop.area.name %>
     </div>
 
-    <h2 class="card-title text-base">
+    <h2 class="card-title text-lg">
       <%= shop.name %>
     </h2>
 
@@ -17,35 +17,38 @@
       <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'link link-accent text-xs', data: { turbo: false } %>
     </div>
 
-    <div class="rating_averages gap-y-1 mt-4">
-      <%= render 'rating_field_for_shop', shop: shop, field: :int_average %>
-      <%= render 'rating_field_for_shop', shop: shop, field: :eqcust_average %>
-      <%= render 'rating_field_for_shop', shop: shop, field: :sofr_average %>
+    <div class="rating_averages flex flex-col gap-y-2 mt-4 p-2">
+      <%= render 'rating_field_for_show', shop: shop, field: :int_average, description: t('defaults.desc_of_int') %>
+      <%= render 'rating_field_for_show', shop: shop, field: :eqcust_average, description: t('defaults.desc_of_eqcust') %>
+      <%= render 'rating_field_for_show', shop: shop, field: :sofr_average, description: t('defaults.desc_of_sofr') %>
     </div>
 
-    <div class="static-informations space-y-4 mt-4 text-sm">
-      <div class="attribute">
-        <p>
-          <%= Shop.human_attribute_name(:address) + ':' %>
-          <br>
+    <div class="static-informations space-y-4 mt-4">
+      <div class="attribute grid grid-cols-[1fr_8fr]">
+        <div>
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div>
           <%= simple_format(shop.address) %>
-        </p>
+        </div>
       </div>
 
-      <div class="attribute">
-        <p>
-          <%= Shop.human_attribute_name(:phone_number) + ':' %>
-          <br>
+      <div class="attribute grid grid-cols-[1fr_8fr]">
+        <div>
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div>
           <%= link_to shop.phone_number, "tel:#{shop.phone_number}", class: 'link md:pointer-events-none md:no-underline' %>
-        </p>
+        </div>
       </div>
 
-      <div class="attribute">
-        <p>
-          <%= Shop.human_attribute_name(:opening_hours) + ':' %>
-          <br>
+      <div class="attribute grid grid-cols-[1fr_8fr]">
+        <div>
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div>
           <%= simple_format(shop.opening_hours) %>
-        </p>
+        </div>
       </div>
     </div>
 

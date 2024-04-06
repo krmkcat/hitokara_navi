@@ -1,6 +1,8 @@
-<div class="space-y-2">
-  <p>
-    <%= Review.human_attribute_name(field) + ': ' %>
+<div class="grid grid-cols-[3fr_2fr]">
+  <div class="text-center pr-1 bg-base-200 rounded-lg">
+    <%= Review.human_attribute_name(field) %>
+  </div>
+  <div class="pl-1">
     <% if review.send("#{field_short}_unspecified?") %>
       評価なし
     <% else %>
@@ -10,5 +12,5 @@
         <% end %>
       </span>
     <% end %>
-  </p>
+  </div>
 </div>
