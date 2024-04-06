@@ -1,7 +1,7 @@
 <div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-  <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body' do |f| %>
+  <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body p-6' do |f| %>
     <div class="location form-control">
-      <%= label_tag '', t('defaults.pref_and_area'), class: 'label' %>
+      <%= label_tag '', t('defaults.pref_and_area'), class: 'label pt-0' %>
       <%= turbo_frame_tag 'location-select-boxes' do %>
         <div class="join flex">
           <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-sm select-primary text-xs join-item' } %>
@@ -18,7 +18,10 @@
     <div class="rating_averages">
       <% Shop.average_attributes.each do |attr| %>
         <div class="average_items form-control">
-          <%= f.label attr, Shop.human_attribute_name(attr), class: 'label' %>
+          <div class="flex">
+            <%= f.label attr, Shop.human_attribute_name(attr), class: 'label' %>
+            <%= render 'shared/tooltip_icon', description: t("defaults.description.#{attr}") %>
+          </div>
           <%= f.select attr, Shop.averages_select_options, { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm select-primary' %>
         </div>
       <% end %>

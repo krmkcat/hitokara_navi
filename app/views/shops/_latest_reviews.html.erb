@@ -1,15 +1,12 @@
-<div class="card w-full bg-white">
-  <div class="card-body p-4">
-    <h2 class="card-title">レビュー</h2>
-    <% if shop.reviews.present? %>
-      <%= render partial:'shops/review', collection: reviews %>
-      <div class="card-actions justify-center mt-4">
-        <%= link_to t('.show_all_reviews'), shop_reviews_path(shop), class: 'btn btn-primary' %>
-      </div>
-    <% else %>
-      <div class="no_reviews text-center">
-        <p>まだレビューはありません。</p>
-      </div>
-    <% end %>
+<% if shop.reviews.present? %>
+  <div class="reviews flex flex-col gap-y-4">
+    <%= render partial:'shops/review', collection: reviews %>
   </div>
-</div>
+  <div class="text-center mt-6">
+    <%= link_to t('.show_all_reviews'), shop_reviews_path(shop), class: 'btn btn-primary' %>
+  </div>
+<% else %>
+  <div class="no_reviews text-center">
+    <p>まだレビューはありません。</p>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
-<div class="card w-96 bg-base-100 mx-auto w-full shadow-xl">
-  <div class="card-body flex flex-col text-sm p-3.5">
+<div class="card w-96 bg-base-100 mx-auto w-full shadow-lg">
+  <div class="card-body text-sm p-3.5">
     <div class="review-header flex flex-col">
       <div class="user-name">
         <span class="font-bold"><%= review.user.name %></span>
@@ -19,15 +19,14 @@
 
     <div class="divider my-0"></div>
 
-    <div class="review_body gap-2">
-      <%= render 'rating_field_for_review', field: :minimal_interaction, review: review, field_short: 'int' %>
-      <%= render 'rating_field_for_review', field: :equipment_customization, review: review, field_short: 'eqcust' %>
-      <%= render 'rating_field_for_review', field: :solo_friendly, review: review, field_short: 'sofr' %>
+    <div class="review_body">
+      <div class="rating_fields flex flex-col p-3 gap-y-1">
+        <%= render 'rating_field_for_review', field: :minimal_interaction, review: review, field_short: 'int' %>
+        <%= render 'rating_field_for_review', field: :equipment_customization, review: review, field_short: 'eqcust' %>
+        <%= render 'rating_field_for_review', field: :solo_friendly, review: review, field_short: 'sofr' %>
+      </div>
 
-      <div class="comment space-y-1 mt-2">
-        <div class="attribure_name">
-          <%= Review.human_attribute_name(:comment) + ':' %>
-        </div>
+      <div class="comment mt-2">
         <div class="attribute-body p-2 rounded-lg bg-white/50 text-sm">
           <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false, separator: '<') do %>
             <%= link_to '（続きを読む）', review_path(review), class: 'link' %>
