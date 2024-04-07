@@ -1,11 +1,9 @@
 <div class="form-control">
-  <div class="label flex justify-start">
+  <div class="flex justify-center w-3/4 mx-auto bg-base-200 rounded-lg">
     <%= form.label field %>
-    <div class="tooltip tooltip-info inline-block ml-2" data-tip="<%= description %>">
-      <i class="fa-solid fa-circle-question fa-sm" style="color: #b1d9e9;"></i>
-    </div>
+    <%= render 'shared/tooltip_icon', description: t("defaults.description.#{field}") %>
   </div>
-  <div class="rating pb-2 px-1">
+  <div class="rating flex w-3/4 mx-auto pt-1 justify-center">
     <%= form.radio_button field, "#{field}_unspecified", class: 'rating-hidden' %>
     <% Review.send("#{field_short}_rates").each do |rate| %>
         <%= form.radio_button field, rate, class: "mask mask-star-2 bg-orange-400" %>

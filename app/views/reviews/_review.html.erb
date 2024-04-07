@@ -1,33 +1,38 @@
 <div class="card w-96 bg-base-100 mx-auto w-full my-6 shadow-lg">
-  <div class="card-body flex flex-col">
-    <div class="review-header flex flex-col">
-      <div class="user-name">
-        <span class="font-bold"><%= review.user.name %></span>
-        <span> さん</span>
+  <div class="card-body flex flex-col p-6">
+    <div class="review-header flex flex-col gap-y-2">
+      <div class="shop-name grid grid-cols-[1fr_9fr]">
+        <div class="text-center">
+          <i class="fa-solid fa-shop"></i>
+        </div>
+        <div class="font-bold pl-1">
+          <%= review.shop.name %>
+        </div>
       </div>
-      <div class="user-profile">
-        <ul class="flex flex-row gap-2 text-xs justify-end">
-          <% if review.user.gender != 'gender_unspecified' %>
-            <li><%= review.user.gender_i18n %></li>
-          <% end %>
-          <% if review.user.age_group != 'age_unspecified' %>
-            <li><%= review.user.age_group_i18n %></li>
-          <% end %>
-        </ul>
+      <div class="user-info grid grid-cols-[1fr_9fr]">
+        <div class="text-center">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="pl-1 break-all">
+          <span class="font-bold"><%= review.user.name %></span>
+          <span class="text-xs inline-block"> さん</span>
+          <span class="text-xs inline-block">
+            (<%= review.user.gender_i18n %> <%= review.user.age_group_i18n %>)
+          </span>
+        </div>
       </div>
     </div>
 
     <div class="divider mt-0"></div>
 
     <div class="review_body space-y-4">
-      <%= render 'rating_field_for_show', field: :minimal_interaction, review: review, field_short: 'int', description: t('defaults.desc_of_int') %>
-      <%= render 'rating_field_for_show', field: :equipment_customization, review: review, field_short: 'eqcust', description: t('defaults.desc_of_eqcust') %>
-      <%= render 'rating_field_for_show', field: :solo_friendly, review: review, field_short: 'sofr', description: t('defaults.desc_of_sofr') %>
+      <div class="rating_averages flex flex-col gap-y-4 p-2">
+        <%= render 'rating_field_for_show', field: :minimal_interaction, review: review, field_short: 'int', description: t('defaults.description.minimal_interaction') %>
+        <%= render 'rating_field_for_show', field: :equipment_customization, review: review, field_short: 'eqcust', description: t('defaults.description.equipment_customization') %>
+        <%= render 'rating_field_for_show', field: :solo_friendly, review: review, field_short: 'sofr', description: t('defaults.description.solo_friendly') %>
+      </div>
 
-      <div class="comment space-y-1">
-        <div class="attribure_name">
-          <%= Review.human_attribute_name(:comment) + ':' %>
-        </div>
+      <div class="comment">
         <div class="attribute-body p-2 rounded-lg bg-white/50 text-sm">
           <% if review.comment.blank? %>
             <p>コメントなし</p>
