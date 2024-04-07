@@ -7,7 +7,7 @@
       <%= @shops.length %>件
     </div>
     <% if @shops.present? %>
-      <%= render partial: 'shop_for_index', collection: @shops, as: :shop %>
+      <%= render partial: 'shop_summary', collection: @shops, as: :shop %>
     <% else %>
       <p class="text-center"><%= t '.no_shops' %></p>
     <% end %>

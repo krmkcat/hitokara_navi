@@ -3,15 +3,15 @@
     <%= Shop.human_attribute_name(field) %>
     <%= render 'shared/tooltip_icon', description: description %>
   </div>
-  <div class="w-3/4 mx-auto text-center pt-1">
+  <div class="w-3/4 mx-auto flex justify-center pt-1">
     <% if shop.send("#{field}") == 0 %>
-      評価なし
+      <div>評価なし</div>
     <% else %>
-      <span class="rating">
+      <div class="rating">
         <% 5.times do |n| %>
           <%= radio_button_tag "shop_#{shop.id}[#{field}]", n + 1, shop.send("#{field}") == n + 1, { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
         <% end %>
-      </span>
+      </div>
     <% end %>
   </div>
 </div>

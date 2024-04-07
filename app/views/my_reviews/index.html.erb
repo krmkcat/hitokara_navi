@@ -5,7 +5,9 @@
 </div>
 
 <% if @reviews.present? %>
-  <%= render partial: 'my_reviews/review', collection: @reviews %>
+  <div class="reviews flex flex-col gap-y-4">
+    <%= render partial: 'reviews/review_summary', collection: @reviews, as: :review %>
+  </div>
 <% else %>
   <p><%= t '.no_reviews' %></p>
 <% end %>

@@ -1,0 +1,17 @@
+<div>
+  <div class="flex justify-center w-3/4 mx-auto bg-base-200 rounded-lg">
+    <%= Review.human_attribute_name(field) %>
+    <%= render 'shared/tooltip_icon', description: description %>
+  </div>
+  <div class="w-3/4 mx-auto flex justify-center pt-1">
+    <% if review.send("#{field_short}_unspecified?") %>
+      <div>評価なし</div>
+    <% else %>
+      <div class="rating">
+        <% Review.send("#{field_short}_rates").each do |rate| %>
+          <%= radio_button_tag "review_#{review.id}[#{field}]", rate, rate == review.send("#{field}"), { disabled: true, class: "mask mask-star-2 bg-orange-400 cursor-default" } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

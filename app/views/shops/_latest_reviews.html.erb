@@ -1,6 +1,6 @@
 <% if shop.reviews.present? %>
   <div class="reviews flex flex-col gap-y-4">
-    <%= render partial:'shops/review', collection: reviews %>
+    <%= render partial:'reviews/review_summary', collection: reviews, as: :review %>
   </div>
   <div class="text-center mt-6">
     <%= link_to t('.show_all_reviews'), shop_reviews_path(shop), class: 'btn btn-primary' %>
