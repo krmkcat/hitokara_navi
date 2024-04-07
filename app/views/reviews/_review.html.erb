@@ -27,9 +27,9 @@
 
     <div class="review_body space-y-4">
       <div class="rating_averages flex flex-col gap-y-4 p-2">
-        <%= render 'rating_for_show', field: :minimal_interaction, review: review, field_short: 'int', description: t('defaults.description.minimal_interaction') %>
-        <%= render 'rating_for_show', field: :equipment_customization, review: review, field_short: 'eqcust', description: t('defaults.description.equipment_customization') %>
-        <%= render 'rating_for_show', field: :solo_friendly, review: review, field_short: 'sofr', description: t('defaults.description.solo_friendly') %>
+        <%= render 'rating_lg', field: :minimal_interaction, review: review, field_short: 'int', description: t('defaults.description.minimal_interaction') %>
+        <%= render 'rating_lg', field: :equipment_customization, review: review, field_short: 'eqcust', description: t('defaults.description.equipment_customization') %>
+        <%= render 'rating_lg', field: :solo_friendly, review: review, field_short: 'sofr', description: t('defaults.description.solo_friendly') %>
       </div>
 
       <div class="comment">
