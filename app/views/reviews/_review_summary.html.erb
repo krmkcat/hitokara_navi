@@ -20,9 +20,9 @@
 
       <div class="review_body">
         <div class="rating_fields flex flex-col p-3 gap-y-1">
-          <%= render 'rating_field_for_review', field: :minimal_interaction, review: review, field_short: 'int' %>
-          <%= render 'rating_field_for_review', field: :equipment_customization, review: review, field_short: 'eqcust' %>
-          <%= render 'rating_field_for_review', field: :solo_friendly, review: review, field_short: 'sofr' %>
+          <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, field_short: 'int' %>
+          <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, field_short: 'eqcust' %>
+          <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, field_short: 'sofr' %>
         </div>
 
         <div class="comment mt-2">

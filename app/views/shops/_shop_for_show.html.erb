@@ -18,9 +18,9 @@
     </div>
 
     <div class="rating_averages flex flex-col gap-y-4 mt-4 p-2">
-      <%= render 'rating_field_for_show', shop: shop, field: :int_average, description: t("defaults.description.int_average") %>
-      <%= render 'rating_field_for_show', shop: shop, field: :eqcust_average, description: t("defaults.description.eqcust_average") %>
-      <%= render 'rating_field_for_show', shop: shop, field: :sofr_average, description: t("defaults.description.sofr_average") %>
+      <%= render 'rating_for_show', shop: shop, field: :int_average, description: t("defaults.description.int_average") %>
+      <%= render 'rating_for_show', shop: shop, field: :eqcust_average, description: t("defaults.description.eqcust_average") %>
+      <%= render 'rating_for_show', shop: shop, field: :sofr_average, description: t("defaults.description.sofr_average") %>
     </div>
 
     <div class="static-informations mx-auto space-y-4 px-2 mt-4">

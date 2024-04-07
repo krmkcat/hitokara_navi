@@ -3,9 +3,9 @@
     <%= render 'shared/error_messages', object: form.object %>
 
     <div class="flex flex-col gap-y-4 p-2">
-      <%= render 'rating_field_for_form', form: form, field: :minimal_interaction, field_short: 'int', description: t('defaults.description.minimal_interaction') %>
-      <%= render 'rating_field_for_form', form: form, field: :equipment_customization, field_short: 'eqcust', description: t('defaults.description.equipment_customization') %>
-      <%= render 'rating_field_for_form', form: form, field: :solo_friendly, field_short: 'sofr', description: t('defaults.description.solo_friendly') %>
+      <%= render 'rating_for_form', form: form, field: :minimal_interaction, field_short: 'int', description: t('defaults.description.minimal_interaction') %>
+      <%= render 'rating_for_form', form: form, field: :equipment_customization, field_short: 'eqcust', description: t('defaults.description.equipment_customization') %>
+      <%= render 'rating_for_form', form: form, field: :solo_friendly, field_short: 'sofr', description: t('defaults.description.solo_friendly') %>
     </div>
 
     <div class="form-control">
