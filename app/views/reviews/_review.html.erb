@@ -1,4 +1,4 @@
-<div class="card w-96 bg-base-100 mx-auto w-full my-6 shadow-lg">
+<div class="card w-96 bg-accent/10 mx-auto w-full my-6 shadow-lg">
   <div class="card-body flex flex-col p-6">
     <div class="review-header flex flex-col gap-y-2">
       <div class="shop-name grid grid-cols-[1fr_9fr]">
@@ -16,9 +16,11 @@
         <div class="pl-1 break-all">
           <span class="font-bold"><%= review.user.name %></span>
           <span class="text-xs inline-block"> さん</span>
-          <span class="text-xs inline-block">
-            (<%= review.user.gender_i18n %> <%= review.user.age_group_i18n %>)
-          </span>
+          <% if review.user.profile_displayable? %>
+            <span class="text-xs inline-block">
+              <%= review.user.display_profile %>
+            </span>
+          <% end %>
         </div>
       </div>
     </div>
@@ -37,13 +39,7 @@
           <% if review.comment.blank? %>
             <p>コメントなし</p>
           <% else %>
-            <% if current_page?(shop_reviews_path(shop)) %>
-              <%= truncate(simple_format(review.comment), length: 100, omission: '…', escape: false, separator: '<') do %>
-                <%= link_to '（続きを読む）', review_path(review), class: 'link' %>
-              <% end %>
-            <% else %>
-              <%= safe_join(review.comment&.split("\n"), tag(:br)) %>
-            <% end %>
+            <%= safe_join(review.comment&.split("\n"), tag(:br)) %>
           <% end %>
         </div>
       </div>

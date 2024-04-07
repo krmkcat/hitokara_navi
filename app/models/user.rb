@@ -40,4 +40,18 @@ class User < ApplicationRecord
   def own?(object)
     id == object&.user_id
   end
+
+  def profile_displayable?
+    !profile.gender_unspecified? || !profile.age_unspecified?
+  end
+
+  def display_profile
+    if !profile.gender_unspecified? && !profile.age_unspecified?
+      "(#{gender_i18n} #{age_group_i18n})"
+    elsif profile.gender_unspecified?
+      "(#{age_group_i18n})"
+    else
+      "(#{gender_i18n})"
+    end
+  end
 end

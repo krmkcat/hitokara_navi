@@ -1,5 +1,5 @@
 <%= link_to review_path(review), data: { turbo: false } do %>
-  <div class="card w-96 bg-base-100 mx-auto w-full shadow-lg active:bg-base-200" ontouchstart=""">
+  <div class="card w-96 bg-accent/10 mx-auto w-full shadow-lg active:bg-base-200" ontouchstart=""">
     <div class="card-body text-sm p-3.5">
       <div class="review-header flex flex-col">
         <% if current_page?(my_review_path) %>
@@ -20,9 +20,11 @@
             <div class="pl-1 break-all">
               <span class="font-bold"><%= review.user.name %></span>
               <span class="text-xs inline-block"> さん</span>
-              <span class="text-xs inline-block">
-                (<%= review.user.gender_i18n %> <%= review.user.age_group_i18n %>)
-              </span>
+              <% if review.user.profile_displayable? %>
+                <span class="text-xs inline-block">
+                  <%= review.user.display_profile %>
+                </span>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -30,19 +32,17 @@
 
       <div class="divider my-0"></div>
 
-      <div class="review_body">
-        <div class="rating_fields flex flex-col p-3 gap-y-1">
+      <div class="review_body flex flex-col">
+        <div class="rating_fields flex flex-col mx-auto p-3 gap-y-1">
           <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, field_short: 'int' %>
           <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, field_short: 'eqcust' %>
           <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, field_short: 'sofr' %>
         </div>
 
-        <div class="comment mt-2">
-          <div class="attribute-body p-2 rounded-lg bg-white/50 text-sm">
-            <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false) do %>
-              <span class="underline italic text-xs inline-block">（続きを読む）</span>
-            <% end %>
-          </div>
+        <div class="comment mt-2 p-2 rounded-lg bg-white/50 text-sm">
+          <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false) do %>
+            <span class="underline italic text-xs inline-block">（続きを読む）</span>
+          <% end %>
         </div>
 
         <div class="last_update text-xs mt-0.5">
