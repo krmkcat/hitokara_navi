@@ -37,12 +37,10 @@
           <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, field_short: 'sofr' %>
         </div>
 
-        <div class="comment mt-2">
-          <div class="attribute-body p-2 rounded-lg bg-white/50 text-sm">
-            <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false) do %>
-              <span class="underline italic text-xs inline-block">（続きを読む）</span>
-            <% end %>
-          </div>
+        <div class="comment mt-2 p-2 rounded-lg bg-primary/10 text-sm">
+          <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false) do %>
+            <span class="underline italic text-xs inline-block">（続きを読む）</span>
+          <% end %>
         </div>
 
         <div class="last_update text-xs mt-0.5">

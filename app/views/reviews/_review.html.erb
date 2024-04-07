@@ -33,17 +33,11 @@
       </div>
 
       <div class="comment">
-        <div class="attribute-body p-2 rounded-lg bg-white/50 text-sm">
+        <div class="attribute-body p-2 rounded-lg bg-primary/10 text-sm">
           <% if review.comment.blank? %>
             <p>コメントなし</p>
           <% else %>
-            <% if current_page?(shop_reviews_path(shop)) %>
-              <%= truncate(simple_format(review.comment), length: 100, omission: '…', escape: false, separator: '<') do %>
-                <%= link_to '（続きを読む）', review_path(review), class: 'link' %>
-              <% end %>
-            <% else %>
-              <%= safe_join(review.comment&.split("\n"), tag(:br)) %>
-            <% end %>
+            <%= safe_join(review.comment&.split("\n"), tag(:br)) %>
           <% end %>
         </div>
       </div>
