@@ -1,21 +1,29 @@
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen">
   <div class="hero-content text-center">
     <div class="max-w-md">
       <%= image_tag 'logo_large_transparent.png' %>
 
-      <p class="py-6 text-left">
-        ヒトカラナビは、一人カラオケが大好きな "ヒトカラー" のためのカラオケ店レビュー＆検索サービスです。
-        <br>
-        ヒトカラー目線での評価をもとに、あなたのこだわりを満たすお店を簡単にみつけられます。
-      </p>
-
-      <div>
-        <%= link_to t('shops.index.title'), shops_path, class: 'btn btn-primary mt-6 mb-4 w-[140px]' %>
+      <div class="introduction mt-10 text-left text-neutral text-sm">
+        <p>
+          ヒトカラナビは、一人カラオケが大好きな "ヒトカラー" のためのカラオケ店レビュー＆検索サービスです。
+        </p>
+        <p>
+          ヒトカラーならではの目線での評価を共有し、あなたのこだわりを満たすお店をみつけましょう。
+        </p>
       </div>
-      <div>
-        <% if logged_in? == false %>
-          <%= link_to t('users.new.title'), signup_path, class: 'btn btn-accent w-[140px]' %>
-        <% end %>
+
+      <div class="buttons flex flex-col gap-y-4 mt-12">
+        <div>
+          <%= link_to t('shops.index.title'), shops_path, class: 'btn btn-primary btn-wide' %>
+        </div>
+        <div>
+          <% if logged_in? == false %>
+            <%= link_to t('users.new.title'), signup_path, class: 'btn btn-accent btn-wide' %>
+            <div class="message text-xs text-secondary mt-1">
+              レビューを書くにはユーザー登録が必要です
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
