@@ -2,18 +2,30 @@
   <div class="card w-96 bg-base-100 mx-auto w-full shadow-lg active:bg-base-200" ontouchstart=""">
     <div class="card-body text-sm p-3.5">
       <div class="review-header flex flex-col">
-        <div class="user-info grid grid-cols-[1fr_9fr]">
-          <div class="text-center">
-            <i class="fa-solid fa-user"></i>
+        <% if current_page?(my_review_path) %>
+          <div class="shop-name grid grid-cols-[1fr_9fr]">
+            <div class="text-center">
+              <i class="fa-solid fa-shop"></i>
+            </div>
+            <div class="pl-1 break-all">
+              <span class="font-bold"><%= review.shop.name %></span>
+            </div>
           </div>
-          <div class="pl-1 break-all">
-            <span class="font-bold"><%= review.user.name %></span>
-            <span class="text-xs inline-block"> さん</span>
-            <span class="text-xs inline-block">
-              (<%= review.user.gender_i18n %> <%= review.user.age_group_i18n %>)
-            </span>
+        <% end %>
+        <% if current_page?(my_review_path) == false %>
+          <div class="user-info grid grid-cols-[1fr_9fr]">
+            <div class="text-center">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="pl-1 break-all">
+              <span class="font-bold"><%= review.user.name %></span>
+              <span class="text-xs inline-block"> さん</span>
+              <span class="text-xs inline-block">
+                (<%= review.user.gender_i18n %> <%= review.user.age_group_i18n %>)
+              </span>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
 
       <div class="divider my-0"></div>
