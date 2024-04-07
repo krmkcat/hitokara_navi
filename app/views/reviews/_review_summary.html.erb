@@ -20,9 +20,11 @@
             <div class="pl-1 break-all">
               <span class="font-bold"><%= review.user.name %></span>
               <span class="text-xs inline-block"> さん</span>
-              <span class="text-xs inline-block">
-                (<%= review.user.gender_i18n %> <%= review.user.age_group_i18n %>)
-              </span>
+              <% if review.user.profile_displayable? %>
+                <span class="text-xs inline-block">
+                  <%= review.user.display_profile %>
+                </span>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -31,7 +33,7 @@
       <div class="divider my-0"></div>
 
       <div class="review_body">
-        <div class="rating_fields flex flex-col p-3 gap-y-1">
+        <div class="rating_fields flex flex-col mx-auto p-3 gap-y-1">
           <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, field_short: 'int' %>
           <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, field_short: 'eqcust' %>
           <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, field_short: 'sofr' %>

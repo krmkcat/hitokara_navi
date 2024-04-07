@@ -16,9 +16,11 @@
         <div class="pl-1 break-all">
           <span class="font-bold"><%= review.user.name %></span>
           <span class="text-xs inline-block"> さん</span>
-          <span class="text-xs inline-block">
-            (<%= review.user.gender_i18n %> <%= review.user.age_group_i18n %>)
-          </span>
+          <% if review.user.profile_displayable? %>
+            <span class="text-xs inline-block">
+              <%= review.user.display_profile %>
+            </span>
+          <% end %>
         </div>
       </div>
     </div>
