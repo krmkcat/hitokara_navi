@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'tags/index'
+    get 'tags/new'
+    get 'tags/show'
+    get 'tags/edit'
+    get 'shops/index'
+    get 'shops/new'
+    get 'shops/show'
+    get 'shops/edit'
+    get 'users/index'
+    get 'users/new'
+    get 'users/show'
+    get 'users/edit'
+    get 'dashboards/index'
+    get 'user_sessions/new'
+  end
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   resources :password_resets, only: %i[create edit update]
