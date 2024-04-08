@@ -1,2 +1,30 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+  <%= form_with(model: @user, url: admin_user_path(@user), class: 'card-body') do |form| %>
+    <%= render 'shared/error_messages', object: form.object %>
+
+    <div class="form-control">
+      <%= form.label :email, class: 'label' %>
+      <%= form.email_field :email, class: "input input-bordered input-primary w-full max-w-xs" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :role, class: 'label' %>
+      <%= form.select :role, User.roles_i18n.invert, {}, class: "select select-bordered select-primary w-full max-w-xs" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :password, class: 'label' %>
+      <%= form.password_field :password, class: "input input-bordered input-primary w-full max-w-xs" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :password_confirmation, class: 'label' %>
+      <%= form.password_field :password_confirmation, placeholder: t('.type_password_again'),class: "input input-bordered input-primary w-full max-w-xs" %>
+    </div>
+
+    <div class="form-control mt-6 text-center">
+      <%= form.submit class: 'btn btn-accent' %>
+    </div>
+  <% end %>
+</div>
+<%= render 'admin/shared/to_index_button', model_name: User.model_name.human, path: admin_users_path %>

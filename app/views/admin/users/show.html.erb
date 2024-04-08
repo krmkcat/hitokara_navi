@@ -1,2 +1,28 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="overflow-x-auto">
+  <table class="table">
+    <tr>
+      <th><%= User.human_attribute_name(:id) %></th>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <th><%= Profile.human_attribute_name(:name) %></th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th><%= User.human_attribute_name(:role) %></th>
+      <td><%= @user.role_i18n %></td>
+    </tr>
+    <tr>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th><%= User.human_attribute_name(:created_at) %></th>
+      <td><%= l @user.created_at, format: :long %></td>
+    </tr>
+  </table>
+</div>
+<div class="text-right">
+  <%= render 'admin/shared/edit_and_delete_buttons', edit_path: edit_admin_user_path(@user), delete_path: admin_user_path(@user) %>
+</div>
+<%= render 'admin/shared/to_index_button', model_name: User.model_name.human, path: admin_users_path %>

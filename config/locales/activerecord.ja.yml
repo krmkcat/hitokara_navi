@@ -7,11 +7,14 @@ ja:
       area: エリア
       shop: 店舗
       review: レビュー
+      tag: タグ
     attributes:
       user:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+        role: 権限
+        created_at: 作成日時
       profile:
         name: ユーザーネーム
         gender: 性別
@@ -29,8 +32,12 @@ ja:
         int_average: 接客の少なさ
         eqcust_average: 機器設定の自由度
         sofr_average: ヒトカラー歓迎度
+        created_at: 作成日時
       review:
         minimal_interaction: 接客の少なさ
         equipment_customization: 機器設定の自由度
         solo_friendly: ヒトカラー歓迎度
         comment: コメント
+      tag:
+        name: タグ名
+        created_at: 作成日時

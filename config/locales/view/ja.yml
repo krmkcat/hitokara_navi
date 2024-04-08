@@ -89,6 +89,7 @@ ja:
         title: ユーザー詳細
       edit:
         title: ユーザー編集
+        type_password_again: パスワードを再入力
     shops:
       index:
         title: 店舗一覧
@@ -96,6 +97,17 @@ ja:
         title: 店舗詳細
       edit:
         title: 店舗編集
+      new:
+        title: 店舗作成
+    tags:
+      index:
+        title: タグ一覧
+      show:
+        title: タグ詳細
+      edit:
+        title: タグ編集
+      new:
+        title: タグ作成
   defaults:
     post: 投稿
     update: 更新
@@ -111,6 +123,7 @@ ja:
     pref_and_area: 都道府県 / エリア
     name_or_address: 店名・住所
     to_official_site: 公式サイトへ
+    to_index: "%{item}一覧へ"
     description:
       int_average: 店員との接触機会は最小限？
       eqcust_average: 高度な設定変更や機材持ち込みができる？
