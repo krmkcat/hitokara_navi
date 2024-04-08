@@ -97,6 +97,17 @@ ja:
         title: 店舗詳細
       edit:
         title: 店舗編集
+      new:
+        title: 店舗作成
+    tags:
+      index:
+        title: タグ一覧
+      show:
+        title: タグ詳細
+      edit:
+        title: タグ編集
+      new:
+        title: タグ作成
   defaults:
     post: 投稿
     update: 更新
