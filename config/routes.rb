@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'tags/index'
-    get 'tags/new'
-    get 'tags/show'
-    get 'tags/edit'
-    get 'shops/index'
-    get 'shops/new'
-    get 'shops/show'
-    get 'shops/edit'
-    get 'users/index'
-    get 'users/new'
-    get 'users/show'
-    get 'users/edit'
-    get 'dashboards/index'
-    get 'user_sessions/new'
+    root 'dashboards#index'
+    resources :users
+    resources :shops
+    resources :tags
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
   end
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
