@@ -9,6 +9,14 @@
       <td><%= @shop.name %></td>
     </tr>
     <tr>
+      <th><%= Prefecture.model_name.human %></th>
+      <td><%= @shop.prefecture.name %></td>
+    </tr>
+    <tr>
+      <th><%= Area.model_name.human %></th>
+      <td><%= @shop.area.name %></td>
+    </tr>
+    <tr>
       <th><%= Shop.human_attribute_name(:address) %></th>
       <td><%= @shop.address %></td>
     </tr>

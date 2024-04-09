@@ -122,6 +122,7 @@ ja:
     unspecified: 指定なし
     pref_and_area: 都道府県 / エリア
     name_or_address: 店名・住所
+    selection_required: 選択必須
     to_official_site: 公式サイトへ
     to_index: "%{item}一覧へ"
     to_new: "%{item}登録へ"

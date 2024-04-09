@@ -1,13 +1,16 @@
 <div class="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
-  <%= form_with(model: @shop, url: url, class: 'card-body') do |form| %>
+  <%= form_with(model: shop, url: url, class: 'card-body') do |form| %>
     <%= render 'shared/error_messages', object: form.object %>
 
-    <div class="form-control">
-      <%= label_tag '', t('defaults.pref_and_area'), class: 'label' %>
+    <div class="location form-control">
+      <%= label_tag '', t('defaults.pref_and_area'), class: 'label pt-0' %>
       <%= turbo_frame_tag 'location-select-boxes' do %>
         <div class="join flex">
-          <%= form.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-sm select-primary text-xs join-item' } %>
-          <%= form.select :area_id, [['---', nil]], {}, class: 'select select-bordered select-primary select-sm join-item grow' %>
+          <% if current_page?(new_admin_shop_path) %>
+            <%= render 'select_boxes_for_new' %>
+          <% else %>
+            <%= render 'select_boxes_for_edit', prefecture: shop.prefecture, area: shop.area %>
+          <% end %>
         </div>
       <% end %>
     </div>
