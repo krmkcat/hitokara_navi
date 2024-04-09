@@ -1,2 +1,2 @@
-<h1>Admin::Shops#edit</h1>
-<p>Find me in app/views/admin/shops/edit.html.erb</p>
+<%= render 'form', shop: @shop, url: admin_shop_url(@shop) %>
+<%= render 'admin/shared/to_index_button', model_name: Shop.model_name.human, path: admin_shops_path %>

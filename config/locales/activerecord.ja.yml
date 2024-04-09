@@ -10,11 +10,13 @@ ja:
       tag: タグ
     attributes:
       user:
+        id: ID
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
         role: 権限
         created_at: 作成日時
+        updated_at: 最終更新日時
       profile:
         name: ユーザーネーム
         gender: 性別
@@ -22,8 +24,12 @@ ja:
       prefecture:
         name: 都道府県
       area:
+        id: ID
         name: エリア
+        created_at: 作成日時
+        updated_at: 最終更新日時
       shop:
+        id: ID
         name: 店舗名
         address: 住所
         phone_number: 電話番号
@@ -33,11 +39,16 @@ ja:
         eqcust_average: 機器設定の自由度
         sofr_average: ヒトカラー歓迎度
         created_at: 作成日時
+        updated_at: 最終更新日時
+        latitude: 緯度
+        longitude: 経度
       review:
         minimal_interaction: 接客の少なさ
         equipment_customization: 機器設定の自由度
         solo_friendly: ヒトカラー歓迎度
         comment: コメント
       tag:
+        id: ID
         name: タグ名
         created_at: 作成日時
+        updated_at: 最終更新日時

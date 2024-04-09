@@ -1,2 +1,17 @@
-<h1>Admin::Shops#index</h1>
-<p>Find me in app/views/admin/shops/index.html.erb</p>
+<%= render 'admin/shared/to_new_button', model_name: Shop.model_name.human, path: new_admin_shop_path %>
+<div class="overflow-x-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= Shop.human_attribute_name(:id) %></th>
+        <th><%= Shop.human_attribute_name(:name) %></th>
+        <th><%= Prefecture.model_name.human %></th>
+        <th><%= Area.model_name.human %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @shops %>
+    </tbody>
+  </table>
+</div>
+
