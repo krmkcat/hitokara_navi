@@ -1,0 +1,10 @@
+<tr>
+  <th><%= shop.id %></th>
+  <td><%= shop.name %></td>
+  <td><%= shop.prefecture.name %></td>
+  <td><%= shop.area.name %></td>
+  <td>
+    <%= link_to t('defaults.show'), admin_shop_path(shop), class: 'btn btn-sm' %>
+    <%= render 'admin/shared/edit_and_delete_buttons', edit_path: edit_admin_shop_path(shop), delete_path: admin_shop_path(shop) %>
+  </td>
+</tr>

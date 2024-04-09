@@ -1,0 +1,57 @@
+<div class="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
+  <%= form_with(model: shop, url: url, class: 'card-body') do |form| %>
+    <%= render 'shared/error_messages', object: form.object %>
+
+    <div class="location form-control">
+      <%= label_tag '', t('defaults.pref_and_area'), class: 'label pt-0' %>
+      <%= turbo_frame_tag 'location-select-boxes' do %>
+        <div class="join flex">
+          <% if current_page?(new_admin_shop_path) %>
+            <%= render 'select_boxes_for_new' %>
+          <% else %>
+            <%= render 'select_boxes_for_edit', prefecture: shop.prefecture, area: shop.area %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :name, class: 'label' %>
+      <%= form.text_field :name, class: "input input-bordered input-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :address, class: 'label' %>
+      <%= form.text_field :address, class: "input input-bordered input-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :phone_number, class: 'label' %>
+      <%= form.text_field :phone_number, class: "input input-bordered input-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :url, class: 'label' %>
+      <%= form.text_field :url, class: "input input-bordered input-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :opening_hours, class: 'label' %>
+      <%= form.text_area :opening_hours, rows: 7, class: "textarea textarea-bordered textarea-primary w-full max-w-lg rounded-lg" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :latitude, class: 'label' %>
+      <%= form.text_field :latitude, class: "input input-bordered input-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :longitude, class: 'label' %>
+      <%= form.text_field :longitude, class: "input input-bordered input-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control mt-6 text-center">
+      <%= form.submit class: 'btn btn-accent' %>
+    </div>
+  <% end %>
+</div>

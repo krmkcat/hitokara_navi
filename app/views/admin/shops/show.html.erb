@@ -1,2 +1,57 @@
-<h1>Admin::Shops#show</h1>
-<p>Find me in app/views/admin/shops/show.html.erb</p>
+<div class="overflow-x-auto">
+  <table class="table">
+    <tr>
+      <th><%= Shop.human_attribute_name(:id) %></th>
+      <td><%= @shop.id %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:name) %></th>
+      <td><%= @shop.name %></td>
+    </tr>
+    <tr>
+      <th><%= Prefecture.model_name.human %></th>
+      <td><%= @shop.prefecture.name %></td>
+    </tr>
+    <tr>
+      <th><%= Area.model_name.human %></th>
+      <td><%= @shop.area.name %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:address) %></th>
+      <td><%= @shop.address %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:phone_number) %></th>
+      <td><%= @shop.phone_number %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:url) %></th>
+      <td><%= link_to @shop.url.to_s, @shop.url, class: 'link', target: 'blank' %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:opening_hours) %></th>
+      <td><%= simple_format(@shop.opening_hours) %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:latitude) %></th>
+      <td><%= @shop.latitude %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:longitude) %></th>
+      <td><%= @shop.longitude %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:created_at) %></th>
+      <td><%= l @shop.created_at, format: :long %></td>
+    </tr>
+    <tr>
+      <th><%= Shop.human_attribute_name(:updated_at) %></th>
+      <td><%= l @shop.updated_at, format: :long %></td>
+    </tr>
+  </table>
+</div>
+<div class="text-right">
+  <%= render 'admin/shared/edit_and_delete_buttons', edit_path: edit_admin_shop_path(@shop), delete_path: admin_shop_path(@shop) %>
+</div>
+<%= render 'admin/shared/to_index_button', model_name: Shop.model_name.human, path: admin_shops_path %>
+

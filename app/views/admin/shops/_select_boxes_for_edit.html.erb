@@ -1,0 +1,2 @@
+<%= select :shop, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { selected: prefecture_areas_path(prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-sm select-primary join-item' } %>
+<%= select :shop, :area_id, prefecture.areas.pluck(:name, :id), { selected: area.id, include_blank: t('defaults.selection_required') }, { class: 'select select-bordered select-sm select-primary text-xs join-item grow' } %>
