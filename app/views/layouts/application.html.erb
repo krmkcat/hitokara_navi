@@ -11,6 +11,15 @@
     <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
     <%= display_meta_tags(default_meta_tags) %>
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPLGMK7M17"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YPLGMK7M17');
+  </script>
 
   <body class="flex flex-col min-h-screen">
     <% if logged_in?%>
