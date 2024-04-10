@@ -130,7 +130,7 @@ ja:
     last: ">>"
     next: ">"
     previous: "<"
-    truncate: ...
+    truncate: "..."
   defaults:
     post: 投稿
     update: 更新
