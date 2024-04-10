@@ -5,13 +5,11 @@
     <div class="location form-control">
       <%= label_tag '', t('defaults.pref_and_area'), class: 'label pt-0' %>
       <%= turbo_frame_tag 'location-select-boxes' do %>
-        <div class="join flex">
-          <% if current_page?(new_admin_shop_path) %>
-            <%= render 'select_boxes_for_new' %>
-          <% else %>
-            <%= render 'select_boxes_for_edit', prefecture: shop.prefecture, area: shop.area %>
-          <% end %>
-        </div>
+        <% if current_page?(new_admin_shop_path) %>
+          <%= render 'select_boxes_for_new' %>
+        <% else %>
+          <%= render 'select_boxes_for_edit', prefecture: shop.prefecture, area: shop.area %>
+        <% end %>
       <% end %>
     </div>
 

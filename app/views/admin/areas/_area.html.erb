@@ -1,0 +1,9 @@
+<tr>
+  <th><%= area.id %></th>
+  <td><%= area.prefecture.name %></td>
+  <td><%= area.name %></td>
+  <td>
+    <%= link_to t('defaults.show'), admin_area_path(area), class: 'btn btn-sm' %>
+    <%= render 'admin/shared/edit_and_delete_buttons', edit_path: edit_admin_area_path(area), delete_path: admin_area_path(area) %>
+  </td>
+</tr>

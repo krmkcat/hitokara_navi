@@ -108,6 +108,15 @@ ja:
         title: タグ編集
       new:
         title: タグ作成
+    areas:
+      index:
+        title: エリア一覧
+      show:
+        title: エリア詳細
+      edit:
+        title: エリア編集
+      new:
+        title: エリア作成
   defaults:
     post: 投稿
     update: 更新

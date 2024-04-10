@@ -1,0 +1,30 @@
+<div class="overflow-x-auto">
+  <table class="table">
+    <tr>
+      <th><%= Area.human_attribute_name(:id) %></th>
+      <td><%= @area.id %></td>
+    </tr>
+    <tr>
+      <th><%= Prefecture.human_attribute_name(:name) %></th>
+      <td><%= @area.prefecture.name %></td>
+    </tr>
+    <tr>
+      <th><%= Area.human_attribute_name(:name) %></th>
+      <td><%= @area.name %></td>
+    </tr>
+    <tr>
+      <th><%= Area.human_attribute_name(:created_at) %></th>
+      <td><%= l @area.created_at, format: :long %></td>
+    </tr>
+    <tr>
+      <th><%= Area.human_attribute_name(:updated_at) %></th>
+      <td><%= l @area.updated_at, format: :long %></td>
+    </tr>
+  </table>
+</div>
+<div class="text-right">
+  <%= render 'admin/shared/edit_and_delete_buttons', edit_path: edit_admin_area_path(@area), delete_path: admin_area_path(@area) %>
+</div>
+<%= render 'admin/shared/to_index_button', model_name: Area.model_name.human, path: admin_areas_path %>
+
+

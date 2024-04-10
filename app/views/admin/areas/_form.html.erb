@@ -1,0 +1,19 @@
+<div class="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
+  <%= form_with(model: area, url: url, class: 'card-body') do |form| %>
+    <%= render 'shared/error_messages', object: form.object %>
+
+    <div class="form-control">
+      <%= form.label :prefecture_id, Prefecture.model_name.human, class: 'label' %>
+      <%= form.collection_select :prefecture_id, Prefecture.order(:id), :id, :name, {}, class: "select select-bordered select-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control">
+      <%= form.label :name, class: 'label' %>
+      <%= form.text_field :name, class: "input input-bordered input-primary w-full max-w-lg" %>
+    </div>
+
+    <div class="form-control mt-6 text-center">
+      <%= form.submit class: 'btn btn-accent' %>
+    </div>
+  <% end %>
+</div>
