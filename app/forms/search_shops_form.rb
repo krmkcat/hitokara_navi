@@ -21,14 +21,14 @@ class SearchShopsForm
     relation = relation.by_prefecture_id(prefecture_id) if prefecture_id.present?
     relation = relation.by_area_id(area_id) if area_id.present?
     relation = search_with_name_or_address(relation) if words.present?
-    relation = search_with_ratings(relation, int_average, eqcust_average, sofr_average)
+    relation = search_with_ratings(relation)
     relation = relation.by_tag_ids(tag_ids) if tag_ids.present?
     relation
   end
 
   private
 
-  def search_with_ratings(relation, int_average, eqcust_average, sofr_average)
+  def search_with_ratings(relation)
     relation = relation.by_int_average(int_average) if int_average.present?
     relation = relation.by_eqcust_average(eqcust_average) if eqcust_average.present?
     relation = relation.by_sofr_average(sofr_average) if sofr_average.present?
