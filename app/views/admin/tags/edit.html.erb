@@ -1,2 +1,4 @@
+<% content_for :title, t('.title') %>
+
 <%= render 'form', tag: @tag, url: admin_tag_url(@tag) %>
 <%= render 'admin/shared/to_index_button', model_name: Tag.model_name.human, path: admin_tags_path %>

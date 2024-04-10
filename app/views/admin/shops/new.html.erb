@@ -1,2 +1,4 @@
+<% content_for :title, t('.title') %>
+
 <%= render 'form', shop: @shop, url: admin_shops_url %>
 <%= render 'admin/shared/to_index_button', model_name: Shop.model_name.human, path: admin_shops_path %>

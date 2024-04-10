@@ -7,6 +7,9 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  static_pages:
+    index:
+      title: トップページ
   user_sessions:
     new:
       title: ログイン
@@ -32,6 +35,7 @@ ja:
       title: カラオケを探す
       no_shops: 該当する店舗がありません
     show:
+      title: "%{shop}"
       latest_reviews: 最新レビュー
     latest_reviews:
       show_all_reviews: すべてのレビューを見る
@@ -40,8 +44,10 @@ ja:
       title: マイページ
       to_my_reviews: 投稿したレビュー一覧を見る
     edit:
-      title: プロフィール
+      title: プロフィール編集
   reviews:
+    new:
+      title: レビュー投稿
     create:
       success: レビューを投稿しました
       failure: レビューを投稿できませんでした
@@ -49,13 +55,15 @@ ja:
       title: "%{shop}のレビュー一覧"
     edit:
       title: レビューを編集
+    show:
+      title: "%{shop}のレビュー"
   my_reviews:
     index:
       title: 投稿したレビュー
       back_to_mypage: マイページへ戻る
   shop_tags:
     index:
-      title: "%{shop}のタグを編集"
+      title: "%{shop}のタグ編集"
       done_and_to_show_shops: 完了して店舗詳細へ
   password_resets:
     new:
@@ -122,7 +130,7 @@ ja:
     last: ">>"
     next: ">"
     previous: "<"
-    truncate: ...
+    truncate: "..."
   defaults:
     post: 投稿
     update: 更新

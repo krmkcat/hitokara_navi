@@ -1,3 +1,5 @@
+<% content_for :title, t('.title') %>
+
 <%= render 'admin/shared/to_new_button', model_name: Shop.model_name.human, path: new_admin_shop_path %>
 <div class="overflow-x-auto">
   <table class="table">

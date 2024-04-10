@@ -1,10 +1,11 @@
 module ApplicationHelper
+  def page_title(title = '', admin: false)
+    base_title = admin ? 'ヒトカラナビ(管理画面)' : 'ヒトカラナビ'
+    title.present? ? "#{title} | #{base_title}" : base_title
+  end
+
   def default_meta_tags
     {
-      site: 'ヒトカラナビ',
-      title: 'ヒトカラー向けのカラオケ店検索＆レビューサービス',
-      reverse: true,
-      separator: '|', # Webサイト名とページタイトルを区切るために使用されるテキスト
       description: 'ヒトカラー目線でカラオケ店の評価を共有し、あなたのこだわりにあったお店をみつけましょう。',
       keywords: 'ヒトカラ,ひとりカラオケ,一人カラオケ', # キーワードを「,」区切りで設定する
       canonical: request.original_url, # 優先するurlを指定する

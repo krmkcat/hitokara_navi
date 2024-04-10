@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>管理者ダッシュボード</title>
+    <title><%= page_title(yield(:title), admin: true) %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
