@@ -4,10 +4,11 @@ Rails.application.routes.draw do
     resources :users
     resources :shops
     resources :tags
+    resources :areas
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
-    get 'prefectures/:prefecture_id/areas', to: 'areas#index', as: :prefecture_areas
+    get 'prefectures/:prefecture_id/areas', to: 'prefecture_areas#index', as: :prefecture_areas
   end
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
