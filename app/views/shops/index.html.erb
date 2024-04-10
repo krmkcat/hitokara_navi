@@ -4,10 +4,11 @@
 
   <%= turbo_frame_tag 'shops-list' do %>
     <div class="divider mt-8 text-sm">
-      <%= @shops.length %>件
+      <%= @all_shops.length %>件
     </div>
     <% if @shops.present? %>
       <%= render partial: 'shop_summary', collection: @shops, as: :shop %>
+      <%= render 'shared/pagination', object: @shops %>
     <% else %>
       <p class="text-center"><%= t '.no_shops' %></p>
     <% end %>

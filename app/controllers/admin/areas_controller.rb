@@ -2,7 +2,7 @@ class Admin::AreasController < Admin::BaseController
   before_action :set_area, only: %i[show edit update destroy]
 
   def index
-    @areas = Area.all.includes(:prefecture).order(id: :asc)
+    @areas = Area.all.includes(:prefecture).order(id: :asc).page(params[:page]).per(25)
   end
 
   def new

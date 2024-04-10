@@ -2,7 +2,7 @@ class Admin::TagsController < Admin::BaseController
   before_action :set_tag, only: %i[show edit update destroy]
 
   def index
-    @tags = Tag.all.order(id: :asc)
+    @tags = Tag.all.order(id: :asc).page(params[:page]).per(25)
   end
 
   def new
