@@ -18,16 +18,22 @@ class SearchShopsForm
   def search
     relation = Shop.distinct
 
-    relation = relation.by_int_average(int_average) if int_average.present?
-    relation = relation.by_eqcust_average(eqcust_average) if eqcust_average.present?
-    relation = relation.by_sofr_average(sofr_average) if sofr_average.present?
-    relation = relation.by_tag_ids(tag_ids) if tag_ids.present?
     relation = relation.by_prefecture_id(prefecture_id) if prefecture_id.present?
     relation = relation.by_area_id(area_id) if area_id.present?
-    search_with_name_or_address(relation)
+    relation = search_with_name_or_address(relation) if words.present?
+    relation = search_with_ratings(relation, int_average, eqcust_average, sofr_average)
+    relation = relation.by_tag_ids(tag_ids) if tag_ids.present?
+    relation
   end
 
   private
+
+  def search_with_ratings(relation, int_average, eqcust_average, sofr_average)
+    relation = relation.by_int_average(int_average) if int_average.present?
+    relation = relation.by_eqcust_average(eqcust_average) if eqcust_average.present?
+    relation = relation.by_sofr_average(sofr_average) if sofr_average.present?
+    relation
+  end
 
   def search_words
     words.present? ? words.split(/[[:blank:]]+/) : []
