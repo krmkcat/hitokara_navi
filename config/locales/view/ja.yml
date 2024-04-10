@@ -29,6 +29,7 @@ ja:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
     form:
+      password_rule: 半角英数8文字以上
       type_password_again: パスワードを再入力
   shops:
     index:
@@ -45,6 +46,8 @@ ja:
       to_my_reviews: 投稿したレビュー一覧を見る
     edit:
       title: プロフィール編集
+    form:
+      user_name_rule: 20文字以内
   reviews:
     new:
       title: レビュー投稿
@@ -125,12 +128,6 @@ ja:
         title: エリア編集
       new:
         title: エリア作成
-  pagination:
-    first: "<<"
-    last: ">>"
-    next: ">"
-    previous: "<"
-    truncate: "..."
   defaults:
     post: 投稿
     update: 更新
@@ -152,10 +149,10 @@ ja:
     description:
       int_average: 店員との接触機会は最小限？
       eqcust_average: 高度な設定変更や機材持ち込みができる？
-      sofr_average: 一人でも行きやすい？
+      sofr_average: 一人でも利用しやすい？
       minimal_interaction: 店員との接触機会は最小限？
       equipment_customization: 高度な設定変更や機材持ち込みができる？
-      solo_friendly: 一人でも行きやすい？
+      solo_friendly: 一人でも利用しやすい？
     terms: 利用規約
     privacy_policy: プライバシーポリシー
     contact: お問い合わせ
@@ -165,7 +162,7 @@ ja:
     edit_tags: タグを編集
     delete_confirm: 削除しますか？
     already_reviewed: レビューを投稿済みです
-    review_comment_placeholder: 上記項目に関する補足やそれ以外の情報等、なんでもどうぞ！
+    review_comment_placeholder: "上記項目に関する補足やそれ以外の情報等、なんでもどうぞ！\n(1,500字以内)"
     flash_message:
       not_authorized: 権限がありません
       not_authenticated: ログインしてください
@@ -175,6 +172,13 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
       logged_in: ログイン中はアクセスできません
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      next: ">"
+      previous: "<"
+      truncate: "..."
   enums:
     user:
       role:

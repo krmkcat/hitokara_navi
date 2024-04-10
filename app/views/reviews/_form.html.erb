@@ -10,7 +10,7 @@
 
     <div class="form-control">
       <%= form.label :comment, class: 'label' %>
-      <%= form.text_area :comment, rows: 7, placeholder: t('defaults.review_comment_placeholder'), class: "textarea textarea-bordered textarea-primary rounded-lg" %>
+      <%= form.text_area :comment, maxlength: 1500, rows: 7, placeholder: t('defaults.review_comment_placeholder'), class: "textarea textarea-bordered textarea-primary rounded-lg" %>
     </div>
 
     <div class="form-control text-center mt-6">

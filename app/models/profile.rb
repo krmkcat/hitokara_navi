@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
-  validates :name, presence: true, length: { maximum: 30 }
+  validates :name, presence: true, length: { maximum: 20 }
   validates :gender, presence: true
   validates :age_group, presence: true
 

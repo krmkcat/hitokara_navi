@@ -4,11 +4,11 @@
 
     <div class="form-control">
       <%= form.label :name, class: 'label' %>
-      <%= form.text_field :name, class: "input input-bordered input-primary w-full max-w-xs" %>
+      <%= form.text_field :name, maxlength: 20, placeholder: t('.user_name_rule'), class: "input input-bordered input-primary w-full max-w-xs" %>
     </div>
 
     <div class="form-control">
-      <%= form.label :gender, class: 'label' %>
+      <%= label_tag '', Profile.human_attribute_name(:gender), class: 'label' %>
       <div class="flex flex-row gap-4">
         <% Profile.genders.each_key do |key| %>
           <div class="flex flex-row content-center gap-1">

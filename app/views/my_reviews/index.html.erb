@@ -6,15 +6,16 @@
   </h1>
 </div>
 
-<% if @reviews.present? %>
-  <div class="reviews flex flex-col gap-y-4">
-    <%= render partial: 'reviews/review_summary', collection: @reviews, as: :review %>
-  </div>
-<% else %>
-  <p><%= t '.no_reviews' %></p>
+<%= turbo_frame_tag 'my-reviews-list' do %>
+  <% if @reviews.present? %>
+    <div class="reviews flex flex-col gap-y-4">
+      <%= render partial: 'reviews/review_summary', collection: @reviews, as: :review %>
+    </div>
+  <% else %>
+    <p><%= t '.no_reviews' %></p>
+  <% end %>
+  <%= render 'shared/pagination', object: @reviews %>
 <% end %>
-
-<%= render 'shared/pagination', object: @reviews %>
 
 <div class="text-center mt-6">
   <%= link_to t('.back_to_mypage'), mypage_path, class: 'btn btn-primary btn-wide' %>
