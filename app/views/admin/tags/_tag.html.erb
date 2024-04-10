@@ -1,0 +1,8 @@
+<tr>
+  <th><%= tag.id %></th>
+  <td><%= tag.name %></td>
+  <td>
+    <%= link_to t('defaults.show'), admin_tag_path(tag), class: 'btn btn-sm' %>
+    <%= render 'admin/shared/edit_and_delete_buttons', edit_path: edit_admin_tag_path(tag), delete_path: admin_tag_path(tag) %>
+  </td>
+</tr>

@@ -1,2 +1,26 @@
-<h1>Admin::Tags#show</h1>
-<p>Find me in app/views/admin/tags/show.html.erb</p>
+<div class="overflow-x-auto">
+  <table class="table">
+    <tr>
+      <th><%= Tag.human_attribute_name(:id) %></th>
+      <td><%= @tag.id %></td>
+    </tr>
+    <tr>
+      <th><%= Tag.human_attribute_name(:name) %></th>
+      <td><%= @tag.name %></td>
+    </tr>
+    <tr>
+      <th><%= Tag.human_attribute_name(:created_at) %></th>
+      <td><%= l @tag.created_at, format: :long %></td>
+    </tr>
+    <tr>
+      <th><%= Tag.human_attribute_name(:updated_at) %></th>
+      <td><%= l @tag.updated_at, format: :long %></td>
+    </tr>
+  </table>
+</div>
+<div class="text-right">
+  <%= render 'admin/shared/edit_and_delete_buttons', edit_path: edit_admin_tag_path(@tag), delete_path: admin_tag_path(@tag) %>
+</div>
+<%= render 'admin/shared/to_index_button', model_name: Tag.model_name.human, path: admin_tags_path %>
+
+
