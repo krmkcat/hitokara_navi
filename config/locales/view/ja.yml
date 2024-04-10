@@ -117,6 +117,12 @@ ja:
         title: エリア編集
       new:
         title: エリア作成
+  pagination:
+    first: "<<"
+    last: ">>"
+    next: ">"
+    previous: "<"
+    truncate: ...
   defaults:
     post: 投稿
     update: 更新

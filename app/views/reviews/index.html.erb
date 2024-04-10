@@ -11,6 +11,7 @@
   <div class="reviews flex flex-col gap-y-4">
     <%= render partial: 'review_summary', collection: @reviews, as: :review %>
   </div>
+  <%= render 'shared/pagination', object: @reviews %>
 <% else %>
   <p><%= t '.no_reviews' %></p>
 <% end %>

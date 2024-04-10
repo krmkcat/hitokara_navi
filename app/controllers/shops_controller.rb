@@ -3,7 +3,8 @@ class ShopsController < ApplicationController
 
   def index
     @search_shops_form = SearchShopsForm.new(search_params)
-    @shops = @search_shops_form.search.includes(:tags).order(area_id: :asc)
+    @all_shops = @search_shops_form.search
+    @shops = @all_shops.includes(:tags).order(area_id: :asc).page(params[:page])
   end
 
   def show

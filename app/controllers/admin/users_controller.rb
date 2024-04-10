@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.all.includes(:profile).order(created_at: :desc)
+    @users = User.all.includes(:profile).order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def show

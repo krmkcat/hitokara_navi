@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   before_action :check_reviewd_or_not, only: :new
 
   def index
-    @reviews = @shop.reviews.includes(%i[user profile]).order(updated_at: :desc)
+    @reviews = @shop.reviews.includes(%i[user profile]).order(updated_at: :desc).page(params[:page])
   end
 
   def show

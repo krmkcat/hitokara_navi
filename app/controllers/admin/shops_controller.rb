@@ -2,7 +2,7 @@ class Admin::ShopsController < Admin::BaseController
   before_action :set_shop, only: %i[show edit update destroy]
 
   def index
-    @shops = Shop.all.includes(:area, :prefecture).order(created_at: :desc)
+    @shops = Shop.all.includes(:area, :prefecture).order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def new
