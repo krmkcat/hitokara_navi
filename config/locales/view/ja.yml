@@ -25,7 +25,6 @@ ja:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
-      user_name_rule: 20文字以内
     create:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
@@ -47,6 +46,8 @@ ja:
       to_my_reviews: 投稿したレビュー一覧を見る
     edit:
       title: プロフィール編集
+    form:
+      user_name_rule: 20文字以内
   reviews:
     new:
       title: レビュー投稿
@@ -161,7 +162,7 @@ ja:
     edit_tags: タグを編集
     delete_confirm: 削除しますか？
     already_reviewed: レビューを投稿済みです
-    review_comment_placeholder: 上記項目に関する補足やそれ以外の情報等、なんでもどうぞ！
+    review_comment_placeholder: "上記項目に関する補足やそれ以外の情報等、なんでもどうぞ！\n(1,500字以内)"
     flash_message:
       not_authorized: 権限がありません
       not_authenticated: ログインしてください

@@ -4,7 +4,7 @@
 
     <div class="form-control">
       <%= form.label :name, class: 'label' %>
-      <%= form.text_field :name, class: "input input-bordered input-primary w-full max-w-xs" %>
+      <%= form.text_field :name, maxlength: 20, placeholder: t('.user_name_rule'), class: "input input-bordered input-primary w-full max-w-xs" %>
     </div>
 
     <div class="form-control">
