@@ -7,19 +7,24 @@
 
       <div class="tags">
         <% shop.tags.each do |tag| %>
-          <div class="badge badge-secondary badge-sm">
+          <div class="badge badge-accent badge-sm">
             <%= tag.name %>
           </div>
         <% end %>
       </div>
 
-      <div class="rating_averages flex flex-col mx-auto p-3 gap-y-1 mt-3 text-sm">
-        <%= render 'rating_for_index', shop: shop, field: :int_average %>
-        <%= render 'rating_for_index', shop: shop, field: :eqcust_average %>
-        <%= render 'rating_for_index', shop: shop, field: :sofr_average %>
+      <div class="rating_averages">
+        <div class="indicator w-full">
+          <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
+          <div class="flex flex-col mx-auto gap-y-1 text-sm px-3 pt-3 pb-4 mt-3 rounded-lg border border-dotted border-secondary">
+            <%= render 'rating_for_index', shop: shop, field: :int_average %>
+            <%= render 'rating_for_index', shop: shop, field: :eqcust_average %>
+            <%= render 'rating_for_index', shop: shop, field: :sofr_average %>
+          </div>
+        </div>
       </div>
 
-      <div class="static-informations mx-auto px-2 mt-3 text-sm">
+      <div class="static-informations mx-auto px-2 mt-5 text-sm">
         <div class="address grid grid-cols-[1fr_8fr]">
           <div>
             <i class="fa-solid fa-location-dot"></i>

@@ -1,6 +1,6 @@
 <%= link_to review_path(review), data: { turbo: false } do %>
   <div class="card w-96 bg-accent/10 mx-auto w-full shadow-lg active:bg-base-200" ontouchstart=""">
-    <div class="card-body text-sm p-3.5">
+    <div class="card-body text-sm p-6">
       <div class="review-header flex flex-col">
         <% if current_page?(my_review_path) %>
           <div class="shop-name grid grid-cols-[1fr_9fr]">
@@ -33,13 +33,16 @@
       <div class="divider my-0"></div>
 
       <div class="review_body flex flex-col">
-        <div class="rating_fields flex flex-col mx-auto p-3 gap-y-1">
-          <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, field_short: 'int' %>
-          <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, field_short: 'eqcust' %>
-          <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, field_short: 'sofr' %>
+        <div class="indicator w-full">
+          <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
+          <div class="rating_fields flex flex-col mx-auto gap-y-1 px-3 pt-3 pb-4 rounded-lg border border-dotted border-secondary">
+            <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, field_short: 'int' %>
+            <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, field_short: 'eqcust' %>
+            <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, field_short: 'sofr' %>
+          </div>
         </div>
 
-        <div class="comment mt-2 p-2 rounded-lg bg-white/50 text-sm">
+        <div class="comment mt-5 p-2 rounded-lg bg-white/50 text-sm">
           <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false) do %>
             <span class="underline italic text-xs inline-block">（続きを読む）</span>
           <% end %>
