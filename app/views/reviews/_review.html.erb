@@ -29,8 +29,8 @@
 
     <div class="review_body flex flex-col gap-y-6">
       <div class="indicator w-full">
+        <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
         <div class="rating_averages w-full flex flex-col mx-2 gap-y-4 px-2 pt-2 pb-6 bg-base-100/50 border border-secondary border-dotted rounded-lg">
-          <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
           <%= render 'rating_lg', field: :minimal_interaction, review: review, field_short: 'int', description: t('defaults.description.minimal_interaction') %>
           <%= render 'rating_lg', field: :equipment_customization, review: review, field_short: 'eqcust', description: t('defaults.description.equipment_customization') %>
           <%= render 'rating_lg', field: :solo_friendly, review: review, field_short: 'sofr', description: t('defaults.description.solo_friendly') %>

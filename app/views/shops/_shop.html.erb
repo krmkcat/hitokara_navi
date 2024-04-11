@@ -17,12 +17,14 @@
       <%= link_to t('defaults.edit_tags'), shop_tags_path(shop), class: 'inline-block link link-accent text-xs', data: { turbo: false } %>
     </div>
 
-    <div class="indicator w-full">
-      <div class="rating_averages flex flex-col w-full mx-2 gap-y-4 mt-4 px-2 pt-2 pb-6 bg-base-100/50 border border-secondary border-dotted rounded-lg">
+    <div class="rating-averages">
+      <div class="indicator w-full">
         <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
-        <%= render 'rating_for_show', shop: shop, field: :int_average, description: t("defaults.description.int_average") %>
-        <%= render 'rating_for_show', shop: shop, field: :eqcust_average, description: t("defaults.description.eqcust_average") %>
-        <%= render 'rating_for_show', shop: shop, field: :sofr_average, description: t("defaults.description.sofr_average") %>
+        <div class="flex flex-col w-full mx-2 gap-y-4 mt-4 px-2 pt-2 pb-6 bg-base-100/50 border border-secondary border-dotted rounded-lg">
+          <%= render 'rating_for_show', shop: shop, field: :int_average, description: t("defaults.description.int_average") %>
+          <%= render 'rating_for_show', shop: shop, field: :eqcust_average, description: t("defaults.description.eqcust_average") %>
+          <%= render 'rating_for_show', shop: shop, field: :sofr_average, description: t("defaults.description.sofr_average") %>
+        </div>
       </div>
     </div>
 
