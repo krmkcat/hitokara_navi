@@ -33,7 +33,7 @@
         <div class="tags form-control flex flex-col gap-y-1 my-4">
           <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { include_hidden: false } do |b| %>
             <div class="tag">
-              <%= b.check_box class: 'checkbox checkbox-sm checkbox-secondary align-middle' %>
+              <%= b.check_box class: 'checkbox checkbox-sm checkbox-accent align-middle' %>
               <%= b.label class: 'align-middle' %>
             </div>
           <% end %>
