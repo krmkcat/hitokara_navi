@@ -7,6 +7,6 @@ class Prefecture < ApplicationRecord
   scope :selectable, -> { joins(:areas).distinct }
 
   def self.select_options
-    Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }
+    Prefecture.selectable.map { |p| [p.name, prefecture_areas_path(p)] }
   end
 end

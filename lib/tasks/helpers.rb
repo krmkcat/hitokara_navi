@@ -4,10 +4,10 @@ module ShopDataHelpers
   def self.make_request(uri, api_key, text_query)
     request_body = { 'textQuery' => text_query }.to_json
     Net::HTTP::Post.new(uri.request_uri, {
-      'Content-Type' => 'application/json',
-      'X-Goog-Api-Key' => api_key,
-      'X-Goog-FieldMask' => 'places.id'
-    }).tap { |req| req.body = request_body }
+                          'Content-Type' => 'application/json',
+                          'X-Goog-Api-Key' => api_key,
+                          'X-Goog-FieldMask' => 'places.id'
+                        }).tap { |req| req.body = request_body }
   end
 
   def self.make_id_list(result)
