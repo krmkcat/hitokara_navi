@@ -138,10 +138,11 @@ ja:
     login: ログイン
     logout: ログアウト
     reviews: レビュー一覧
-    search_words: 検索ワード
+    search_words: スペース区切りで複数指定可
     unspecified: 指定なし
     pref_and_area: 都道府県 / エリア
-    name_or_address: 店名・住所
+    name_or_address: 店名or住所に以下のワードを含む
+    preferences: こだわり条件
     selection_required: 選択必須
     to_official_site: 公式サイトへ
     to_index: "%{item}一覧へ"
@@ -149,7 +150,7 @@ ja:
     description:
       int_average: 店員との接触機会は最小限？
       eqcust_average: 高度な設定変更や機材持ち込みができる？
-      sofr_average: 一人でも利用しやすい？
+      sofr_average: 一人でも利用しやすい雰囲気・料金体系か？
       minimal_interaction: 店員との接触機会は最小限？
       equipment_customization: 高度な設定変更や機材持ち込みができる？
       solo_friendly: 一人でも利用しやすい？
