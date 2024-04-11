@@ -15,25 +15,30 @@
       <%= f.search_field :words, placeholder: t('defaults.search_words'), class: 'input input-bordered input-primary' %>
     </div>
 
-    <div class="rating_averages">
-      <% Shop.average_attributes.each do |attr| %>
-        <div class="average_items form-control">
-          <div class="flex">
-            <%= f.label attr, Shop.human_attribute_name(attr), class: 'label' %>
-            <%= render 'shared/tooltip_icon', description: t("defaults.description.#{attr}") %>
-          </div>
-          <%= f.select attr, Shop.averages_select_options, { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm select-primary' %>
+    <div class="preferences form-control">
+      <%= label_tag '', t('defaults.preferences'), class: 'label' %>
+      <div class="preferences-body bg-secondary/10 rounded-lg mx-2 p-2">
+        <div class="rating_averages">
+          <% Shop.average_attributes.each do |attr| %>
+            <div class="average_items form-control">
+              <div class="flex">
+                <%= f.label attr, Shop.human_attribute_name(attr), class: 'label' %>
+                <%= render 'shared/tooltip_icon', description: t("defaults.description.#{attr}") %>
+              </div>
+              <%= f.select attr, Shop.averages_select_options, { include_blank: t('defaults.unspecified') }, class: 'select select-bordered select-sm select-primary' %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
 
-    <div class="tags form-control flex flex-col gap-y-1 mt-2">
-      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { include_hidden: false } do |b| %>
-        <div class="tag">
-          <%= b.check_box class: 'checkbox checkbox-sm checkbox-secondary align-middle' %>
-          <%= b.label class: 'align-middle' %>
+        <div class="tags form-control flex flex-col gap-y-1 my-4">
+          <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { include_hidden: false } do |b| %>
+            <div class="tag">
+              <%= b.check_box class: 'checkbox checkbox-sm checkbox-accent align-middle' %>
+              <%= b.label class: 'align-middle' %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
 
     <div class="form-control text-center mt-6">

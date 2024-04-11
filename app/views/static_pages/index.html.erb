@@ -21,7 +21,7 @@
         <div>
           <% if logged_in? == false %>
             <%= link_to t('users.new.title'), signup_path, class: 'btn btn-accent btn-wide' %>
-            <div class="message text-xs text-secondary mt-1">
+            <div class="message text-xs text-primary mt-1">
               レビューを書くにはユーザー登録が必要です
             </div>
           <% end %>
