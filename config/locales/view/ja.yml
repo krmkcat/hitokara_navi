@@ -64,6 +64,7 @@ ja:
     index:
       title: 投稿したレビュー
       back_to_mypage: マイページへ戻る
+      no_reviews: まだレビューがありません
   shop_tags:
     index:
       title: "%{shop}のタグ編集"
