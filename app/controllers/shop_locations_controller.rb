@@ -1,5 +1,5 @@
 class ShopLocationsController < ApplicationController
-  def index
-    @shop_locations_form = ShopLocationsForm.new
-  end
+  skip_before_action :require_login
+
+  def index; end
 end
