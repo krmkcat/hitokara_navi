@@ -1,20 +1,5 @@
 <div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-  <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body p-6' do |f| %>
-    <div class="location form-control">
-      <%= label_tag '', t('defaults.pref_and_area'), class: 'label pt-0' %>
-      <%= turbo_frame_tag 'location-select-boxes' do %>
-        <div class="join flex">
-          <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-sm select-primary text-xs join-item' } %>
-          <%= f.select :area_id, [['---', nil]], {}, class: 'select select-bordered select-primary select-sm join-item grow' %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="search_words form-control">
-      <%= f.label :words, t('defaults.name_or_address'), class: 'label' %>
-      <%= f.search_field :words, placeholder: t('defaults.search_words'), class: 'input input-bordered input-primary' %>
-    </div>
-
+  <%= form_with model: shop_details_form, scope: :d_q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body p-6' do |f| %>
     <div class="preferences form-control">
       <%= label_tag '', t('defaults.preferences'), class: 'label' %>
       <div class="preferences-body bg-secondary/10 rounded-lg mx-2 p-2">
