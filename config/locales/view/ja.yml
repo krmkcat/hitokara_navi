@@ -31,6 +31,9 @@ ja:
     form:
       password_rule: 半角英数8文字以上
       type_password_again: パスワードを再入力
+  shop_locations:
+    index:
+      title: カラオケを探す
   shops:
     index:
       title: カラオケを探す
