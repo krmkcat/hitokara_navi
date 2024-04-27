@@ -2,10 +2,8 @@ class ShopsController < ApplicationController
   skip_before_action :require_login
 
   def index
-    @shop_locations_form = ShopLocationsForm.new(shop_locations_params)
-    narrowed_down_shops = @shop_locations_form.search
-    @shop_details_form = ShopDetailsForm.new(shop_details_params)
-    @all_shops = @shop_details_form.search(narrowed_down_shops)
+    @search_shops_form = SearchShopsForm.new(search_shops_params)
+    @all_shops = @search_shops_form.search
     @shops = @all_shops.includes(:tags).order(area_id: :asc).page(params[:page])
   end
 
@@ -16,11 +14,7 @@ class ShopsController < ApplicationController
 
   private
 
-  def shop_locations_params
-    params[:l_q]&.permit(:words, :area_id, :prefecture_id)
-  end
-
-  def shop_details_params
-    params[:d_q]&.permit(:int_average, :eqcust_average, :sofr_average, tag_ids: [])
+  def search_shops_params
+    params[:q]&.permit(:words, :area_id, :prefecture_id, :int_average, :eqcust_average, :sofr_average, tag_ids: [])
   end
 end

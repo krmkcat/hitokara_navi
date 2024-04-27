@@ -1,8 +1,8 @@
 <%= turbo_frame_tag 'location-select-boxes' do %>
-  <%= hidden_field :a_q, :prefecture_id, value: @prefecture.id %>
+  <%= hidden_field :q, :prefecture_id, value: @prefecture.id %>
   <div class="join">
-    <%= select :l_q, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }.unshift([t('defaults.unspecified'), shops_path]), { selected: prefecture_areas_path(@prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-primary text-xs join-item' } %>
-    <%= select :l_q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.unspecified') }, { class: 'select select-bordered select-primary text-xs join-item grow' } %>
+    <%= select :q, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }.unshift([t('defaults.unspecified'), shops_path]), { selected: prefecture_areas_path(@prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-primary text-xs join-item' } %>
+    <%= select :q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.unspecified') }, { class: 'select select-bordered select-primary text-xs join-item grow' } %>
     <%= submit_tag t('defaults.search'), class: 'btn btn-primary join-item' %>
   </div>
 <% end %>

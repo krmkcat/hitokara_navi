@@ -1,5 +1,9 @@
 <div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-  <%= form_with model: shop_details_form, scope: :d_q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body p-6' do |f| %>
+  <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body p-6' do |f| %>
+    <%= f.hidden_field :prefecture_id %>
+    <%= f.hidden_field :area_id %>
+    <%= f.hidden_field :words %>
+
     <div class="preferences form-control">
       <%= label_tag '', t('defaults.preferences'), class: 'label' %>
       <div class="preferences-body bg-secondary/10 rounded-lg mx-2 p-2">
