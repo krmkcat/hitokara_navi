@@ -1,0 +1,32 @@
+<% content_for :title, t('.title') %>
+
+<div class="title mb-8">
+  <h1 class="font-bold text-2xl text-neutral text-center">
+    <%= t('.title') %>
+  </h1>
+</div>
+
+<div class="search flex flex-col gap-y-6">
+  <div class="words">
+    <h2 class="text-lg text-center">フリーワードで探す</h2>
+    <%= form_with scope: :q, url: shops_url, method: :get, local: true, class: 'w-full max-w-xs mx-auto flex justify-center' do |f| %>
+      <div class="join">
+        <%= f.search_field :words, placeholder: '店名・住所', class: 'input input-bordered input-primary join-item' %>
+        <%= f.submit t('defaults.search'), class: 'btn btn-primary join-item' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="areas">
+    <h2 class="text-lg text-center">エリアから探す</h2>
+    <%= form_with scope: :q, url: shops_url, method: :get, local: true, data: { turbo: false }, class: 'w-full max-w-xs mx-auto flex justify-center' do |f| %>
+      <%= turbo_frame_tag 'location-select-boxes' do %>
+        <div class="join">
+          <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-primary text-xs join-item' } %>
+          <%= f.select :area_id, [['---', nil]], {}, class: 'select select-bordered select-primary join-item grow' %>
+          <%= f.submit t('defaults.search'), class: 'btn btn-primary join-item' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

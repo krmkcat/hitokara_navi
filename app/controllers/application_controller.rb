@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :error
 
   def redirect_if_logged_in
-    redirect_to(shops_path, error: t('defaults.flash_message.logged_in')) if logged_in?
+    redirect_to(shop_locations_path, error: t('defaults.flash_message.logged_in')) if logged_in?
   end
 
   protected

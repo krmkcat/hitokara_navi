@@ -31,9 +31,13 @@ ja:
     form:
       password_rule: 半角英数8文字以上
       type_password_again: パスワードを再入力
+  shop_locations:
+    index:
+      title: カラオケを探す
   shops:
     index:
       title: カラオケを探す
+      subtitle: "%{query}の店舗一覧"
       no_shops: 該当する店舗がありません
     show:
       title: "%{shop}"
@@ -139,6 +143,7 @@ ja:
     login: ログイン
     logout: ログアウト
     reviews: レビュー一覧
+    all: すべて
     search_words: スペース区切りで複数指定可
     unspecified: 指定なし
     pref_and_area: 都道府県 / エリア
