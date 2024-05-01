@@ -16,7 +16,8 @@ function geoFindMe() {
     lat_field.value = latitude;
     lng_filed.value = longitude;
 
-    status.textContent = ""
+    search_button.textContent = "現在地から探す";
+    search_button.classList.remove("btn-disabled");
     document.getElementById("current-location-form").submit();
   }
 
@@ -27,9 +28,12 @@ function geoFindMe() {
   if (!navigator.geolocation) {
     status.textContent = "このブラウザーは位置情報に対応していません";
   } else {
-    status.textContent = "位置情報を取得中…";
+    search_button.textContent = "位置情報を取得中…";
+    search_button.classList.add("btn-disabled");
     navigator.geolocation.getCurrentPosition(success, error);
   }
 }
 
-document.querySelector("#find-me").addEventListener("click", geoFindMe);
+const search_button = document.querySelector("#search-with-current-location");
+
+search_button.addEventListener("click", geoFindMe);

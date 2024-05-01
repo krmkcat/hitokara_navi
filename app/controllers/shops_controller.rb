@@ -8,7 +8,7 @@ class ShopsController < ApplicationController
       @search_shops_params = search_shops_params
       @search_shops_form = SearchShopsForm.new(@search_shops_params)
       @all_shops = @search_shops_form.search
-      @shops = @all_shops.includes(:tags).order(area_id: :asc).page(params[:page])
+      @shops = @all_shops.includes(:tags).page(params[:page])
     end
   end
 
