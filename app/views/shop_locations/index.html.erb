@@ -33,10 +33,13 @@
     <% end %>
   </div>
 
-  <div class="areas">
+  <div class="location">
     <h2 class="text-lg text-center">現在地を取得</h2>
     <button id="find-me" class="btn">現在地を表示する</button>
     <p id="status"></p>
-    <p id="map-link"></p>
+    <%= form_with scope: :q, url: shops_url, method: :get, local: true, id: 'current-location-form', class: 'w-full max-w-xs mx-auto flex justify-center' do |f| %>
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+    <% end %>
   </div>
 </div>

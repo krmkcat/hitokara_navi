@@ -1,9 +1,7 @@
 function geoFindMe() {
   const status = document.querySelector("#status");
-  const mapLink = document.querySelector("#map-link");
-
-  mapLink.href = "";
-  mapLink.textContent = "";
+  const lat_field = document.querySelector("#q_latitude");
+  const lng_filed = document.querySelector("#q_longitude");
 
   function success(position) {
     let raw_latitude = position.coords.latitude;
@@ -15,9 +13,11 @@ function geoFindMe() {
     const latitude = raw_latitude / 1000000;
     const longitude = raw_longitude / 1000000;
 
-    status.textContent = "";
-    mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-    mapLink.textContent = `緯度: ${latitude}°、経度: ${longitude}°`;
+    lat_field.value = latitude;
+    lng_filed.value = longitude;
+
+    status.textContent = ""
+    document.getElementById("current-location-form").submit();
   }
 
   function error() {

@@ -8,6 +8,8 @@ class SearchShopsForm
   attribute :sofr_average, :integer
   attribute :prefecture_id, :integer
   attribute :area_id, :integer
+  attribute :latitude, :decimal
+  attribute :longitude, :decimal
 
   attr_reader :tag_ids
 

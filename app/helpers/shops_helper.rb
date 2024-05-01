@@ -2,6 +2,7 @@ module ShopsHelper
   def search_query(search_shops_params)
     return pref_and_area(search_shops_params) if search_shops_params[:prefecture_id].present?
     return words(search_shops_params) if search_shops_params[:words].present?
+    return '近く' if search_shops_params[:latitude].present?
 
     t('defaults.all')
   end
