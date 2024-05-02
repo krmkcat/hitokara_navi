@@ -10,12 +10,28 @@
 </div>
 
 <div class="search flex flex-col gap-y-6">
+  <div class="location text-center">
+    <button id="search-with-current-location" class="btn btn-accent btn-wide">
+      <span id="search-icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </span>
+      <span id="button-text">現在地から探す</span>
+    </button>
+    <p id="warning" class="text-rose-700 text-center"></p>
+    <%= form_with scope: :q, url: shops_url, method: :get, local: true, id: 'current-location-form', class: 'w-full max-w-xs mx-auto flex justify-center' do |f| %>
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+    <% end %>
+  </div>
+
   <div class="words">
     <h2 class="text-lg text-center">フリーワードで探す</h2>
     <%= form_with scope: :q, url: shops_url, method: :get, local: true, class: 'w-full max-w-xs mx-auto flex justify-center' do |f| %>
       <div class="join">
         <%= f.search_field :words, placeholder: '店名・住所', class: 'input input-bordered input-primary join-item' %>
-        <%= f.submit t('defaults.search'), class: 'btn btn-primary join-item' %>
+        <%= button_tag(type: 'submit', class: 'btn btn-primary join-item') do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -27,18 +43,11 @@
         <div class="join">
           <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-primary text-xs join-item' } %>
           <%= f.select :area_id, [['---', nil]], {}, class: 'select select-bordered select-primary join-item grow' %>
-          <%= f.submit t('defaults.search'), class: 'btn btn-primary join-item' %>
+          <%= button_tag(type: 'submit', class: 'btn btn-primary join-item') do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
         </div>
       <% end %>
-    <% end %>
-  </div>
-
-  <div class="location">
-    <button id="search-with-current-location" class="btn">現在地から探す</button>
-    <p id="status"></p>
-    <%= form_with scope: :q, url: shops_url, method: :get, local: true, id: 'current-location-form', class: 'w-full max-w-xs mx-auto flex justify-center' do |f| %>
-      <%= f.hidden_field :latitude %>
-      <%= f.hidden_field :longitude %>
     <% end %>
   </div>
 </div>
