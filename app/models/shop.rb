@@ -68,6 +68,22 @@ class Shop < ApplicationRecord
      ['★★★★★', 5]]
   end
 
+  EARTH_RADIUS = 6378.137
+  def self.nearby(latitude, longitude, distance_in_km)
+    select("shops.*,
+            (#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
+            * cos(radians(latitude))
+            * cos(radians(longitude) - radians(#{longitude}))
+            + sin(radians(#{latitude}))
+            * sin(radians(latitude)))) AS distance")
+      .where("(#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
+            * cos(radians(latitude))
+            * cos(radians(longitude) - radians(#{longitude}))
+            + sin(radians(#{latitude}))
+            * sin(radians(latitude)))) <= ?", distance_in_km)
+      .order('distance ASC')
+  end
+
   private
 
   def update_average(review_attr, shop_attr, exclude_attr)

@@ -8,6 +8,8 @@ class SearchShopsForm
   attribute :sofr_average, :integer
   attribute :prefecture_id, :integer
   attribute :area_id, :integer
+  attribute :latitude, :decimal
+  attribute :longitude, :decimal
 
   attr_reader :tag_ids
 
@@ -20,9 +22,10 @@ class SearchShopsForm
 
     relation = relation.by_prefecture_id(prefecture_id) if prefecture_id.present?
     relation = relation.by_area_id(area_id) if area_id.present?
-    relation = search_with_name_or_address(relation) if words.present?
+    relation = search_with_name_or_address(relation)
     relation = search_with_ratings(relation)
     relation = relation.by_tag_ids(tag_ids) if tag_ids.present?
+    relation = relation.nearby(latitude, longitude, 3) if latitude.present? && longitude.present?
     relation
   end
 
@@ -40,6 +43,8 @@ class SearchShopsForm
   end
 
   def search_with_name_or_address(relation)
+    return relation if words.blank?
+
     search_words.inject(relation) do |rel, word|
       rel.name_or_address_contain(word)
     end
