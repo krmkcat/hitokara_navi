@@ -103,4 +103,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.hosts << 'www.hitokara-navi.com'
+  config.hosts << 'hitokara-navi.onrender.com'
 end
