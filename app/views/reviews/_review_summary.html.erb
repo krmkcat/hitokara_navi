@@ -36,9 +36,9 @@
         <div class="indicator w-full">
           <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
           <div class="rating_fields flex flex-col mx-auto gap-y-1 px-3 pt-3 pb-4 rounded-lg border border-dotted border-secondary">
-            <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, field_short: 'int' %>
-            <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, field_short: 'eqcust' %>
-            <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, field_short: 'sofr' %>
+            <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, prefix: 'int' %>
+            <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, prefix: 'eqcust' %>
+            <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, prefix: 'sofr' %>
           </div>
         </div>
 
