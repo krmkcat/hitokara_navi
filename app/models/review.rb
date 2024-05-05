@@ -43,19 +43,19 @@ class Review < ApplicationRecord
   }, prefix: :sofr
 
   def self.int_rates
-    int_rates = minimal_interactions.map { |key, _| key }
+    int_rates = minimal_interactions.keys
     int_rates.shift
     int_rates
   end
 
   def self.eqcust_rates
-    eqcust_rates = equipment_customizations.map { |key, _| key }
+    eqcust_rates = equipment_customizations.keys
     eqcust_rates.shift
     eqcust_rates
   end
 
   def self.sofr_rates
-    sofr_rates = solo_friendlies.map { |key, _| key }
+    sofr_rates = solo_friendlies.keys
     sofr_rates.shift
     sofr_rates
   end

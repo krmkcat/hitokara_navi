@@ -6,9 +6,9 @@
       <div class="indicator w-full">
         <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
         <div class="w-full mx-2 flex flex-col gap-y-4 px-2 pt-2 pb-6 bg-base-100/50 border border-dotted border-secondary rounded-lg">
-          <%= render 'rating_for_form', form: form, field: :minimal_interaction, field_short: 'int', description: t('defaults.description.minimal_interaction') %>
-          <%= render 'rating_for_form', form: form, field: :equipment_customization, field_short: 'eqcust', description: t('defaults.description.equipment_customization') %>
-          <%= render 'rating_for_form', form: form, field: :solo_friendly, field_short: 'sofr', description: t('defaults.description.solo_friendly') %>
+          <%= render 'rating_for_form', form: form, field: :minimal_interaction, prefix: 'int', description: t('defaults.description.minimal_interaction') %>
+          <%= render 'rating_for_form', form: form, field: :equipment_customization, prefix: 'eqcust', description: t('defaults.description.equipment_customization') %>
+          <%= render 'rating_for_form', form: form, field: :solo_friendly, prefix: 'sofr', description: t('defaults.description.solo_friendly') %>
         </div>
       </div>
     </div>

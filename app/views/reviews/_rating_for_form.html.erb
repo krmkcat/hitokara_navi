@@ -5,7 +5,7 @@
   </div>
   <div class="rating flex w-3/4 mx-auto pt-1 justify-center">
     <%= form.radio_button field, "#{field}_unspecified", class: 'rating-hidden' %>
-    <% Review.send("#{field_short}_rates").each do |rate| %>
+    <% Review.send("#{prefix}_rates").each do |rate| %>
         <%= form.radio_button field, rate, class: "mask mask-star-2 bg-orange-400" %>
     <% end %>
   </div>
