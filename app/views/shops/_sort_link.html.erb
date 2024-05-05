@@ -1,5 +1,13 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag 'sort_shops', "data-turbo-track": "reload", type: "module" %>
+<% end %>
+
 <div class="sort [&_a]:text-xs [&_a]:inline-block flex justify-end gap-x-2">
   <%= link_to '接客レス度の評価が高い順▼', shops_path(sort: { key: 'int' }, q: search_shops_params) %>
   <%= link_to '機器設定の自由度の評価が高い順▼', shops_path(sort: { key: 'eqcust' }, q: search_shops_params) %>
   <%= link_to '一人利用のしやすさの評価が高い順▼', shops_path(sort: { key: 'sofr' }, q: search_shops_params) %>
 </div>
+<div class="sort">
+  <%= select :sort, :key, { '接客レス度▼': 'int', '機器設定の自由度▼': 'eqcust', '一人利用のしやすさ▼': 'sofr' }, {}, id: 'sort-options' %>
+</div>
+<div id="data-container" data-search-params='<%= raw { q: search_shops_params }.to_json %>'></div>

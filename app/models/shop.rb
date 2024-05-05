@@ -34,7 +34,7 @@ class Shop < ApplicationRecord
       .having('COUNT(*) = ?', tag_ids.length.to_i)
   }
   EARTH_RADIUS = 6378.137
-  scope :nearby, ->(latitude, longitude, distance_in_km) {
+  scope :nearby, lambda { |latitude, longitude, distance_in_km|
     select("shops.*,
             (#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
             * cos(radians(latitude))
