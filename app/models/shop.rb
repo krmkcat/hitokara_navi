@@ -33,6 +33,9 @@ class Shop < ApplicationRecord
       .group(:id)
       .having('COUNT(*) = ?', tag_ids.length.to_i)
   }
+  scope :sort_by_int, -> { order(int_average: :desc) }
+  scope :sort_by_eqcust, -> { order(eqcust_average: :desc) }
+  scope :sort_by_sofr, -> { order(sofr_average: :desc) }
 
   def reviewed?
     reviews.exists?(user_id: current_user.id)

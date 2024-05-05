@@ -18,6 +18,7 @@
       <%= @all_shops.length %>件
     </div>
     <% if @shops.present? %>
+      <%= render 'sort_link', search_shops_params: @search_shops_params %>
       <%= render partial: 'shop_summary', collection: @shops, as: :shop %>
       <%= render 'shared/pagination', object: @shops %>
     <% else %>
