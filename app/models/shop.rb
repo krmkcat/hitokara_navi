@@ -48,9 +48,11 @@ class Shop < ApplicationRecord
             * sin(radians(latitude)))) <= ?", distance_in_km)
       .order('distance ASC')
   }
-  scope :sort_by_int, -> { order(int_average: :desc) }
-  scope :sort_by_eqcust, -> { order(eqcust_average: :desc) }
-  scope :sort_by_sofr, -> { order(sofr_average: :desc) }
+  scope :sort_by_int, -> { reorder(int_average: :desc) }
+  scope :sort_by_eqcust, -> { reorder(eqcust_average: :desc) }
+  scope :sort_by_sofr, -> { reorder(sofr_average: :desc) }
+  scope :sort_by_id, -> { reorder(id: :asc) }
+  scope :sort_by_distance, -> { reorder('distance ASC') }
 
   def reviewed?
     reviews.exists?(user_id: current_user.id)

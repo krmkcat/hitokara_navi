@@ -33,6 +33,8 @@ class ShopsController < ApplicationController
       relation.sort_by_eqcust
     when 'sofr'
       relation.sort_by_sofr
+    else
+      relation.sort_by_id
     end
   end
 

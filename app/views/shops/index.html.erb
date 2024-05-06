@@ -1,4 +1,7 @@
 <% content_for :title, t('.title') %>
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag 'sort_shops', "data-turbo-track": "reload", type: "module" %>
+<% end %>
 
 <div class="title mb-8">
   <h1 class="font-bold text-2xl text-neutral text-center">
@@ -12,13 +15,13 @@
 <div class="flex flex-col w-full border-opacity-50">
   <%= render 'search_form_for_shops', search_shops_form: @search_shops_form %>
 
+  <%= render 'sort_shops_options', url: shops_path, search_shops_params: @search_shops_params %>
 
   <%= turbo_frame_tag 'shops-list' do %>
-    <div class="divider mt-8 text-sm">
+    <div class="divider mt-4 text-sm">
       <%= @all_shops.length %>件
     </div>
     <% if @shops.present? %>
-      <%= render 'sort_link', url: shops_path, search_shops_params: @search_shops_params %>
       <%= render partial: 'shop_summary', collection: @shops, as: :shop %>
       <%= render 'shared/pagination', object: @shops %>
     <% else %>
