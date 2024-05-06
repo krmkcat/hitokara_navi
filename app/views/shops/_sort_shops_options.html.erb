@@ -1,0 +1,9 @@
+<div class="sort mt-8 flex justify-end">
+  <%= form_with scope: :sort, url: url, method: :get, data: { turbo_frame: 'shops-list' } do |f| %>
+    <% search_shops_params.each do |key, value| %>
+      <%= hidden_field_tag "q[#{key}]", value %>
+    <% end %>
+    <span class="text-sm"><%= t('.sort_key') %></span>
+    <%= f.select :key, { t('.int_desc') => 'int', t('.eqcust_desc') => 'eqcust', t('.sofr_desc') => 'sofr' }, { include_blank: t('defaults.unspecified') }, id: 'sort-options', class: 'select select-bordered select-xs' %>
+  <% end %>
+</div>

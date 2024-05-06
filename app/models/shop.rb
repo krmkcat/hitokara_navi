@@ -33,6 +33,26 @@ class Shop < ApplicationRecord
       .group(:id)
       .having('COUNT(*) = ?', tag_ids.length.to_i)
   }
+  EARTH_RADIUS = 6378.137
+  scope :nearby, lambda { |latitude, longitude, distance_in_km|
+    select("shops.*,
+            (#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
+            * cos(radians(latitude))
+            * cos(radians(longitude) - radians(#{longitude}))
+            + sin(radians(#{latitude}))
+            * sin(radians(latitude)))) AS distance")
+      .where("(#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
+            * cos(radians(latitude))
+            * cos(radians(longitude) - radians(#{longitude}))
+            + sin(radians(#{latitude}))
+            * sin(radians(latitude)))) <= ?", distance_in_km)
+      .order('distance ASC')
+  }
+  scope :sort_by_int, -> { reorder(int_average: :desc) }
+  scope :sort_by_eqcust, -> { reorder(eqcust_average: :desc) }
+  scope :sort_by_sofr, -> { reorder(sofr_average: :desc) }
+  scope :sort_by_id, -> { reorder(id: :asc) }
+  scope :sort_by_distance, -> { reorder('distance ASC') }
 
   def reviewed?
     reviews.exists?(user_id: current_user.id)
@@ -68,21 +88,8 @@ class Shop < ApplicationRecord
      ['★★★★★', 5]]
   end
 
-  EARTH_RADIUS = 6378.137
-  def self.nearby(latitude, longitude, distance_in_km)
-    select("shops.*,
-            (#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
-            * cos(radians(latitude))
-            * cos(radians(longitude) - radians(#{longitude}))
-            + sin(radians(#{latitude}))
-            * sin(radians(latitude)))) AS distance")
-      .where("(#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
-            * cos(radians(latitude))
-            * cos(radians(longitude) - radians(#{longitude}))
-            + sin(radians(#{latitude}))
-            * sin(radians(latitude)))) <= ?", distance_in_km)
-      .order('distance ASC')
-  end
+  # def self.nearby(latitude, longitude, distance_in_km)
+  # end
 
   private
 
