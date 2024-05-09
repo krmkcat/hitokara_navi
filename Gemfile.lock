@@ -114,6 +114,10 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
+    geokit (1.14.0)
+    geokit-rails (2.5.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -346,6 +350,7 @@ DEPENDENCIES
   dotenv
   enum_help
   faker
+  geokit-rails
   jbuilder
   jsbundling-rails
   kaminari
