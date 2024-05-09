@@ -25,7 +25,7 @@ class SearchShopsForm
     relation = search_with_name_or_address(relation)
     relation = search_with_ratings(relation)
     relation = relation.by_tag_ids(tag_ids) if tag_ids.present?
-    relation = relation.within(3, origin: [latitude, longitude]) if latitude.present? && longitude.present?
+    relation = relation.nearby(latitude, longitude, 3) if latitude.present? && longitude.present?
     relation
   end
 
