@@ -5,7 +5,7 @@ class Shop < ApplicationRecord
   has_many :shop_tags
   has_many :tags, through: :shop_tags, dependent: :destroy
 
-  acts_as_mappable default_units: :kms, lat_column_name: :latitude, lng_column_name: :longitude
+  acts_as_mappable lat_column_name: :latitude, lng_column_name: :longitude
 
   validates :area_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :address }
