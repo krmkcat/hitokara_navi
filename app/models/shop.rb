@@ -5,6 +5,8 @@ class Shop < ApplicationRecord
   has_many :shop_tags
   has_many :tags, through: :shop_tags, dependent: :destroy
 
+  acts_as_mappable default_units: :kms, lat_column_name: :latitude, lng_column_name: :longitude
+
   validates :area_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :address }
   validates :address, presence: true
@@ -33,21 +35,21 @@ class Shop < ApplicationRecord
       .group(:id)
       .having('COUNT(*) = ?', tag_ids.length.to_i)
   }
-  EARTH_RADIUS = 6378.137
-  scope :nearby, lambda { |latitude, longitude, distance_in_km|
-    select("shops.*,
-            (#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
-            * cos(radians(latitude))
-            * cos(radians(longitude) - radians(#{longitude}))
-            + sin(radians(#{latitude}))
-            * sin(radians(latitude)))) AS distance")
-      .where("(#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
-            * cos(radians(latitude))
-            * cos(radians(longitude) - radians(#{longitude}))
-            + sin(radians(#{latitude}))
-            * sin(radians(latitude)))) <= ?", distance_in_km)
-      .order('distance ASC')
-  }
+  # EARTH_RADIUS = 6378.137
+  # scope :nearby, lambda { |latitude, longitude, distance_in_km|
+  #   select("shops.*,
+  #           (#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
+  #           * cos(radians(latitude))
+  #           * cos(radians(longitude) - radians(#{longitude}))
+  #           + sin(radians(#{latitude}))
+  #           * sin(radians(latitude)))) AS distance")
+  #     .where("(#{EARTH_RADIUS} * acos(cos(radians(#{latitude}))
+  #           * cos(radians(latitude))
+  #           * cos(radians(longitude) - radians(#{longitude}))
+  #           + sin(radians(#{latitude}))
+  #           * sin(radians(latitude)))) <= ?", distance_in_km)
+  #     .order('distance ASC')
+  # }
   scope :sort_by_int, -> { reorder(int_average: :desc) }
   scope :sort_by_eqcust, -> { reorder(eqcust_average: :desc) }
   scope :sort_by_sofr, -> { reorder(sofr_average: :desc) }
