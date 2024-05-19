@@ -57,6 +57,10 @@ class User < ApplicationRecord
     end
   end
 
+  def favorite?(shop)
+    shop.favorites.pluck(:user_id).include?(id)
+  end
+
   def favorite(shop)
     shops << shop
   end
