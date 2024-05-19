@@ -22,7 +22,7 @@ module ShopsHelper
   end
 
   def sort_shops_options(search_shops_params)
-    options = { t('.int_desc') => 'int', t('.eqcust_desc') => 'eqcust', t('.sofr_desc') => 'sofr' }
+    options = { t('.unspecified') => 'id', t('.int_desc') => 'int', t('.eqcust_desc') => 'eqcust', t('.sofr_desc') => 'sofr' }
     options['現在地に近い順'] = 'distance' if search_shops_params[:latitude] && search_shops_params[:longitude]
     options
   end

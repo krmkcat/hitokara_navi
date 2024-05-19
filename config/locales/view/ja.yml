@@ -46,6 +46,7 @@ ja:
       show_all_reviews: すべてのレビューを見る
     sort_shops_options:
       sort_key: 並び順：
+      unspecified: 指定なし
       int_desc: 接客レス度 高評価順
       eqcust_desc: 機器設定の自由度 高評価順
       sofr_desc: 一人利用のしやすさ 高評価順
