@@ -5,6 +5,7 @@ AllCops:
   SuggestExtensions: false
   Exclude:
     - 'vendor/**/*'
+    - 'db/schema.rb'
     - 'db/**/*'
     - 'bin/**/*'
     - 'spec/**/*'
@@ -31,6 +32,7 @@ Metrics/BlockLength:
     - 'Gemfile'
     - 'config/**/*'
     - 'spec/**/*_spec.rb'
+    - 'db/schema.rb'
 
 Metrics/ClassLength:
   CountComments: false
