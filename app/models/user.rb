@@ -56,4 +56,12 @@ class User < ApplicationRecord
       "(#{gender_i18n})"
     end
   end
+
+  def favorite(shop)
+    shops << shop
+  end
+
+  def unfavorite(shop)
+    shops.delete(shop)
+  end
 end
