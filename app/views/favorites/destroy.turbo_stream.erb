@@ -1,3 +1,3 @@
-<%= turbo_stream.replace "fav-button-for-shop-#{@shop.id}" do %>
+<%= turbo_stream.replace "unfav-button-for-shop-#{@shop.id}" do %>
   <%= render 'shops/favorite', shop: @shop %>
 <% end %>

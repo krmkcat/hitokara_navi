@@ -13,6 +13,5 @@ class FavoritesController < ApplicationController
 
   private
 
-  def set_shop
-  end
+  def set_shop; end
 end

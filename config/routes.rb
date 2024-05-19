@@ -13,14 +13,13 @@ Rails.application.routes.draw do
     get 'prefectures/:prefecture_id/areas', to: 'prefecture_areas#index', as: :prefecture_areas
   end
 
-  
   resources :password_resets, only: %i[create edit update]
   resource :password_resets, only: :new
-  
+
   get 'prefectures/:prefecture_id/areas', to: 'areas#index', as: :prefecture_areas
-  
+
   get 'shop_locations', to: 'shop_locations#index'
-  
+
   resources :shops, only: %i[index show], shallow: true do
     resources :reviews
     resources :shop_tags, path: :tags, only: %i[index create destroy], as: :tags
