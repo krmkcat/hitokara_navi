@@ -18,6 +18,7 @@ class ShopsController < ApplicationController
 
   def search_shops
     @search_shops_params = search_shops_params
+    @sort_shops_params = sort_shops_params
     @search_shops_form = SearchShopsForm.new(@search_shops_params)
     @all_shops = @search_shops_form.search
     @shops = sort_shops(@all_shops).includes(:tags).page(params[:page])
@@ -33,6 +34,8 @@ class ShopsController < ApplicationController
       relation.sort_by_eqcust
     when 'sofr'
       relation.sort_by_sofr
+    when 'distance'
+      relation.sort_by_distance
     else
       relation.sort_by_id
     end

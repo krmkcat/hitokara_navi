@@ -4,6 +4,6 @@
       <%= hidden_field_tag "q[#{key}]", value %>
     <% end %>
     <span class="text-sm"><%= t('.sort_key') %></span>
-    <%= f.select :key, { t('.int_desc') => 'int', t('.eqcust_desc') => 'eqcust', t('.sofr_desc') => 'sofr' }, { include_blank: t('defaults.unspecified') }, id: 'sort-options', class: 'select select-bordered select-xs' %>
+    <%= f.select :key, sort_shops_options(search_shops_params), { selected: sort_shops_params[:key] }, id: 'sort-options', class: 'select select-bordered select-xs' %>
   <% end %>
 </div>
