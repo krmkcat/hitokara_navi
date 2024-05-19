@@ -4,6 +4,8 @@ class Shop < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :shop_tags
   has_many :tags, through: :shop_tags, dependent: :destroy
+  has_many :favorites
+  has_many :users, through: :favorites, dependent: :destroy
 
   acts_as_mappable lat_column_name: :latitude, lng_column_name: :longitude
 
