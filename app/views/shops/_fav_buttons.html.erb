@@ -1,4 +1,4 @@
-<% if current_user.favorite?(shop) %>
+<% if current_user&.favorite?(shop) %>
   <%= render 'shops/unfavorite', shop: shop %>
 <% else %>
   <%= render 'shops/favorite', shop: shop %>
