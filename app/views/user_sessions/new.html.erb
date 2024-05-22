@@ -6,7 +6,7 @@
   </h1>
 
   <div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-    <%= form_with url: login_url, class: 'card-body' do |f| %>
+    <%= form_with url: login_url, local: true, class: 'card-body' do |f| %>
       <div class="form-control">
         <%= f.label :email, class: 'label' %>
         <%= f.email_field :email, class: 'input input-bordered input-primary w-full max-w-xs' %>
