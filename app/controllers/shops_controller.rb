@@ -21,7 +21,7 @@ class ShopsController < ApplicationController
     @sort_shops_params = sort_shops_params
     @search_shops_form = SearchShopsForm.new(@search_shops_params)
     @all_shops = @search_shops_form.search
-    @shops = sort_shops(@all_shops).includes(:tags).page(params[:page])
+    @shops = sort_shops(@all_shops).includes(:tags, :favorites).page(params[:page])
   end
 
   def sort_shops(relation)

@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   has_one :profile, through: :user
 
   validates :user_id, presence: true
+  validates :user_id, uniqueness: { scope: :shop_id }
   validates :shop_id, presence: true
   with_options presence: true do
     validates :minimal_interaction

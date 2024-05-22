@@ -54,6 +54,7 @@ ja:
     show:
       title: マイページ
       to_my_reviews: 投稿したレビュー一覧を見る
+      to_favorites: お気に入り店舗一覧を見る
     edit:
       title: プロフィール編集
     form:
@@ -79,6 +80,9 @@ ja:
     index:
       title: "%{shop}のタグ編集"
       done_and_to_show_shops: 完了して店舗詳細へ
+  favorites:
+    index:
+      title: お気に入り店舗一覧
   password_resets:
     new:
       title: パスワードリセット申請

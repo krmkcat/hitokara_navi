@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :favorites
+  has_many :shops, through: :favorites, dependent: :destroy
 
   validates :password, length: { minimum: 8 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password, presence: true, on: :reset_password
@@ -53,5 +55,17 @@ class User < ApplicationRecord
     else
       "(#{gender_i18n})"
     end
+  end
+
+  def favorite?(shop)
+    shop.favorites.pluck(:user_id).include?(id)
+  end
+
+  def favorite(shop)
+    shops << shop
+  end
+
+  def unfavorite(shop)
+    shops.delete(shop)
   end
 end

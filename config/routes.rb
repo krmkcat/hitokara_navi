@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   namespace :admin do
     root 'dashboards#index'
     resources :users
@@ -11,8 +13,6 @@ Rails.application.routes.draw do
     get 'prefectures/:prefecture_id/areas', to: 'prefecture_areas#index', as: :prefecture_areas
   end
 
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
-
   resources :password_resets, only: %i[create edit update]
   resource :password_resets, only: :new
 
@@ -23,7 +23,10 @@ Rails.application.routes.draw do
   resources :shops, only: %i[index show], shallow: true do
     resources :reviews
     resources :shop_tags, path: :tags, only: %i[index create destroy], as: :tags
+    resources :favorites, only: :create
   end
+
+  resources :favorites, only: %i[index destroy]
 
   get 'my_review', to: 'my_reviews#index'
 

@@ -1,5 +1,8 @@
 <div class="card bg-primary/10 mx-auto w-full my-6 shadow-xl">
   <div class="card-body p-6">
+    <div class="fav-button text-lg text-right h-auto">
+      <%= render 'fav_buttons', shop: shop %>
+    </div>
     <div class="area text-xs text-right">
       <%= shop.area.name %>
     </div>
