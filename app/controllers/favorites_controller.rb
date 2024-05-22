@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
-  before_action :set_shop
+  def index
+    @shops = current_user.shops.page(params[:page])
+  end
 
   def create
     @shop = Shop.find(params[:shop_id])
@@ -10,8 +12,4 @@ class FavoritesController < ApplicationController
     @shop = current_user.favorites.find(params[:id]).shop
     current_user.unfavorite(@shop)
   end
-
-  private
-
-  def set_shop; end
 end

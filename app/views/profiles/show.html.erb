@@ -1,6 +1,12 @@
 <% content_for :title, t('.title') %>
 
-<div class="card w-full bg-base-100 mx-auto shadow-lg">
+<div class="title mb-4 text-center">
+  <h1 class="font-bold text-2xl text-neutral">
+    <%= t '.title' %>
+  </h1>
+</div>
+
+<div class="card w-full bg-base-100 mx-auto max-w-xs shadow-lg">
   <div class="card-body">
     <h2 class="card-title">
       <%= @profile.name %>
@@ -19,6 +25,7 @@
   </div>
 </div>
 
-<div class="flex justify-center mx-auto mt-8">
+<div class="text-center mx-auto mt-8">
   <%= link_to t('.to_my_reviews'), my_review_path, class: 'btn btn-wide btn-primary' %>
+  <%= link_to t('.to_favorites'), favorites_path, class: 'btn btn-wide btn-primary mt-4' %>
 </div>

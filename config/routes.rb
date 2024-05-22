@@ -23,8 +23,10 @@ Rails.application.routes.draw do
   resources :shops, only: %i[index show], shallow: true do
     resources :reviews
     resources :shop_tags, path: :tags, only: %i[index create destroy], as: :tags
-    resources :favorites, only: %i[create destroy]
+    resources :favorites, only: :create
   end
+
+  resources :favorites, only: %i[index destroy]
 
   get 'my_review', to: 'my_reviews#index'
 
