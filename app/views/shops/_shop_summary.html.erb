@@ -37,13 +37,9 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <figure class="bg-primary active:bg-lime-700" ontouchstart="">
-    <%= link_to shop_path(shop), data: {turbo: false}, class: 'w-full' do %>
-      <div class="text-center p-4">
-        <%= t('defaults.show') %>
-      </div>
-    <% end %>
-  </figure>
+    <div class="card-actions justify-center mt-4">
+      <%= link_to t('defaults.show'), shop_path(shop), data: {turbo: false}, class: 'btn btn-primary btn-wide' %>
+    </div>
+  </div>
 </div>
