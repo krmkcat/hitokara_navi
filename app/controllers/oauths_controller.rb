@@ -9,8 +9,9 @@ class OauthsController < ApplicationController
 
   def callback
     provider = params[:provider]
-    if @user = login_from(provider)
-      redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+    @user = login_from(provider)
+    if @user
+      redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
     else
       begin
         @user = create_from(provider)
@@ -18,9 +19,9 @@ class OauthsController < ApplicationController
 
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
-      rescue
-        redirect_to root_path, :alert => "Failed to login from #{provider.titleize}!"
+        redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
+      rescue StandardError
+        redirect_to root_path, alert: "Failed to login from #{provider.titleize}!"
       end
     end
   end
