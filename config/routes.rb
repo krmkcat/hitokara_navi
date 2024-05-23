@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resource :profile, only: %i[edit update]
 
   resources :users, only: :create
+  resource :user, only: :destroy
   get 'signup', to: 'users#new'
 
   get 'login', to: 'user_sessions#new'

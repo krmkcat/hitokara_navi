@@ -28,6 +28,8 @@ ja:
     create:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
+    destroy:
+      success: 退会しました
     form:
       password_rule: 半角英数8文字以上
       type_password_again: パスワードを再入力
@@ -55,6 +57,8 @@ ja:
       title: マイページ
       to_my_reviews: 投稿したレビュー一覧を見る
       to_favorites: お気に入り店舗一覧を見る
+      delete_user: アカウントを削除する
+      confirm_delete_user: 本当にアカウントを削除しますか？この操作は取り消せません
     edit:
       title: プロフィール編集
     form:
