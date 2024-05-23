@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites
   has_many :shops, through: :favorites, dependent: :destroy
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 
   validates :password, length: { minimum: 8 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password, presence: true, on: :reset_password
