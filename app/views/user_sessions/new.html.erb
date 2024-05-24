@@ -29,4 +29,7 @@
   <div class='text-center mt-6'>
     <%= link_to t('.to_signup_page'), signup_path, class: 'btn btn-link btn-xs text-secondary' %>
   </div>
+  <div class='text-center mt-6'>
+    <%= link_to 'LINEでログイン', auth_at_provider_path(provider: :line), class: 'btn btn-link btn-xs text-primary' %>
+  </div>
 </div>
