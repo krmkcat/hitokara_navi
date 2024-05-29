@@ -16,11 +16,14 @@ class OauthsController < ApplicationController
       begin
         @user = create_from(provider)
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
+        @user.email = generate_unique_email if @user.email.blank?
+        @user.save!(validate: false)
 
         reset_session # protect from session fixation attack
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
-      rescue StandardError
+      rescue => e
+        logger.error e.message
         redirect_to root_path, alert: "Failed to login from #{provider.titleize}!"
       end
     end
@@ -30,5 +33,9 @@ class OauthsController < ApplicationController
 
   def auth_params
     params.permit(:code, :provider, :error, :state)
+  end
+
+  def generate_unique_email
+    "user_#{SecureRandom.uuid}@example.com"
   end
 end

@@ -8,10 +8,10 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
-  validates :password, length: { minimum: 8 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, length: { minimum: 8 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] && !external_login? }
   validates :password, presence: true, on: :reset_password
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
-  validates :email, presence: true, uniqueness: true
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] && !external_login? }
+  validates :email, presence: true, uniqueness: true, unless: -> { external_login? }
   validates :role, presence: true
   validates :reset_password_token, uniqueness: true, allow_nil: true
 
@@ -69,5 +69,11 @@ class User < ApplicationRecord
 
   def unfavorite(shop)
     shops.delete(shop)
+  end
+
+  private
+
+  def external_login?
+    authentications.any?
   end
 end
