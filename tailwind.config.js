@@ -16,4 +16,13 @@ module.exports = {
       },
     ],
   },
+  theme: {
+    extend: {
+      colors: {
+        'line-green': '#06C755',
+        'line-green-hover': '#05b34c',
+        'line-green-active': '#048b3b',
+      },
+    },
+  },
 }
