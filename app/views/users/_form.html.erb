@@ -1,10 +1,10 @@
-<div class="collapse collapse-arrow border border-primary">
+<div class="collapse collapse-arrow bg-white border">
   <input type="checkbox" />
-  <div class="collapse-title text-sm font-semibold content-center">
+  <div class="collapse-title text-sm font-semibold">
     メールアドレスとパスワードで登録
   </div>
   <div class="collapse-content">
-    <%= form_with(model: user, class: 'card-body pt-2') do |form| %>
+    <%= form_with(model: user, class: 'card-body px-4 py-2') do |form| %>
       <%= render 'shared/error_messages', object: form.object %>
 
       <div class="form-control">
