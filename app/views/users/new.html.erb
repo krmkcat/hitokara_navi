@@ -1,9 +1,13 @@
 <% content_for :title, t('.title') %>
 
 <div class="mx-auto md:w-2/3 w-full max-w-xs">
-  <h1 class="font-bold text-2xl text-center text-neutral mb-4">
+  <h1 class="font-bold text-2xl text-center text-neutral mb-8">
     <%= t('.title') %>
   </h1>
+
+  <div class='text-center mb-6' ontouchstart="">
+    <%= render 'shared/line_login_button' %>
+  </div>
 
   <%= render "form", user: @user %>
 

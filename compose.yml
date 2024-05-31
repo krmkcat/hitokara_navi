@@ -24,6 +24,19 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - web
+    restart: always
+    environment:
+      DOMAINS: 'www.mysite.local -> http://web:3000, mysite.local -> http://web:3000'
+      STAGE: 'local'
+    volumes:
+      - ./https-portal:/var/lib/https-portal
 volumes:
   postgres_data:
   bundle_data:

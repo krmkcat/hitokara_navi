@@ -1,2 +1,4 @@
 default_url_options:
   host: localhost:3000
+sorcery:
+  line_callback_url: 'https://www.mysite.local/oauth/callback?provider=line'

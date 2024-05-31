@@ -1,32 +1,43 @@
 <% content_for :title, t('.title') %>
 
 <div class="mx-auto md:w-2/3 w-full max-w-xs">
-  <h1 class="font-bold text-2xl text-center text-neutral mb-4">
+  <h1 class="font-bold text-2xl text-center text-neutral mb-8">
     <%= t '.title' %>
   </h1>
 
-  <div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-    <%= form_with url: login_url, local: true, class: 'card-body' do |f| %>
-      <div class="form-control">
-        <%= f.label :email, class: 'label' %>
-        <%= f.email_field :email, class: 'input input-bordered input-primary w-full max-w-xs' %>
-      </div>
-
-      <div class="form-control">
-        <%= f.label :password, class: 'label' %>
-        <%= f.password_field :password, class: 'input input-bordered input-primary w-full max-w-xs' %>
-        <%= f.label :password, class: 'label' do %>
-          <%= link_to t('.forgot_password'), new_password_resets_path, class: 'label-text-alt link link-hover text-secondary' %>
-        <% end %>
-      </div>
-
-      <div class="form-control text-center mt-6">
-        <%= f.submit t('defaults.login'), class: "btn btn-accent" %>
-      </div>
-    <% end %>
+  <div class='text-center mb-6' ontouchstart="">
+    <%= render 'shared/line_login_button' %>
   </div>
 
-  <div class='text-center mt-6'>
-    <%= link_to t('.to_signup_page'), signup_path, class: 'btn btn-link btn-xs text-secondary' %>
+  <div class="card shrink-0 w-full max-w-sm mx-auto border bg-white">
+    <div class="card-body">
+      <div class="card-title font-semibold text-base">
+        メールアドレスとパスワードでログイン
+      </div>
+
+      <%= form_with url: login_url, local: true do |f| %>
+        <div class="form-control">
+          <%= f.label :email, class: 'label' %>
+          <%= f.email_field :email, class: 'input input-bordered input-primary w-full max-w-xs' %>
+        </div>
+
+        <div class="form-control">
+          <%= f.label :password, class: 'label' %>
+          <%= f.password_field :password, class: 'input input-bordered input-primary w-full max-w-xs' %>
+          <%= f.label :password, class: 'label' do %>
+            <%= link_to t('.forgot_password'), new_password_resets_path, class: 'label-text-alt link link-hover text-secondary' %>
+          <% end %>
+        </div>
+
+        <div class="form-control text-center mt-6">
+          <%= f.submit t('defaults.login'), class: "btn btn-accent" %>
+        </div>
+
+      <% end %>
+
+      <div class='text-center'>
+        <%= link_to t('.to_signup_page'), signup_path, class: 'btn btn-link btn-xs text-secondary' %>
+      </div>
+    </div>
   </div>
 </div>

@@ -33,6 +33,10 @@ ja:
     form:
       password_rule: 半角英数8文字以上
       type_password_again: パスワードを再入力
+  oauths:
+    callback:
+      success: "%{provider}でログインしました"
+      failure: "%{provider}でログインできませんでした"
   shop_locations:
     index:
       title: カラオケを探す

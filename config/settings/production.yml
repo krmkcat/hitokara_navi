@@ -1,3 +1,5 @@
 default_url_options:
   host: www.hitokara-navi.com
   protocol: https
+sorcery:
+  line_callback_url: 'https://hitokara-navi.com/oauth/callback?provider=line'

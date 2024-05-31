@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   get 'mypage', to: 'profiles#show'
   resource :profile, only: %i[edit update]
 
+  post 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/callback', to: 'oauths#callback' # for use with Github, Facebook
+  get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+
   resources :users, only: :create
   resource :user, only: :destroy
   get 'signup', to: 'users#new'

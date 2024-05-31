@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_240_519_070_601) do
+ActiveRecord::Schema[7.0].define(version: 20_240_529_125_550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -20,6 +20,15 @@ ActiveRecord::Schema[7.0].define(version: 20_240_519_070_601) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['prefecture_id'], name: 'index_areas_on_prefecture_id'
+  end
+
+  create_table 'authentications', force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.string 'provider', null: false
+    t.string 'uid', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index %w[provider uid], name: 'index_authentications_on_provider_and_uid'
   end
 
   create_table 'favorites', force: :cascade do |t|
@@ -98,7 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 20_240_519_070_601) do
   end
 
   create_table 'users', force: :cascade do |t|
-    t.string 'email', null: false
+    t.string 'email'
     t.string 'crypted_password'
     t.string 'salt'
     t.integer 'role', default: 0, null: false

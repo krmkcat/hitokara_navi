@@ -45,4 +45,6 @@
 /db/fixtures/csv_files/*
 !/db/fixtures/csv_files/shops_production.csv
 
+/https-portal/
+
 .DS_Store
