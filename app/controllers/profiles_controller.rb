@@ -1,7 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile
+  before_action :set_my_profile, only: %i[edit update]
 
-  def show; end
+  def show
+    @profile = Profile.find_by(user_id: params[:user_id])
+  end
 
   def edit; end
 
@@ -16,7 +18,7 @@ class ProfilesController < ApplicationController
 
   private
 
-  def set_profile
+  def set_my_profile
     @profile = Profile.find_by(user_id: current_user.id)
   end
 
