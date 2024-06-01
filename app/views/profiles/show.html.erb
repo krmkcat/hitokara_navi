@@ -17,14 +17,21 @@
     <p>
       <%= Profile.human_attribute_name(:age_group) + ': ' + @profile.age_group_i18n %>
     </p>
-    <div class="card-actions justify-end" ontouchstart="">
-      <%= link_to edit_profile_path(@profile), class: 'px-1.5 rounded text-secondary text-lg active:bg-base-200' do %>
-        <i class="fa-solid fa-pen-to-square"></i>
-      <% end %>
-    </div>
+
+    <% if @profile.user == current_user %>
+      <div class="card-actions justify-end" ontouchstart="">
+        <%= link_to edit_profile_path(@profile), class: 'px-1.5 rounded text-secondary text-lg active:bg-base-200' do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
 <div class="text-center mx-auto mt-8">
-  <%= link_to t('.back_to_mypage'), my_page_path, class: 'btn btn-wide btn-primary' %>
+  <% if @profile.user == current_user %>
+    <%= link_to t('.back_to_my_page'), my_page_path, class: 'btn btn-wide btn-primary mt-4' %>
+  <% else %>
+    <%= link_to t('.this_users_reviews'), user_reviews_path(@profile.user), class: 'btn btn-wide btn-primary' %>
+  <% end %>
 </div>

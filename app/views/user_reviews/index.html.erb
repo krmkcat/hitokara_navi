@@ -1,8 +1,8 @@
-<% content_for :title, t('.title') %>
+<% content_for :title, t('.title', user: @user.name) %>
 
 <div class="mb-4">
   <h1 class="font-bold text-2xl text-neutral text-center">
-    <%= t('.title') %>
+    <%= t('.title', user: @user.name) %>
   </h1>
 </div>
 
@@ -12,11 +12,15 @@
       <%= render partial: 'reviews/review_summary', collection: @reviews, as: :review %>
     </div>
   <% else %>
-    <p><%= t '.no_reviews' %></p>
+    <p class="text-center"><%= t '.no_reviews' %></p>
   <% end %>
   <%= render 'shared/pagination', object: @reviews %>
 <% end %>
 
 <div class="text-center mt-6">
-  <%= link_to t('.back_to_mypage'), my_page_path, class: 'btn btn-primary btn-wide' %>
+  <% if @user == current_user %>
+    <%= link_to t('.back_to_mypage'), my_page_path, class: 'btn btn-primary btn-wide' %>
+  <% else %>
+    <%= link_to t('.user_profile'), user_profile_path(@user), class: 'btn btn-primary btn-wide' %>
+  <% end %>
 </div>

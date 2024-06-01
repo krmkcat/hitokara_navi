@@ -56,13 +56,19 @@ ja:
       int_desc: 接客レス度 高評価順
       eqcust_desc: 機器設定の自由度 高評価順
       sofr_desc: 一人利用のしやすさ 高評価順
-  profiles:
-    show:
+  my_pages:
+    index:
       title: マイページ
-      to_my_reviews: 投稿したレビュー一覧を見る
-      to_favorites: お気に入り店舗一覧を見る
+      my_profile: プロフィール
+      my_reviews: 投稿したレビュー一覧
+      favorites: お気に入り店舗一覧
       delete_user: アカウントを削除する
       confirm_delete_user: 本当にアカウントを削除しますか？この操作は取り消せません
+  profiles:
+    show:
+      title: プロフィール
+      this_users_reviews: このユーザーのレビュー一覧
+      back_to_my_page: マイページへ戻る
     edit:
       title: プロフィール編集
     form:
@@ -79,11 +85,12 @@ ja:
       title: レビューを編集
     show:
       title: "%{shop}のレビュー"
-  my_reviews:
+  user_reviews:
     index:
-      title: 投稿したレビュー
+      title: "%{user}さんのレビュー一覧"
       back_to_mypage: マイページへ戻る
       no_reviews: まだレビューがありません
+      user_profile: このユーザーのプロフィール
   shop_tags:
     index:
       title: "%{shop}のタグ編集"
