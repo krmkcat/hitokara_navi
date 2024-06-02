@@ -6,7 +6,7 @@
           <i class="fa-solid fa-shop"></i>
         </div>
         <div class="font-bold pl-1">
-          <%= review.shop.name %>
+          <%= link_to shop.name, shop_path(shop), class: 'link' %>
         </div>
       </div>
       <div class="user-info grid grid-cols-[1fr_9fr]">
@@ -14,7 +14,7 @@
           <i class="fa-solid fa-user"></i>
         </div>
         <div class="pl-1 break-all">
-          <span class="font-bold"><%= review.user.name %></span>
+          <%= link_to review.user.name, user_profile_path(review.user), class: 'link font-bold' %>
           <span class="text-xs inline-block"> さん</span>
           <% if review.user.profile_displayable? %>
             <span class="text-xs inline-block">
