@@ -1,0 +1,14 @@
+<% content_for :title, t('.title') %>
+
+<div class="title mb-4 text-center">
+  <h1 class="font-bold text-2xl text-neutral">
+    <%= t '.title' %>
+  </h1>
+</div>
+
+<div class="text-center mx-auto mt-8">
+  <%= link_to t('.my_profile'), user_profile_path(@user), class: 'btn btn-wide btn-primary' %>
+  <%= link_to t('.my_reviews'), user_reviews_path(@user), class: 'btn btn-wide btn-primary mt-4' %>
+  <%= link_to t('.favorites'), favorites_path, class: 'btn btn-wide btn-primary mt-4' %>
+  <%= link_to t('.delete_user'), user_path, data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete_user') }, class: 'btn btn-wide bg-red-700 text-white mt-4' %>
+</div>

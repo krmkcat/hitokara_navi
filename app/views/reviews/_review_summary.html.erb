@@ -2,7 +2,7 @@
   <div class="card w-96 bg-accent/10 mx-auto w-full shadow-lg active:bg-base-200" ontouchstart=""">
     <div class="card-body text-sm p-6">
       <div class="review-header flex flex-col">
-        <% if current_page?(my_review_path) %>
+        <% if controller.class.to_s == 'UserReviewsController' %>
           <div class="shop-name grid grid-cols-[1fr_9fr]">
             <div class="text-center">
               <i class="fa-solid fa-shop"></i>
@@ -11,8 +11,7 @@
               <span class="font-bold"><%= review.shop.name %></span>
             </div>
           </div>
-        <% end %>
-        <% if current_page?(my_review_path) == false %>
+        <% else %>
           <div class="user-info grid grid-cols-[1fr_9fr]">
             <div class="text-center">
               <i class="fa-solid fa-user"></i>

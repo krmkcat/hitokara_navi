@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :shops, through: :favorites, dependent: :destroy
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications

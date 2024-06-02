@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get 'prefectures/:prefecture_id/areas', to: 'areas#index', as: :prefecture_areas
 
-  get 'shop_locations', to: 'shop_locations#index'
+  resources :shop_locations, only: :index
 
   resources :shops, only: %i[index show], shallow: true do
     resources :reviews
@@ -26,21 +26,24 @@ Rails.application.routes.draw do
     resources :favorites, only: :create
   end
 
-  resources :favorites, only: %i[index destroy]
-
-  get 'my_review', to: 'my_reviews#index'
-
-  get 'mypage', to: 'profiles#show'
-  resource :profile, only: %i[edit update]
-
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback' # for use with Github, Facebook
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
 
-  resources :users, only: :create
+  resources :users, only: :create do
+    resource :profile, only: :show
+  end
   resource :user, only: :destroy
-  get 'signup', to: 'users#new'
 
+  get 'users/:user_id/reviews', to: 'user_reviews#index', as: :user_reviews
+
+  resource :profile, only: %i[edit update]
+
+  get 'my_page', to: 'my_pages#index'
+
+  resources :favorites, only: %i[index destroy]
+
+  get 'signup', to: 'users#new'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
