@@ -11,8 +11,7 @@
               <span class="font-bold"><%= review.shop.name %></span>
             </div>
           </div>
-        <% end %>
-        <% if controller.class.to_s == 'ShopsController' %>
+        <% else %>
           <div class="user-info grid grid-cols-[1fr_9fr]">
             <div class="text-center">
               <i class="fa-solid fa-user"></i>
