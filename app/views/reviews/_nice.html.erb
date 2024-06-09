@@ -1,0 +1,4 @@
+<%= link_to review_nices_path(review), id: "nice-button-for-review-#{review.id}", data: {turbo_method: :post}, class: 'border rounded bg-white border-neutral-400 text-neutral-400 p-1' do %>
+  <i class="fa-regular fa-thumbs-up"></i>
+  <%= nices_count(review) %>
+<% end %>

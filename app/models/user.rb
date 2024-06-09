@@ -73,6 +73,10 @@ class User < ApplicationRecord
     shops.delete(shop)
   end
 
+  def nice?(review)
+    review.nices.pluck(:user_id).include?(id)
+  end
+
   def nice(review)
     nice_reviews << review
   end

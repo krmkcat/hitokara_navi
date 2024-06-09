@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     resources :favorites, only: :create
   end
 
+  resources :favorites, only: %i[index destroy]
+
+  post 'reviews/:review_id/nices', to: 'nices#create', as: :review_nices
+  resources :nices, only: :destroy
+
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback' # for use with Github, Facebook
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
@@ -41,7 +46,6 @@ Rails.application.routes.draw do
 
   get 'my_page', to: 'my_pages#index'
 
-  resources :favorites, only: %i[index destroy]
 
   get 'signup', to: 'users#new'
   get 'login', to: 'user_sessions#new'

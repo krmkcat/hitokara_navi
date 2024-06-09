@@ -52,6 +52,10 @@
           <%= '最終更新: ' + l(review.updated_at, format: :long) %>
         </p>
       </div>
+
+      <div class="nice text-right">
+        <%= render 'reviews/nice_buttons', review: @review %>
+      </div>
     </div>
 
     <div class="card-actions flex flex-col mt-4">
