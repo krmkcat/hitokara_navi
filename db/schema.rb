@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_240_529_125_550) do
+ActiveRecord::Schema[7.0].define(version: 20_240_602_133_703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -39,6 +39,16 @@ ActiveRecord::Schema[7.0].define(version: 20_240_529_125_550) do
     t.index ['shop_id'], name: 'index_favorites_on_shop_id'
     t.index %w[user_id shop_id], name: 'index_favorites_on_user_id_and_shop_id', unique: true
     t.index ['user_id'], name: 'index_favorites_on_user_id'
+  end
+
+  create_table 'nices', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'review_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['review_id'], name: 'index_nices_on_review_id'
+    t.index %w[user_id review_id], name: 'index_nices_on_user_id_and_review_id', unique: true
+    t.index ['user_id'], name: 'index_nices_on_user_id'
   end
 
   create_table 'prefectures', force: :cascade do |t|
@@ -124,6 +134,8 @@ ActiveRecord::Schema[7.0].define(version: 20_240_529_125_550) do
   add_foreign_key 'areas', 'prefectures'
   add_foreign_key 'favorites', 'shops'
   add_foreign_key 'favorites', 'users'
+  add_foreign_key 'nices', 'reviews'
+  add_foreign_key 'nices', 'users'
   add_foreign_key 'profiles', 'users'
   add_foreign_key 'reviews', 'shops'
   add_foreign_key 'reviews', 'users'

@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "nice-button-for-review-#{@review.id}" do %>
+  <%= render 'reviews/unnice', review: @review %>
+<% end %>

@@ -2,6 +2,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :shop
   has_one :profile, through: :user
+  has_many :nices
+  has_many :nice_users, through: :nices, source: 'user', dependent: :destroy
 
   validates :user_id, presence: true
   validates :user_id, uniqueness: { scope: :shop_id }

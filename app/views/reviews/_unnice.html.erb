@@ -1,0 +1,4 @@
+<%= link_to nice_path(review.nices.find{ |f| f.user_id == current_user.id }), id: "unnice-button-for-review-#{review.id}", data: { turbo_method: :delete}, class: 'border rounded bg-white border-primary text-primary p-1' do %>
+  <i class="fa-solid fa-thumbs-up"></i>
+  <%= nices_count(review) %>
+<% end %>

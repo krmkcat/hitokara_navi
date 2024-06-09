@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :shops, through: :favorites, dependent: :destroy
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
+  has_many :nices
+  has_many :nice_reviews, through: :nices, source: 'review', dependent: :destroy
 
   validates :password, length: { minimum: 8 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] && !external_login? }
   validates :password, presence: true, on: :reset_password
@@ -69,6 +71,18 @@ class User < ApplicationRecord
 
   def unfavorite(shop)
     shops.delete(shop)
+  end
+
+  def nice?(review)
+    review.nices.pluck(:user_id).include?(id)
+  end
+
+  def nice(review)
+    nice_reviews << review
+  end
+
+  def unnice(review)
+    nice_reviews.delete(review)
   end
 
   private

@@ -1,7 +1,7 @@
 <% if logged_in? && current_user.own?(review) %>
   <div class="w-full flex justify-end gap-1 text-lg" ontouchstart="">
     <%= link_to edit_review_path(review), class: 'px-1.5 rounded text-secondary active:bg-base-200' do %>
-      <i class="fa-solid fa-pen-to-square"></i>
+      <i class="fa-solid fa-pencil"></i>
     <% end %>
     <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: 'px-1.5 rounded text-secondary active:bg-base-200' do %>
       <i class="fa-solid fa-trash-can"></i>

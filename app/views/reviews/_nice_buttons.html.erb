@@ -1,0 +1,5 @@
+<% if current_user.nice?(review) %>
+  <%= render 'reviews/unnice', review: review %>
+<% else %>
+  <%= render 'reviews/nice', review: review %>
+<% end %>

@@ -59,6 +59,8 @@ ja:
   my_pages:
     index:
       title: マイページ
+      reviews_count: 投稿したレビューの数
+      nices_count: 獲得したNice!の数
       my_profile: プロフィール
       my_reviews: 投稿したレビュー一覧
       favorites: お気に入り店舗一覧
