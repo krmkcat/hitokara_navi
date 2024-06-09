@@ -60,11 +60,6 @@
 
     <div class="card-actions flex flex-col mt-4">
       <%= render 'shared/edit_and_delete_buttons', review: review %>
-      <div class="w-full flex justify-center gap-1 mt-2">
-        <% if current_page?(shop_reviews_path(shop)) %>
-          <%= link_to t('defaults.show'), review_path(review), class: 'btn btn-wide' %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>

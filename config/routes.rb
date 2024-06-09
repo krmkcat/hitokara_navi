@@ -46,7 +46,6 @@ Rails.application.routes.draw do
 
   get 'my_page', to: 'my_pages#index'
 
-
   get 'signup', to: 'users#new'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

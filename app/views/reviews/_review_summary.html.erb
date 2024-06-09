@@ -1,58 +1,62 @@
-<%= link_to review_path(review), data: { turbo: false } do %>
-  <div class="card w-96 bg-accent/10 mx-auto w-full shadow-lg active:bg-base-200" ontouchstart=""">
-    <div class="card-body text-sm p-6">
-      <div class="review-header flex flex-col">
-        <% if controller.class.to_s == 'UserReviewsController' %>
-          <div class="shop-name grid grid-cols-[1fr_9fr]">
-            <div class="text-center">
-              <i class="fa-solid fa-shop"></i>
-            </div>
-            <div class="pl-1 break-all">
-              <span class="font-bold"><%= review.shop.name %></span>
-            </div>
+<div class="card w-96 bg-accent/10 mx-auto w-full shadow-lg">
+  <div class="card-body text-sm p-6">
+    <div class="review-header flex flex-col">
+      <% if controller.class.to_s == 'UserReviewsController' %>
+        <div class="shop-name grid grid-cols-[1fr_9fr]">
+          <div class="text-center">
+            <i class="fa-solid fa-shop"></i>
           </div>
-        <% else %>
-          <div class="user-info grid grid-cols-[1fr_9fr]">
-            <div class="text-center">
-              <i class="fa-solid fa-user"></i>
-            </div>
-            <div class="pl-1 break-all">
-              <span class="font-bold"><%= review.user.name %></span>
-              <span class="text-xs inline-block"> さん</span>
-              <% if review.user.profile_displayable? %>
-                <span class="text-xs inline-block">
-                  <%= review.user.display_profile %>
-                </span>
-              <% end %>
-            </div>
+          <div class="pl-1 break-all">
+            <span class="font-bold"><%= review.shop.name %></span>
           </div>
+        </div>
+      <% else %>
+        <div class="user-info grid grid-cols-[1fr_9fr]">
+          <div class="text-center">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="pl-1 break-all">
+            <span class="font-bold"><%= review.user.name %></span>
+            <span class="text-xs inline-block"> さん</span>
+            <% if review.user.profile_displayable? %>
+              <span class="text-xs inline-block">
+                <%= review.user.display_profile %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="divider my-0"></div>
+
+    <div class="review_body flex flex-col">
+      <div class="indicator w-full">
+        <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
+        <div class="rating_fields flex flex-col mx-auto gap-y-1 px-3 pt-3 pb-4 rounded-lg border border-dotted border-secondary">
+          <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, prefix: 'int' %>
+          <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, prefix: 'eqcust' %>
+          <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, prefix: 'sofr' %>
+        </div>
+      </div>
+
+      <div class="comment mt-5 p-2 rounded-lg bg-white/50">
+        <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false) do %>
+          <span class="underline italic text-xs inline-block">（続きを読む）</span>
         <% end %>
       </div>
 
-      <div class="divider my-0"></div>
+      <div class="last_update_and_btn flex justify-end items-end mt-1 text-xs">
+        <%= l(review.updated_at, format: :long) %>
+      </div>
 
-      <div class="review_body flex flex-col">
-        <div class="indicator w-full">
-          <span class="indicator-item indicator-bottom indicator-center badge badge-secondary badge-sm rounded"><%= t('defaults.preferences_rating') %></span>
-          <div class="rating_fields flex flex-col mx-auto gap-y-1 px-3 pt-3 pb-4 rounded-lg border border-dotted border-secondary">
-            <%= render 'reviews/rating_sm', field: :minimal_interaction, review: review, prefix: 'int' %>
-            <%= render 'reviews/rating_sm', field: :equipment_customization, review: review, prefix: 'eqcust' %>
-            <%= render 'reviews/rating_sm', field: :solo_friendly, review: review, prefix: 'sofr' %>
-          </div>
-        </div>
-
-        <div class="comment mt-5 p-2 rounded-lg bg-white/50 text-sm">
-          <%= truncate(simple_format(review.comment), length: 50, omission: '…', escape: false) do %>
-            <span class="underline italic text-xs inline-block">（続きを読む）</span>
-          <% end %>
-        </div>
-
-        <div class="last_update text-xs mt-0.5">
-          <p class="text-right">
-            <%= l(review.updated_at, format: :long) %>
-          </p>
-        </div>
+      <div class="nice text-right mt-3">
+        <%= render 'reviews/nice_buttons', review: review %>
       </div>
     </div>
+
+    <div class="card-actions justify-center mt-4">
+      <%= link_to t('defaults.show'), review_path(review), data: { turbo: false }, class: 'btn btn-wide btn-primary' %>
+    </div>
   </div>
-<% end %>
+</div>
