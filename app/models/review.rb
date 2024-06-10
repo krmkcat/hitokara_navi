@@ -16,7 +16,9 @@ class Review < ApplicationRecord
   validates :comment, length: { maximum: 1500 }
 
   after_save -> { shop.update_rating_averages }
+  after_save -> { user.update_rank }
   after_destroy -> { shop.update_rating_averages }
+  after_destroy -> { user.update_rank }
 
   enum :minimal_interaction, {
     unspecified: 0,
