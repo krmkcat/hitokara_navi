@@ -219,6 +219,11 @@ ja:
       role:
         general: 一般
         admin: 管理者
+      rank:
+        regular: レギュラー
+        bronze: ブロンズ
+        silver: シルバー
+        gold: ゴールド
     profile:
       gender:
         gender_unspecified: 非公開

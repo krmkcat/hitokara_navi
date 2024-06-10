@@ -15,6 +15,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         role: 権限
+        rank: ユーザーランク
         created_at: 作成日時
         updated_at: 最終更新日時
       profile:
