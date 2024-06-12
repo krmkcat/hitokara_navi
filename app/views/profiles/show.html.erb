@@ -9,7 +9,7 @@
 <div class="card w-full bg-base-100 mx-auto max-w-xs shadow-lg">
   <div class="card-body">
     <h2 class="card-title">
-      <%= @profile.name %>
+      <%= render 'shared/user_name_with_rank', user: @profile.user %>
     </h2>
     <p>
       <%= Profile.human_attribute_name(:gender) + ': ' + @profile.gender_i18n %>

@@ -15,6 +15,11 @@
         </div>
         <div class="pl-1 break-all">
           <%= link_to review.user.name, user_profile_path(review.user), class: 'link font-bold' %>
+          <% if !review.user.regular? %>
+            <span class="<%= user_rank_color(review.user) %>">
+              <i class="fa-solid fa-crown"></i>
+            </span>
+          <% end %>
           <span class="text-xs inline-block"> さん</span>
           <% if review.user.profile_displayable? %>
             <span class="text-xs inline-block">
