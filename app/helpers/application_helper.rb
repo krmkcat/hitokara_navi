@@ -33,4 +33,14 @@ module ApplicationHelper
       }
     }
   end
+
+  def user_rank_color(user)
+    if user.gold?
+      'text-yellow-300'
+    elsif user.silver?
+      'text-slate-300'
+    elsif user.bronze?
+      'text-orange-700'
+    end
+  end
 end

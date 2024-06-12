@@ -6,8 +6,44 @@
   </h1>
 </div>
 
+<div class="rank text-center mb-6">
+  <div>
+    <p>
+      <span class="font-bold">
+        <%= @user.name %>
+      </span>
+      さんの現在のユーザーランクは
+    </p>
+    <p>
+      <span class="text-xl">
+        <%= @user.rank_i18n %>
+        <% if !@user.regular? %>
+          <span class="<%= user_rank_color(@user) %>">
+            <i class="fa-solid fa-crown"></i>
+          </span>
+        <% end %>
+      </span>
+      です。
+    </p>
+  </div>
+
+  <div class="mt-1">
+    <p class="text-sm">
+      <% if @user.gold? %>
+        最高ランクです！
+      <% else %>
+        次のランクは <%= next_rank(@user) %>
+        <span class="<%= next_rank_color(@user) %>">
+          <i class="fa-solid fa-crown"></i>
+        </span>
+        です。
+      <% end %>
+    </p>
+  </div>
+</div>
+
 <div class="status flex justify-center">
-  <div class="stats stats-vertical md:stats-horizontal shadow">
+  <div class="stats stats-vertical lg:stats-horizontal shadow">
     <div class="stat">
       <div class="stat-figure text-secondary">
         <i class="fa-regular fa-comment-dots text-3xl"></i>
@@ -31,6 +67,21 @@
         <%= @nices_count %>
       </div>
     </div>
+
+    <% if @reviews_count_for_next_rank %>
+      <div class="stat">
+        <div class="stat-figure text-secondary">
+          <i class="fa-solid fa-bars-progress text-3xl"></i>
+        </div>
+        <div class="stat-title">
+          <%= t('.num_of_reviews_for_next_rank') %>
+        </div>
+        <div class="stat-value">
+          <span class="text-base">あと</span>
+          <%= @reviews_count_for_next_rank %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
