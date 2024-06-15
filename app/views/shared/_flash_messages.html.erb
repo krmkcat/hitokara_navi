@@ -1,13 +1,13 @@
 <% flash.each do |message_type, message| %>
   <% if message_type == 'success' %>
-    <div role="alert" class="alert alert-success w-5/6 mx-auto mt-2 flex justify-center" >
+    <div role="alert" class="alert alert-success w-5/6 mx-auto max-w-screen-md mt-2 flex justify-center" >
       <i class="fa-regular fa-circle-check" style="color: #0e110d;"></i>
       <span>
         <%= message %>
       </span>
     </div>
   <% else %>
-    <div role="alert" class="alert alert-error w-5/6 mx-auto mt-2 flex justify-center" >
+    <div role="alert" class="alert alert-error w-5/6 mx-auto max-w-screen-md mt-2 flex justify-center" >
       <i class="fa-regular fa-circle-xmark" style="color: #0e110d;"></i>
       <span>
         <%= message %>
