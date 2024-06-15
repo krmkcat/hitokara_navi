@@ -15,9 +15,11 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] && !external_login? }
   validates :email, presence: true, uniqueness: true, unless: -> { external_login? }
   validates :role, presence: true
+  validates :rank, presence: true
   validates :reset_password_token, uniqueness: true, allow_nil: true
 
   enum role: { general: 0, admin: 1 }
+  enum rank: { regular: 0, bronze: 1, silver: 2, gold: 3 }
 
   def name
     profile.name
@@ -83,6 +85,19 @@ class User < ApplicationRecord
 
   def unnice(review)
     nice_reviews.delete(review)
+  end
+
+  def update_rank
+    reviews_count = reviews.length
+    if reviews_count >= 15
+      gold!
+    elsif reviews_count >= 7
+      silver!
+    elsif reviews_count >= 3
+      bronze!
+    else
+      regular!
+    end
   end
 
   private

@@ -19,6 +19,10 @@
       <td><%= @user.email %></td>
     </tr>
     <tr>
+      <th><%= User.human_attribute_name(:rank) %></th>
+      <td><%= @user.rank_i18n %></td>
+    </tr>
+    <tr>
       <th><%= User.human_attribute_name(:created_at) %></th>
       <td><%= l @user.created_at, format: :long %></td>
     </tr>

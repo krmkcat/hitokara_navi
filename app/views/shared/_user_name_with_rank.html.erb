@@ -1,0 +1,6 @@
+<%= user.name %>
+<% if !user.regular? %>
+  <span class="<%= user_rank_color(user) %>">
+    <i class="fa-solid fa-crown"></i>
+  </span>
+<% end %>

@@ -16,7 +16,9 @@
             <i class="fa-solid fa-user"></i>
           </div>
           <div class="pl-1 break-all">
-            <span class="font-bold"><%= review.user.name %></span>
+            <span class="font-bold">
+              <%= render 'shared/user_name_with_rank', user: review.user %>
+            </span>
             <span class="text-xs inline-block"> さん</span>
             <% if review.user.profile_displayable? %>
               <span class="text-xs inline-block">
