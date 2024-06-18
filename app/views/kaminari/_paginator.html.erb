@@ -16,12 +16,12 @@
           <%= page_tag page %>
         <% elsif !page.was_truncated? -%>
           <%= gap_tag %>
-        <% end -%>
-      <% end -%>
+        <% end %>
+      <% end %>
       <% unless current_page.out_of_range? %>
         <%= next_page_tag unless current_page.last? %>
         <%= last_page_tag unless current_page.last? %>
       <% end %>
     </div>
   </nav>
-<% end -%>
+<% end %>
