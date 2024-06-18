@@ -1,4 +1,4 @@
-<div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+<div class="card shrink-0 w-full max-w-md mx-auto shadow-2xl bg-base-100">
   <%= form_with model: search_shops_form, scope: :q, url: shops_url, method: :get, html: { data: { turbo_frame: 'shops-list' } }, class: 'card-body p-6' do |f| %>
     <%= f.hidden_field :prefecture_id %>
     <%= f.hidden_field :area_id %>
@@ -8,8 +8,11 @@
     <%= hidden_field_tag 'sort[key]', sort_shops_params[:key] %>
 
     <div class="preferences form-control">
-      <%= label_tag '', t('defaults.preferences'), class: 'label' %>
-      <div class="preferences-body bg-secondary/10 rounded-lg mx-2 p-2">
+      <h2 class="card-title">
+        <%= t('defaults.preferences') %>
+      </h2>
+
+      <div class="preferences-body">
         <div class="rating_averages">
           <% Shop.average_attributes.each do |attr| %>
             <div class="average_items form-control">
@@ -33,8 +36,11 @@
       </div>
     </div>
 
-    <div class="form-control text-center mt-6">
-      <%= f.submit t('defaults.search'), class: 'btn btn-accent' %>
+    <div class="text-center mt-6">
+      <%= button_tag(type: 'submit', class: 'btn btn-accent btn-wide') do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <%= t('defaults.search') %>
+      <% end %>
     </div>
   <% end %>
 </div>
