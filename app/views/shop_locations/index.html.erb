@@ -11,7 +11,7 @@
 
 <div class="search flex flex-col gap-y-6">
   <div class="location text-center">
-    <button id="search-with-current-location" class="btn btn-accent btn-wide">
+    <button id="search-with-current-location" class="btn btn-accent w-full">
       <span id="search-icon">
         <i class="fa-solid fa-magnifying-glass"></i>
       </span>
@@ -26,11 +26,13 @@
   </div>
 
   <div class="words">
-    <h2 class="text-lg text-center">フリーワードで探す</h2>
+    <div class="heading text-lg text-center mb-2">
+      <h2>フリーワードで探す</h2>
+    </div>
     <%= form_with scope: :q, url: shops_url, method: :get, local: true, class: 'flex justify-center' do |f| %>
       <%= hidden_field_tag 'sort[key]', 'id' %>
-      <div class="join">
-        <%= f.search_field :words, placeholder: '店名・住所', class: 'input input-bordered input-primary join-item' %>
+      <div class="join flex w-full max-w-md">
+        <%= f.search_field :words, placeholder: '店名・住所', class: 'input input-bordered input-primary join-item grow' %>
         <%= button_tag(type: 'submit', class: 'btn btn-primary join-item') do %>
           <i class="fa-solid fa-magnifying-glass"></i>
         <% end %>
@@ -39,12 +41,14 @@
   </div>
 
   <div class="areas">
-    <h2 class="text-lg text-center">エリアから探す</h2>
-    <%= form_with scope: :q, url: shops_url, method: :get, local: true, data: { turbo: false }, class: 'w-full max-w-sm mx-auto flex justify-center' do |f| %>
+    <div class="heading text-lg text-center mb-2">
+      <h2 class="text-lg text-center">エリアから探す</h2>
+    </div>
+    <%= form_with scope: :q, url: shops_url, method: :get, local: true, data: { turbo: false }, class: 'flex justify-center' do |f| %>
       <%= hidden_field_tag 'sort[key]', 'id' %>
-      <%= turbo_frame_tag 'location-select-boxes' do %>
-        <div class="join w-full">
-          <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-primary text-xs join-item' } %>
+      <%= turbo_frame_tag 'location-select-boxes', class: 'w-full flex justify-center' do %>
+        <div class="join flex w-full max-w-md min-w-sm">
+          <%= f.select :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }, { include_blank: t('defaults.unspecified') }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-primary text-xs md:text-sm join-item grow max-w-fit' } %>
           <%= f.select :area_id, [['---', nil]], {}, class: 'select select-bordered select-primary join-item grow' %>
           <%= button_tag(type: 'submit', class: 'btn btn-primary join-item') do %>
             <i class="fa-solid fa-magnifying-glass"></i>
