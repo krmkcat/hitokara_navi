@@ -3,6 +3,8 @@
   <div class="join flex w-full max-w-md min-w-sm">
     <%= select :q, :prefecture, Prefecture.selectable.map{ |p| [p.name, prefecture_areas_path(p)] }.unshift([t('defaults.unspecified'), shop_locations_path]), { selected: prefecture_areas_path(@prefecture) }, { onchange: "Turbo.visit(value, {frame: 'location-select-boxes'})", class: 'select select-bordered select-primary text-xs md:text-sm join-item grow max-w-fit' } %>
     <%= select :q, :area_id, @prefecture.areas.pluck(:name, :id), { include_blank: t('defaults.unspecified') }, { class: 'select select-bordered select-primary join-item grow' } %>
-    <%= submit_tag t('defaults.search'), class: 'btn btn-primary join-item' %>
+    <%= button_tag(type: 'submit', class: 'btn btn-primary join-item') do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
   </div>
 <% end %>
