@@ -9,10 +9,10 @@
 -%>
 <% if page.current? %>
   <span class="page current">
-    <%= link_to_if page.current?, page, url, {remote: remote, rel: page.rel, class: 'join-item btn btn-sm btn-primary' } %>
+    <%= link_to_if page.current?, page, url, {remote: remote, rel: page.rel, class: 'join-item btn btn-sm btn-primary md:btn-md' } %>
   </span>
 <% else %>
   <span class="page">
-    <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel, class: "join-item btn btn-sm" } %>
+    <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel, class: "join-item btn btn-sm md:btn-md" } %>
   </span>
 <% end %>
