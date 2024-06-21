@@ -1,4 +1,4 @@
-<div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-accent/10">
+<div class="card shrink-0 w-full mx-auto shadow-2xl bg-accent/10">
   <%= form_with(model: review.persisted? ? review : [shop, review], class: "card-body p-6") do |form| %>
     <%= render 'shared/error_messages', object: form.object %>
 
@@ -18,8 +18,8 @@
       <%= form.text_area :comment, maxlength: 1500, rows: 7, placeholder: t('defaults.review_comment_placeholder'), class: "textarea textarea-bordered textarea-primary rounded-lg" %>
     </div>
 
-    <div class="form-control text-center mt-6">
-      <%= form.submit t(review.persisted? ? 'defaults.update' : 'defaults.post'), class: 'btn btn-accent' %>
+    <div class="text-center mt-6">
+      <%= form.submit t(review.persisted? ? 'defaults.update' : 'defaults.post'), class: 'btn btn-accent btn-wide' %>
     </div>
   <% end %>
 </div>
