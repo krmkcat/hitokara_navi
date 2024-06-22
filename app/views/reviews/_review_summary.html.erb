@@ -44,7 +44,7 @@
 
       <div class="comment mt-5 p-2 rounded-lg bg-white/50">
         <%= truncate(simple_format(review.comment), length: 100, omission: '…', escape: false) do %>
-          <span class="underline italic text-xs inline-block">（続きを読む）</span>
+          <%= link_to t('.read_more'), review_path(review), class: 'underline italic text-xs inline-block' %>
         <% end %>
       </div>
 

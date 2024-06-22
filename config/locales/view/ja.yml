@@ -88,6 +88,8 @@ ja:
       title: レビューを編集
     show:
       title: "%{shop}のレビュー"
+    review_summary:
+      read_more: （続きを読む）
   user_reviews:
     index:
       title: "%{user}さんのレビュー一覧"
