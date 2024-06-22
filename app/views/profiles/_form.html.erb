@@ -1,10 +1,10 @@
-<div class="card shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+<div class="card shrink-0 w-full mx-auto shadow-2xl bg-base-100">
   <%= form_with(model: profile, class: "card-body") do |form| %>
     <%=  render 'shared/error_messages', object: form.object %>
 
     <div class="form-control">
       <%= form.label :name, class: 'label' %>
-      <%= form.text_field :name, maxlength: 20, placeholder: t('.user_name_rule'), class: "input input-bordered input-primary w-full max-w-xs" %>
+      <%= form.text_field :name, maxlength: 20, placeholder: t('.user_name_rule'), class: "input input-bordered input-primary w-full" %>
     </div>
 
     <div class="form-control">
@@ -12,8 +12,8 @@
       <div class="flex flex-row gap-4">
         <% Profile.genders.each_key do |key| %>
           <div class="flex flex-row content-center gap-1">
-            <%= form.radio_button :gender, key, class: "radio radio-xs radio-primary" %>
-            <%= form.label :gender, Profile.genders_i18n[key], value: key, class: 'text-xs' %>
+            <%= form.radio_button :gender, key, class: "radio radio-xs md:radio-md radio-primary" %>
+            <%= form.label :gender, Profile.genders_i18n[key], value: key, class: 'text-xs md:text-base' %>
           </div>
         <% end %>
       </div>
@@ -24,12 +24,12 @@
       <%= form.select :age_group,
         Profile.age_group_select_options,
         {},
-        { class: 'select select-bordered select-primary w-full max-w-xs' }
+        { class: 'select select-bordered select-primary w-full' }
       %>
     </div>
 
-    <div class="form-control mt-6 text-center">
-      <%= form.submit class: "btn btn-accent" %>
+    <div class="mt-6 text-center">
+      <%= form.submit class: "btn btn-accent btn-wide" %>
     </div>
   <% end %>
 </div>
