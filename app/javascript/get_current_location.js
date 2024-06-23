@@ -22,8 +22,11 @@ function geoFindMe() {
   if (!navigator.geolocation) {
     warning.textContent = "このブラウザーは位置情報に対応していません";
   } else {
-    searchIcon.remove();
-    buttonText.before(loadingSpinner);
+    const searchIcon = document.querySelector("#search-icon");
+    const loadingSpinner = document.createElement('span');
+    loadingSpinner.className = "loading loading-spinner";
+    loadingSpinner.id = "loading-spinner";
+    searchIcon.replaceWith(loadingSpinner);
     buttonText.textContent = "位置情報を取得中…";
     searchButton.classList.add("btn-disabled");
     navigator.geolocation.getCurrentPosition(success, error);
@@ -31,15 +34,19 @@ function geoFindMe() {
 }
 
 const searchButton = document.querySelector("#search-with-current-location");
-const searchIcon = document.querySelector("#search-icon");
-const loadingSpinner = document.createElement('span');
-loadingSpinner.className = "loading loading-spinner";
 const buttonText = document.querySelector("#button-text");
-
 searchButton.addEventListener("click", geoFindMe);
 
-window.addEventListener("pageshow", function(event) {
+window.addEventListener('pageshow', function(event) {
   if (event.persisted) {
-      window.location.reload();
+    const loadingSpinner = document.querySelector("#loading-spinner");
+    if (loadingSpinner) {
+      const searchIcon = document.createElement("i");
+      searchIcon.className = "fa-solid fa-magnifying-glass";
+      searchIcon.id = "search-icon";
+      loadingSpinner.replaceWith(searchIcon);
+      buttonText.textContent = "現在地から探す";
+      searchButton.classList.remove("btn-disabled");
+    }
   }
-});
+})
