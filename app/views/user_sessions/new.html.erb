@@ -15,7 +15,7 @@
         メールアドレスとパスワードでログイン
       </div>
 
-      <%= form_with url: login_url, local: true do |f| %>
+      <%= form_with url: login_url, local: true, data: { turbo: false } do |f| %>
         <div class="form-control">
           <%= f.label :email, class: 'label' %>
           <%= f.email_field :email, class: 'input input-bordered input-primary w-full max-w-xs' %>

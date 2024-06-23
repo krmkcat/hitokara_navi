@@ -1,6 +1,6 @@
 <% content_for :title, t('.title') %>
 <% content_for :javascript_includes do %>
-  <%= javascript_include_tag 'get_current_location', "data-turbo-track": "reload", type: "module" %>
+  <%= javascript_include_tag 'get_current_location', type: "module" %>
 <% end %>
 
 <div class="title mb-8">
@@ -12,13 +12,11 @@
 <div class="search flex flex-col gap-y-6">
   <div class="location text-center">
     <button id="search-with-current-location" class="btn btn-accent w-full max-w-md">
-      <span id="search-icon">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </span>
+      <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
       <span id="button-text">現在地から探す</span>
     </button>
     <p id="warning" class="text-rose-700 text-center"></p>
-    <%= form_with scope: :q, url: shops_url, method: :get, local: true, id: 'current-location-form' do |f| %>
+    <%= form_with scope: :q, url: shops_url, method: :get, local: true, data: { turbo: false }, id: 'current-location-form' do |f| %>
       <%= hidden_field_tag 'sort[key]', 'distance' %>
       <%= f.hidden_field :latitude %>
       <%= f.hidden_field :longitude %>
@@ -29,7 +27,7 @@
     <div class="heading text-lg text-center mb-2">
       <h2>フリーワードで探す</h2>
     </div>
-    <%= form_with scope: :q, url: shops_url, method: :get, local: true, class: 'flex justify-center' do |f| %>
+    <%= form_with scope: :q, url: shops_url, method: :get, local: true, data: { turbo: false }, class: 'flex justify-center' do |f| %>
       <%= hidden_field_tag 'sort[key]', 'id' %>
       <div class="join flex w-full max-w-md">
         <%= f.search_field :words, placeholder: '店名・住所', class: 'input input-bordered input-primary join-item grow' %>

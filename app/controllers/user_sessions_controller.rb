@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to shop_locations_path, success: t('.success')
+      redirect_back_or_to my_page_path, success: t('.success')
     else
       flash.now[:error] = t('.failure')
       render :new, status: :unprocessable_entity
