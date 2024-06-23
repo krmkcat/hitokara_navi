@@ -49,4 +49,4 @@ window.addEventListener('pageshow', function(event) {
       searchButton.classList.remove("btn-disabled");
     }
   }
-})
+});
