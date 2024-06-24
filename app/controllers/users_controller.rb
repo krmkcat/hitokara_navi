@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     ActiveRecord::Base.transaction do
       if @user.save
         @user.create_profile!
+        auto_login(@user)
         redirect_to root_path, success: t('.success')
       else
         flash.now[:error] = t('.failure')
