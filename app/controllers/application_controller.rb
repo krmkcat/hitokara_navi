@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
-
   add_flash_types :success, :info, :warning, :error
 
   NUM_OF_REVIEWS_FOR_GOLD = 15
@@ -8,7 +7,7 @@ class ApplicationController < ActionController::Base
   NUM_OF_REVIEWS_FOR_BRONZE = 3
 
   def redirect_if_logged_in
-    redirect_to(shop_locations_path, error: t('defaults.flash_message.logged_in')) if logged_in?
+    redirect_to(my_page_path) if logged_in?
   end
 
   protected
