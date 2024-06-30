@@ -11,5 +11,5 @@ Area.seed(
   { id: 10, prefecture_id: 22, name: '西三河' },
   { id: 11, prefecture_id: 22, name: '東三河' },
   { id: 12, prefecture_id: 22, name: '知多エリア' },
-  { id: 13, prefecture_id: 13, name: '渋谷区' },
+  { id: 13, prefecture_id: 13, name: '渋谷区' }
 )
