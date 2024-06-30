@@ -16,6 +16,8 @@
     </div>
     <%= render 'shared/pagination', object: @reviews %>
   <% else %>
-    <p><%= t '.no_reviews' %></p>
+    <p class="text-center">
+      <%= t '.no_reviews' %>
+    </p>
   <% end %>
 <% end %>

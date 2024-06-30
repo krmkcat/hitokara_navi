@@ -50,6 +50,7 @@ ja:
       latest_reviews: 最新レビュー
     latest_reviews:
       show_all_reviews: すべてのレビューを見る
+      no_reviews: まだレビューはありません
     sort_shops_options:
       sort_key: 並び順：
       unspecified: 指定なし
@@ -84,6 +85,7 @@ ja:
       failure: レビューを投稿できませんでした
     index:
       title: "%{shop}のレビュー一覧"
+      no_reviews: まだレビューはありません
     edit:
       title: レビューを編集
     show:
@@ -94,7 +96,7 @@ ja:
     index:
       title: "%{user}さんのレビュー一覧"
       back_to_mypage: マイページへ戻る
-      no_reviews: まだレビューがありません
+      no_reviews: まだレビューはありません
       user_profile: このユーザーのプロフィール
   shop_tags:
     index:
