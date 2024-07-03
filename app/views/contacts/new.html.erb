@@ -16,6 +16,18 @@
       <%= form.hidden_field :user_id, value: current_user&.id %>
 
       <div class="form-control">
+        <%= form.label :inquiry_types, class: 'label' %>
+        <div class="options">
+          <% ContactForm.inquiry_type_options.each do |option| %>
+            <div class="option">
+              <%= form.check_box :inquiry_types, { multiple: true, class: 'checkbox align-middle' }, option, nil %>
+              <%= form.label option, for: "contact_form_inquiry_types_#{option}", class: 'align-middle' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-control">
         <%= form.label :email, class: 'label' %>
         <%= form.email_field :email, class: 'input input-borderd input-primary rounded-lg' %>
       </div>
