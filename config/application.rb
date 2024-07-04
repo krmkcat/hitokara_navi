@@ -32,5 +32,7 @@ module App
       g.test_framework false #testを生成しない
       g.skip_routes true #ルーティングの記述を生成しない
     end
+
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end
