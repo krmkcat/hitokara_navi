@@ -117,6 +117,15 @@ ja:
     update:
       success: パスワードを変更しました
       failure: パスワードを変更できませんでした
+  contacts:
+    new:
+      title: お問い合わせ
+      caution: すべて入力必須項目です
+      placeholder: "例：○○のページで△△したらエラーが出た、○○カラオケ△△店がないので追加してほしい、など（2,000字以内）"
+      submit: 送信
+    create:
+      success: お問い合わせを送信しました
+      failure: お問い合わせを送信できませんでした
   admin:
     dashboards:
       index:
