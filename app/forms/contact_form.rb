@@ -9,7 +9,7 @@ class ContactForm
   attr_reader :inquiry_types
 
   def inquiry_types=(value)
-    @inquiry_types = value.reject(&:blank?).map(&:to_i)
+    @inquiry_types = value.reject(&:blank?)
   end
 
   validates :email, presence: true

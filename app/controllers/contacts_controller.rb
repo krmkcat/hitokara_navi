@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
   def create
     @contact_form = ContactForm.new(contact_params)
     if @contact_form.valid?
-      ContactMailer.with(user_id: @contact_form.user_id, body: @contact_form.body).contact_email.deliver_now
+      ContactMailer.with(user_id: @contact_form.user_id, email: @contact_form.email, body: @contact_form.body, inquiry_types: @contact_form.inquiry_types).contact_email.deliver_now
       redirect_to root_path, success: t('.success')
     else
       flash.now[:error] = t('.failure')
@@ -19,6 +19,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact_form).permit(:email, :body, :user_id)
+    params.require(:contact_form).permit(:email, :body, :user_id, inquiry_types: [])
   end
 end
