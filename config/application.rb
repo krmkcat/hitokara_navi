@@ -19,7 +19,7 @@ module App
     # タイムゾーンを東京に設定
     config.time_zone = 'Tokyo'
     # DB読み書き時のタイムゾーンを実行環境のOSと同じに設定
-    config.active_record.default_timezone= :local
+    config.active_record.default_timezone = :local
 
     # config.eager_load_paths << Rails.root.join("extras")
     config.i18n.default_locale = :ja
@@ -29,10 +29,10 @@ module App
 
     config.generators do |g|
       g.helper false # helperを生成しない
-      g.test_framework false #testを生成しない
-      g.skip_routes true #ルーティングの記述を生成しない
+      g.test_framework false # testを生成しない
+      g.skip_routes true # ルーティングの記述を生成しない
     end
 
-    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
   end
 end
