@@ -13,7 +13,7 @@ ID：<%= @user.id %>
 <%= @email %>
 
 [問い合わせ内容]
-<%= @inquiry_types.join(', ') %>
+<%= @inquiry_types&.join(', ') %>
 
 [本文]
 <%= @body %>
