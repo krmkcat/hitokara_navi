@@ -1,0 +1,45 @@
+<% content_for :title, t('.title') %>
+
+<div class="mx-auto w-full">
+  <h1 class="font-bold text-2xl text-neutral text-center">
+    <%= t('.title') %>
+  </h1>
+
+  <div class="info my-4 text-center text-xs italic text-primary">
+    <p><%= t('.caution') %></p>
+  </div>
+
+  <div class="card shrink-0 w-full mx-auto shadow-2xl">
+    <%= form_with(model: @contact_form, url: contacts_url, class: "card-body p-6") do |form| %>
+      <%= render 'shared/error_messages', object: form.object %>
+
+      <%= form.hidden_field :user_id, value: current_user&.id %>
+
+      <div class="form-control">
+        <%= form.label :inquiry_types, class: 'label' %>
+        <div class="options flex flex-col md:flex-row md:gap-x-4">
+          <% ContactForm.inquiry_type_options.each do |option| %>
+            <div class="option">
+              <%= form.check_box :inquiry_types, { multiple: true, class: 'checkbox checkbox-primary align-middle' }, option, nil %>
+              <%= form.label option, for: "contact_form_inquiry_types_#{option}", class: 'align-middle cursor-pointer' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <%= form.label :email, class: 'label' %>
+        <%= form.email_field :email, class: 'input input-borderd input-primary rounded-lg' %>
+      </div>
+
+      <div class="form-control">
+        <%= form.label :body, class: 'label' %>
+        <%= form.text_area :body, maxlength: 2000, rows: 7, placeholder: t('.placeholder'), class: "textarea textarea-bordered textarea-primary rounded-lg" %>
+      </div>
+
+      <div class="text-center mt-6">
+        <%= form.submit t('.submit'), class: 'btn btn-accent btn-wide' %>
+      </div>
+    <% end %>
+  </div>
+</div>

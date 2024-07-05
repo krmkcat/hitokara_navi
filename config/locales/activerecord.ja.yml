@@ -53,3 +53,9 @@ ja:
         name: タグ名
         created_at: 作成日時
         updated_at: 最終更新日時
+  activemodel:
+    attributes:
+      contact_form:
+        inquiry_types: お問い合わせ内容
+        email: メールアドレス
+        body: 本文

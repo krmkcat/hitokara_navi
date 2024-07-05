@@ -21,7 +21,7 @@
             <%= link_to t('users.new.title'), signup_path %>
           </li>
           <li>
-            <%= mail_to ENV['GMAIL_USERNAME'], t('defaults.contact') %>
+            <%= link_to t('defaults.contact'), new_contact_path %>
           </li>
         </ul>
       </details>

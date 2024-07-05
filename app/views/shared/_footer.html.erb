@@ -1,7 +1,7 @@
 <footer class="footer footer-center p-4 bg-neutral text-neutral-content">
   <aside ontouchstart="">
     <p>
-      <%= mail_to ENV['GMAIL_USERNAME'], t('defaults.contact'), class: 'link link-hover' %>
+      <%= link_to t('defaults.contact'), new_contact_path, class: 'link link-hover' %>
     </p>
     <p class="text-xs">Copyright © 2024 - All right reserved by ヒトカラナビ</p>
   </aside>
