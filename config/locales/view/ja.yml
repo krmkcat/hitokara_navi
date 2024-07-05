@@ -10,6 +10,8 @@ ja:
   static_pages:
     index:
       title: トップページ
+    privacy_policy:
+      title: プライバシーポリシー
   user_sessions:
     new:
       title: ログイン

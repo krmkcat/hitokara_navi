@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
   resources :contacts, only: %i[new create]
 
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
+
   get 'signup', to: 'users#new'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
