@@ -1,8 +1,13 @@
 <footer class="footer footer-center p-4 bg-neutral text-neutral-content">
   <aside ontouchstart="">
-    <p>
-      <%= link_to t('defaults.contact'), new_contact_path, class: 'link link-hover' %>
-    </p>
-    <p class="text-xs">Copyright © 2024 - All right reserved by ヒトカラナビ</p>
+    <div class="flex gap-x-2">
+      <p>
+        <%= link_to t('defaults.contact'), new_contact_path, class: 'link link-hover' %>
+      </p>
+      <p>
+        <%= link_to t('defaults.terms'), 'https://kiyac.app/termsOfService/n20c9JaJRKCcCUhvRL7H', class: 'link link-hover', target: '_blank', rel: 'norefferrer noopener' %>
+      </p>
+    </div>
+    <div class="text-xs">Copyright © 2024 - All right reserved by ヒトカラナビ</div>
   </aside>
 </footer>
