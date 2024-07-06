@@ -12,6 +12,8 @@ ja:
       title: トップページ
     privacy_policy:
       title: プライバシーポリシー
+    terms:
+      title: 利用規約
   user_sessions:
     new:
       title: ログイン
