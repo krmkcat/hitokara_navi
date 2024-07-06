@@ -80,7 +80,7 @@ ja:
     edit:
       title: プロフィール編集
     form:
-      user_name_rule: 20文字以内
+      user_name_rule: 15文字以内
   reviews:
     new:
       title: レビュー投稿
