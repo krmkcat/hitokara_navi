@@ -10,10 +10,9 @@ module ApplicationHelper
       keywords: 'ヒトカラ,ひとりカラオケ,一人カラオケ', # キーワードを「,」区切りで設定する
       canonical: request.original_url, # 優先するurlを指定する
       noindex: !Rails.env.production?,
-      # icon: [ #favicon、apple用アイコンを指定する
-      #   { href: image_url('favicon.ico') },
-      #   { href: image_url('icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
-      # ],
+      icon: [
+        { href: image_url('favicon.ico') }
+      ],
       og: {
         site_name: :site,
         title: :title,
