@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_240_609_100_527) do
+ActiveRecord::Schema[7.0].define(version: 20_240_706_091_618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 20_240_609_100_527) do
 
   create_table 'profiles', force: :cascade do |t|
     t.bigint 'user_id', null: false
-    t.string 'name', limit: 30, default: '名無しのヒトカラー', null: false
+    t.string 'name', limit: 15, default: '名無しのヒトカラー', null: false
     t.integer 'gender', default: 0, null: false
     t.integer 'age_group', default: 0, null: false
     t.datetime 'created_at', null: false
