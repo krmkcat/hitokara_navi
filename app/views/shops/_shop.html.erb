@@ -34,7 +34,32 @@
       </div>
     </div>
 
+    <div id="map" class="h-[350px] md:h-[600px] mt-6"></div>
+    <script>
+      function initMap() {
+        // 地図要素を取得する（マーカーを表示させるために必要）
+        const mapElement = document.getElementById('map');
+
+        const mapOptions = {
+          center: { lat: <%= shop.latitude %>, lng: <%= shop.longitude %> },
+          zoom: 14
+        };
+
+        const map = new google.maps.Map(mapElement, mapOptions);
+
+        // マーカーを追加
+        const marker = new google.maps.Marker({
+          position: {lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
+          map: map,
+          title: '<%= shop.name %>',
+          clickable: false
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&callback=initMap"></script>
+
     <div class="static-informations mx-auto space-y-4 px-2 mt-6">
+
       <div class="attribute grid grid-cols-[1fr_8fr]">
         <div>
           <i class="fa-solid fa-location-dot"></i>
