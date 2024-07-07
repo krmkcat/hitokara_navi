@@ -23,7 +23,9 @@
       <%= @all_shops.length %>件
     </div>
     <% if @shops.present? %>
-      <div id="map" class="h-[350px] md:h-[600px] mt-6"></div>
+      <div id="map-container" data-shops="<%= @all_shops_json %>">
+        <div id="map" class="h-[350px] md:h-[600px] mt-6"></div>
+      </div>
       <%= render partial: 'shop_summary', collection: @shops, as: :shop %>
       <%= render 'shared/pagination', object: @shops %>
     <% else %>
