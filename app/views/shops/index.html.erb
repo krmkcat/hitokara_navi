@@ -23,7 +23,7 @@
       <%= @all_shops.length %>件
     </div>
     <% if @shops.present? %>
-      <div id="map-container" data-shops="<%= @all_shops_json %>">
+      <div id="map-container" data-shops="<%= @all_shops_json %>" data-lat="<%= @center_lat %>" data-lng="<%= @center_lng %>" data-zoom="<%= @zoom %>">
         <div id="map" class="h-[350px] md:h-[600px] mt-6"></div>
       </div>
       <%= render partial: 'shop_summary', collection: @shops, as: :shop %>

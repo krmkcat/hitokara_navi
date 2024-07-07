@@ -27,6 +27,24 @@ class ShopsController < ApplicationController
     @all_shops = @search_shops_form.search
     @all_shops_json = @all_shops.to_json
     @shops = sort_shops(@all_shops).includes(:tags, :favorites).page(params[:page])
+    set_center_of_map
+  end
+
+  def set_center_of_map
+    if @search_shops_params[:latitude].present?
+      @center_lat = @search_shops_params[:latitude]
+      @center_lng = @search_shops_params[:longitude]
+    else
+      @center_lat = @all_shops.first.latitude
+      @center_lng = @all_shops.first.longitude
+    end
+    @zoom = if @search_shops_params[:latitude].present?
+              13
+            elsif @search_shops_params[:area_id].present?
+              12
+            else
+              9
+            end
   end
 
   def sort_shops(relation)

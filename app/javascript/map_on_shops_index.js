@@ -4,10 +4,14 @@ let infoWindows = [];
 
 function initMap() {
   const mapElement = document.getElementById('map');
+  const mapContainer = document.getElementById('map-container');
+  const centerLat = Number(mapContainer.dataset.lat)
+  const centerLng = Number(mapContainer.dataset.lng)
+  const zoom = Number(mapContainer.dataset.zoom)
   if (!mapElement) return;
   const mapOptions = {
-    center: { lat: 35.6803997, lng: 139.7690174 },
-    zoom: 10
+    center: { lat: centerLat, lng: centerLng },
+    zoom: zoom
   };
   map = new google.maps.Map(mapElement, mapOptions);
   updateMarkersFromData();
