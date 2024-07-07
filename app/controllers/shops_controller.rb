@@ -15,6 +15,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    gon.shop = @shop
     @reviews = @shop.reviews.order(updated_at: :desc).limit(5)
   end
 
