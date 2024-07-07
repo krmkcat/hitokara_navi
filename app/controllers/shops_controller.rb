@@ -36,8 +36,8 @@ class ShopsController < ApplicationController
       @center_lat = @search_shops_params[:latitude]
       @center_lng = @search_shops_params[:longitude]
     else
-      @center_lat = @all_shops.first.latitude
-      @center_lng = @all_shops.first.longitude
+      @center_lat = @all_shops.first&.latitude
+      @center_lng = @all_shops.first&.longitude
     end
     @zoom = if @search_shops_params[:latitude].present?
               13

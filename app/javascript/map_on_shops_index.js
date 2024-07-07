@@ -5,9 +5,9 @@ let infoWindows = [];
 function initMap() {
   const mapElement = document.getElementById('map');
   const mapContainer = document.getElementById('map-container');
-  const centerLat = Number(mapContainer.dataset.lat)
-  const centerLng = Number(mapContainer.dataset.lng)
-  const zoom = Number(mapContainer.dataset.zoom)
+  const centerLat = mapContainer ? Number(mapContainer.dataset.lat) : null;
+  const centerLng = mapContainer ? Number(mapContainer.dataset.lng) : null;
+  const zoom = mapContainer ? Number(mapContainer.dataset.zoom) : null;
   if (!mapElement) return;
   const mapOptions = {
     center: { lat: centerLat, lng: centerLng },
@@ -19,7 +19,7 @@ function initMap() {
 
 function updateMarkersFromData() {
   const mapContainer = document.getElementById('map-container');
-  const markerData = JSON.parse(mapContainer.dataset.shops);
+  const markerData = mapContainer ? JSON.parse(mapContainer.dataset.shops) : null;
   updateMarkers(markerData);
 }
 
