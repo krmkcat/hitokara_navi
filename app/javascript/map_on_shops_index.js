@@ -4,7 +4,7 @@ let infoWindows = [];
 
 function initMap() {
   const mapElement = document.getElementById('map');
-  if (!mapElement) return; // マップ要素が存在しない場合は初期化しない
+  if (!mapElement) return;
   const mapOptions = {
     center: { lat: 35.6803997, lng: 139.7690174 },
     zoom: 10
@@ -16,7 +16,6 @@ function initMap() {
 function updateMarkersFromData() {
   const mapContainer = document.getElementById('map-container');
   const markerData = JSON.parse(mapContainer.dataset.shops);
-  console.log(markerData);
   updateMarkers(markerData);
 }
 
@@ -40,8 +39,22 @@ function updateMarkers(markerData) {
       title: markerData[i]['name']
     });
 
+    const url = location.protocol + '//' + location.host + '/shops/' + markerData[i]['id']
+
+    const contentBody =
+      '<div class="shop-name">'
+      + markerData[i]['name']
+      + '</div>'
+      + '<div class="link">'
+      + '<a href="'
+      + url
+      + '" data-turbo="false" class="link">'
+      + '詳細を見る'
+      + '</a>'
+      + '</div>'
+
     const infoWindow = new google.maps.InfoWindow({
-      content: markerData[i]['name']
+      content: contentBody
     });
 
     marker.addListener('click', function () {
