@@ -66,7 +66,7 @@ gem 'meta-tags'
 
 gem 'kaminari'
 
-gem 'geokit-rails'
+gem 'gon'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
